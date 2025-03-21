@@ -97,37 +97,36 @@ class SurveyWidgetState extends State<SurveyWidget> {
     final elementsState = ElementsState(status);
 
     return Theme(
-      data: Theme.of(context).copyWith(
-        focusColor: widget.focusColor,
-        textButtonTheme:
-            TextButtonThemeData(style: widget.focusableButtonStyle),
-        inputDecorationTheme: InputDecorationTheme(),
-      ),
-      child: ReactiveForm(
-        formGroup: this.formGroup,
-        child: StreamBuilder(
-          stream: this.formGroup.valueChanges,
-          builder: (BuildContext context,
-              AsyncSnapshot<Map<String, Object?>?> snapshot) {
-            return SurveyProvider(
-              survey: widget.survey,
-              formGroup: formGroup,
-              elementsState: elementsState,
-              currentPage: currentPage,
-              initialPage: initialPage,
-              focusableButtonStyle: widget.focusableButtonStyle,
-              showQuestionsInOnePage: widget.showQuestionsInOnePage,
-              focusColor: widget.focusColor,
-              elementDecoration: widget.elementDecoration,
-              elementPadding: widget.elementPadding,
-              child: Builder(
-                  builder: (context) =>
-                      (widget.builder ?? defaultBuilder)(context)),
-            );
-          },
+        data: Theme.of(context).copyWith(
+          focusColor: widget.focusColor,
+          textButtonTheme:
+              TextButtonThemeData(style: widget.focusableButtonStyle),
+          inputDecorationTheme: InputDecorationTheme(border: InputBorder.none),
         ),
-      ),
-    );
+        child: ReactiveForm(
+          formGroup: this.formGroup,
+          child: StreamBuilder(
+            stream: this.formGroup.valueChanges,
+            builder: (BuildContext context,
+                AsyncSnapshot<Map<String, Object?>?> snapshot) {
+              return SurveyProvider(
+                survey: widget.survey,
+                formGroup: formGroup,
+                elementsState: elementsState,
+                currentPage: currentPage,
+                initialPage: initialPage,
+                focusableButtonStyle: widget.focusableButtonStyle,
+                showQuestionsInOnePage: widget.showQuestionsInOnePage,
+                focusColor: widget.focusColor,
+                elementDecoration: widget.elementDecoration,
+                elementPadding: widget.elementPadding,
+                child: Builder(
+                    builder: (context) =>
+                        (widget.builder ?? defaultBuilder)(context)),
+              );
+            },
+          ),
+        ));
   }
 
   void rebuildForm() {

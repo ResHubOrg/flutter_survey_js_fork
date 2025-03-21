@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:reactive_forms/reactive_forms.dart';
 
-import 'package:flutter_survey_js/ui/survey_widget.dart';
 
 class CustomReactiveSegmentedControl<T extends Object, K extends Object>
     extends ReactiveFormField<T, K> {
@@ -40,50 +39,24 @@ class CustomReactiveSegmentedControl<T extends Object, K extends Object>
                         child: ElevatedButton(
                           style: field.control.value ==
                                   children.keys.toList()[index]
-                              ? SurveyProvider.of(context)
-                                  .focusableButtonStyle
-                                  ?.copyWith(
+                              ? ButtonStyle(
                                   backgroundColor:
-                                      MaterialStateProperty.resolveWith<Color?>(
-                                          (Set<MaterialState> states) {
-                                    if (states
-                                        .contains(MaterialState.focused)) {
+                                      WidgetStateProperty.resolveWith<Color?>(
+                                          (Set<WidgetState> states) {
+                                    if (states.contains(WidgetState.focused)) {
                                       return Colors.black;
                                     }
-                                    return Colors.blue;
-                                  }),
-                                  side: MaterialStateProperty.resolveWith(
-                                      (Set<MaterialState> states) {
-                                    if (states
-                                        .contains(MaterialState.focused)) {
-                                      return const BorderSide(
-                                          color: Colors.amber, width: 6);
-                                    }
-                                    return const BorderSide(
-                                        color: Colors.blue, width: 1);
+                                    return Color(0xFF7C7CDA);
                                   }),
                                 )
-                              : SurveyProvider.of(context)
-                                  .focusableButtonStyle
-                                  ?.copyWith(
+                              : ButtonStyle(
                                   backgroundColor:
-                                      MaterialStateProperty.resolveWith<Color?>(
-                                          (Set<MaterialState> states) {
-                                    if (states
-                                        .contains(MaterialState.focused)) {
+                                      WidgetStateProperty.resolveWith<Color?>(
+                                          (Set<WidgetState> states) {
+                                    if (states.contains(WidgetState.focused)) {
                                       return Colors.black;
                                     }
-                                    return Colors.white;
-                                  }),
-                                  side: MaterialStateProperty.resolveWith(
-                                      (Set<MaterialState> states) {
-                                    if (states
-                                        .contains(MaterialState.focused)) {
-                                      return const BorderSide(
-                                          color: Colors.amber, width: 6);
-                                    }
-                                    return const BorderSide(
-                                        color: Colors.blue, width: 1);
+                                    return Color(0xFFE8EAF6);
                                   }),
                                 ),
                           onPressed: () {

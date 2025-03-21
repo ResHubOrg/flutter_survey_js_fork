@@ -187,7 +187,6 @@ class SurveyElementFactory {
           SizedBox(
             height: 5,
           ),
-          Divider(),
           SizedBox(
             height: 5,
           ),
