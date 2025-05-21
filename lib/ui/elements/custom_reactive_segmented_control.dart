@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:reactive_forms/reactive_forms.dart';
 
-
 class CustomReactiveSegmentedControl<T extends Object, K extends Object>
     extends ReactiveFormField<T, K> {
   CustomReactiveSegmentedControl({
@@ -46,7 +45,7 @@ class CustomReactiveSegmentedControl<T extends Object, K extends Object>
                                     if (states.contains(WidgetState.focused)) {
                                       return Colors.black;
                                     }
-                                    return Color(0xFF7C7CDA);
+                                    return Colors.green.shade900;
                                   }),
                                 )
                               : ButtonStyle(

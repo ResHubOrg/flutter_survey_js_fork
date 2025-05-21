@@ -148,12 +148,10 @@ class SurveyLayoutState extends State<SurveyLayout> {
         pages = [
           s.Page()
             ..elements = (survey.pages ?? [])
-                .map<List<s.ElementBase>>((e) =>
-            e.elements ?? <s.ElementBase>[])
+                .map<List<s.ElementBase>>(
+                    (e) => e.elements ?? <s.ElementBase>[])
                 .fold(<s.ElementBase>[],
-                    (previousValue, element) =>
-                previousValue!
-                  ..addAll(element))
+                    (previousValue, element) => previousValue!..addAll(element))
         ];
       }
     }

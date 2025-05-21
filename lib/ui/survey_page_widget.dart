@@ -11,11 +11,13 @@ import 'panel_title.dart';
 class SurveyPageWidget extends StatefulWidget {
   final s.Page page;
   final int initIndex;
+  final bool readOnly;
 
   const SurveyPageWidget({
     Key? key,
     required this.page,
     this.initIndex = 0,
+    this.readOnly = false,
   }) : super(key: key);
   @override
   State<StatefulWidget> createState() => SurveyPageWidgetState();
@@ -116,49 +118,64 @@ class SurveyPageWidgetState extends State<SurveyPageWidget> {
                       if (index == 0 &&
                           (widget.page.title != null ||
                               widget.page.description != null)) {
-                        return Column(
-                          children: [
-                            SizedBox(
-                              height: 8.0,
-                            ),
-                            Center(
-                              child: PanelTitle(
-                                panel: widget.page,
-                                onTimeout: () {
-                                  setState(() {});
-                                },
+                        return AbsorbPointer(
+                          absorbing: widget.readOnly,
+                          child: Column(
+                            children: [
+                              SizedBox(
+                                height: 8.0,
                               ),
-                            ),
-                            SurveyElementFactory().separatorBuilder.call(context),
-                            Container(
-                              decoration:
-                                  SurveyProvider.of(context).elementDecoration,
-                              padding: SurveyProvider.of(context).elementPadding,
-                              child: SurveyElementFactory()
-                                  .resolve(context, widget.page.elements![index]),
-                            ),
-                          ],
+                              Center(
+                                child: PanelTitle(
+                                  panel: widget.page,
+                                  onTimeout: () {
+                                    setState(() {});
+                                  },
+                                ),
+                              ),
+                              SurveyElementFactory()
+                                  .separatorBuilder
+                                  .call(context),
+                              Container(
+                                decoration: SurveyProvider.of(context)
+                                    .elementDecoration,
+                                padding:
+                                    SurveyProvider.of(context).elementPadding,
+                                child: SurveyElementFactory().resolve(
+                                    context, widget.page.elements![index]),
+                              ),
+                            ],
+                          ),
                         );
                       }
                       if (index < widget.page.elements!.length && index >= 0) {
-                        return Container(
-                          decoration: SurveyProvider.of(context).elementDecoration,
-                          padding: SurveyProvider.of(context).elementPadding,
-                          child: SurveyElementFactory()
-                              .resolve(context, widget.page.elements![index]),
+                        return AbsorbPointer(
+                          absorbing: widget.readOnly,
+                          child: Container(
+                            decoration:
+                                SurveyProvider.of(context).elementDecoration,
+                            padding: SurveyProvider.of(context).elementPadding,
+                            child: SurveyElementFactory()
+                                .resolve(context, widget.page.elements![index]),
+                          ),
                         );
                       } else {
-                        return Container(
-                          width: double.infinity,
-                          // child: Image.asset(
-                          //   'assets/images/decision.jpg',
-                          //   fit: BoxFit.fill,
-                          // ),
+                        return AbsorbPointer(
+                          absorbing: widget.readOnly,
+                          child: Container(
+                            width: double.infinity,
+                            // child: Image.asset(
+                            //   'assets/images/decision.jpg',
+                            //   fit: BoxFit.fill,
+                            // ),
+                          ),
                         );
                       }
                     },
                     separatorBuilder: (BuildContext context, int index) {
-                      return SurveyElementFactory().separatorBuilder.call(context);
+                      return SurveyElementFactory()
+                          .separatorBuilder
+                          .call(context);
                     },
                   ),
                 ),
