@@ -12,12 +12,14 @@ class SurveyPageWidget extends StatefulWidget {
   final s.Page page;
   final int initIndex;
   final bool readOnly;
+  final Widget? listMedia;
 
   const SurveyPageWidget({
     Key? key,
     required this.page,
     this.initIndex = 0,
     this.readOnly = false,
+    this.listMedia,
   }) : super(key: key);
   @override
   State<StatefulWidget> createState() => SurveyPageWidgetState();
@@ -81,27 +83,27 @@ class SurveyPageWidgetState extends State<SurveyPageWidget> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        floatingActionButton: _showBackToTopButton == false
-            ? null
-            : Container(
-                height: 45.0,
-                width: 45.0,
-                child: FittedBox(
-                  child: FloatingActionButton(
-                    onPressed: () {
-                      itemScrollController.jumpTo(index: 0);
-                    },
-                    child: Icon(
-                      Icons.arrow_upward,
-                    ),
+      floatingActionButton: _showBackToTopButton == false
+          ? null
+          : Container(
+              height: 45.0,
+              width: 45.0,
+              child: FittedBox(
+                child: FloatingActionButton(
+                  onPressed: () {
+                    itemScrollController.jumpTo(index: 0);
+                  },
+                  child: Icon(
+                    Icons.arrow_upward,
                   ),
                 ),
               ),
-        body: GestureDetector(
-          onTap: () {
-            WidgetsBinding.instance.focusManager.primaryFocus?.unfocus();
-          },
-          child: Container(
+            ),
+      body: GestureDetector(
+        onTap: () {
+          WidgetsBinding.instance.focusManager.primaryFocus?.unfocus();
+        },
+        child: Container(
             color: Colors.white,
             child: Column(
               mainAxisAlignment: MainAxisAlignment.start,
@@ -110,78 +112,78 @@ class SurveyPageWidgetState extends State<SurveyPageWidget> {
                   height: 8.0,
                 ),
                 Expanded(
-                  child: ScrollablePositionedList.separated(
-                    itemCount: maxIndex,
-                    itemScrollController: itemScrollController,
-                    itemPositionsListener: itemPositionsListener,
-                    itemBuilder: (context, index) {
-                      if (index == 0 &&
-                          (widget.page.title != null ||
-                              widget.page.description != null)) {
-                        return AbsorbPointer(
-                          absorbing: widget.readOnly,
-                          child: Column(
-                            children: [
-                              SizedBox(
-                                height: 8.0,
+                    child: ScrollablePositionedList.separated(
+                  itemCount: maxIndex + (widget.listMedia != null ? 1 : 0),
+                  itemScrollController: itemScrollController,
+                  itemPositionsListener: itemPositionsListener,
+                  itemBuilder: (context, index) {
+                    if (index == maxIndex && widget.listMedia != null) {
+                      return widget.listMedia!;
+                    }
+
+                    if (index == 0 &&
+                        (widget.page.title != null ||
+                            widget.page.description != null)) {
+                      return AbsorbPointer(
+                        absorbing: widget.readOnly,
+                        child: Column(
+                          children: [
+                            SizedBox(height: 8.0),
+                            Center(
+                              child: PanelTitle(
+                                panel: widget.page,
+                                onTimeout: () {
+                                  setState(() {});
+                                },
                               ),
-                              Center(
-                                child: PanelTitle(
-                                  panel: widget.page,
-                                  onTimeout: () {
-                                    setState(() {});
-                                  },
-                                ),
+                            ),
+                            SurveyElementFactory()
+                                .separatorBuilder
+                                .call(context),
+                            Container(
+                              decoration:
+                                  SurveyProvider.of(context).elementDecoration,
+                              padding:
+                                  SurveyProvider.of(context).elementPadding,
+                              child: SurveyElementFactory().resolve(
+                                context,
+                                widget.page.elements![index],
                               ),
-                              SurveyElementFactory()
-                                  .separatorBuilder
-                                  .call(context),
-                              Container(
-                                decoration: SurveyProvider.of(context)
-                                    .elementDecoration,
-                                padding:
-                                    SurveyProvider.of(context).elementPadding,
-                                child: SurveyElementFactory().resolve(
-                                    context, widget.page.elements![index]),
-                              ),
-                            ],
+                            ),
+                          ],
+                        ),
+                      );
+                    }
+
+                    if (index < widget.page.elements!.length && index >= 0) {
+                      return AbsorbPointer(
+                        absorbing: widget.readOnly,
+                        child: Container(
+                          decoration:
+                              SurveyProvider.of(context).elementDecoration,
+                          padding: SurveyProvider.of(context).elementPadding,
+                          child: SurveyElementFactory().resolve(
+                            context,
+                            widget.page.elements![index],
                           ),
-                        );
-                      }
-                      if (index < widget.page.elements!.length && index >= 0) {
-                        return AbsorbPointer(
-                          absorbing: widget.readOnly,
-                          child: Container(
-                            decoration:
-                                SurveyProvider.of(context).elementDecoration,
-                            padding: SurveyProvider.of(context).elementPadding,
-                            child: SurveyElementFactory()
-                                .resolve(context, widget.page.elements![index]),
-                          ),
-                        );
-                      } else {
-                        return AbsorbPointer(
-                          absorbing: widget.readOnly,
-                          child: Container(
-                            width: double.infinity,
-                            // child: Image.asset(
-                            //   'assets/images/decision.jpg',
-                            //   fit: BoxFit.fill,
-                            // ),
-                          ),
-                        );
-                      }
-                    },
-                    separatorBuilder: (BuildContext context, int index) {
-                      return SurveyElementFactory()
-                          .separatorBuilder
-                          .call(context);
-                    },
-                  ),
-                ),
+                        ),
+                      );
+                    }
+
+                    return AbsorbPointer(
+                      absorbing: widget.readOnly,
+                      child: Container(width: double.infinity),
+                    );
+                  },
+                  separatorBuilder: (BuildContext context, int index) {
+                    return SurveyElementFactory()
+                        .separatorBuilder
+                        .call(context);
+                  },
+                ))
               ],
-            ),
-          ),
-        ));
+            )),
+      ),
+    );
   }
 }
