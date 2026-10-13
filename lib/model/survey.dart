@@ -159,7 +159,8 @@ class Ranking extends CheckBox {
   // String? hasOther;
   String? otherText;
   String? otherErrorText;
-  String? storeOthersAsComment;
+  @JsonKey(fromJson: _boolFromJson)
+  bool? storeOthersAsComment;
   // String? hasNone;
   String? noneText;
   // String? hasSelectAll;
@@ -193,7 +194,8 @@ class ImagePicker extends CheckBoxBase<ImageItemValue> {
   String? noneText;
   String? optionsCaption;
   String? otherErrorText;
-  String? storeOthersAsComment;
+  @JsonKey(fromJson: _boolFromJson)
+  bool? storeOthersAsComment;
   // "image", "video"
   String? contentMode;
   // "none","contain","cover", "fill"
@@ -391,7 +393,8 @@ class Comment extends Question {
 class File extends Question {
   static const $type = "file";
   String? get type => $type;
-  String? hasComment;
+  @JsonKey(fromJson: _boolFromJson)
+  bool? hasComment;
   String? commentText;
   bool? showPreview;
   bool? allowMultiple;
@@ -414,7 +417,8 @@ class File extends Question {
 class Rating extends Question {
   static const $type = "rating";
   String? get type => $type;
-  String? hasComment;
+  @JsonKey(fromJson: _boolFromJson)
+  bool? hasComment;
   String? commentText;
   List<ItemValue>? rateValues;
   int? rateMin;

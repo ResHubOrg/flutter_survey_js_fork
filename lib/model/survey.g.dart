@@ -77,86 +77,75 @@ Survey _$SurveyFromJson(Map<String, dynamic> json) => Survey()
   ..isSinglePage = json['isSinglePage'] as bool?
   ..questionsOnPageMode = json['questionsOnPageMode'] as String?
   ..showPreviewBeforeComplete = json['showPreviewBeforeComplete'] as String?
-  ..maxTimeToFinish = json['maxTimeToFinish'] as int?
-  ..maxTimeToFinishPage = json['maxTimeToFinishPage'] as int?
+  ..maxTimeToFinish = (json['maxTimeToFinish'] as num?)?.toInt()
+  ..maxTimeToFinishPage = (json['maxTimeToFinishPage'] as num?)?.toInt()
   ..showTimerPanel = json['showTimerPanel'] as String?
   ..showTimerPanelMode = json['showTimerPanelMode'] as String?;
 
-Map<String, dynamic> _$SurveyToJson(Survey instance) {
-  final val = <String, dynamic>{};
-
-  void writeNotNull(String key, dynamic value) {
-    if (value != null) {
-      val[key] = value;
-    }
-  }
-
-  writeNotNull('locale', instance.locale);
-  writeNotNull('title', instance.title);
-  writeNotNull('description', instance.description);
-  writeNotNull('logo', instance.logo);
-  writeNotNull('logoWidth', instance.logoWidth);
-  writeNotNull('logoFit', instance.logoFit);
-  writeNotNull('logoPosition', instance.logoPosition);
-  writeNotNull(
-      'focusFirstQuestionAutomatic', instance.focusFirstQuestionAutomatic);
-  writeNotNull('focusOnFirstError', instance.focusOnFirstError);
-  writeNotNull('completedHtml', instance.completedHtml);
-  writeNotNull('completedBeforeHtml', instance.completedBeforeHtml);
-  writeNotNull('completedHtmlOnCondition', instance.completedHtmlOnCondition);
-  writeNotNull('loadingHtml', instance.loadingHtml);
-  writeNotNull('pages', instance.pages);
-  writeNotNull('triggers', instance.triggers);
-  writeNotNull('calculatedValues', instance.calculatedValues);
-  writeNotNull('surveyId', instance.surveyId);
-  writeNotNull('surveyPostId', instance.surveyPostId);
-  writeNotNull('surveyShowDataSaving', instance.surveyShowDataSaving);
-  writeNotNull('cookieName', instance.cookieName);
-  writeNotNull('sendResultOnPageNext', instance.sendResultOnPageNext);
-  writeNotNull('showNavigationButtons', instance.showNavigationButtons);
-  writeNotNull('showPrevButton', instance.showPrevButton);
-  writeNotNull('showTitle', instance.showTitle);
-  writeNotNull('showPageTitles', instance.showPageTitles);
-  writeNotNull('showCompletedPage', instance.showCompletedPage);
-  writeNotNull('navigateToUrl', instance.navigateToUrl);
-  writeNotNull('navigateToUrlOnCondition', instance.navigateToUrlOnCondition);
-  writeNotNull('questionsOrder', instance.questionsOrder);
-  writeNotNull('showPageNumbers', instance.showPageNumbers);
-  writeNotNull('showQuestionNumbers', instance.showQuestionNumbers);
-  writeNotNull('questionTitleLocation', instance.questionTitleLocation);
-  writeNotNull(
-      'questionDescriptionLocation', instance.questionDescriptionLocation);
-  writeNotNull('questionErrorLocation', instance.questionErrorLocation);
-  writeNotNull('showProgressBar', instance.showProgressBar);
-  writeNotNull('progressBarType', instance.progressBarType);
-  writeNotNull('mode', instance.mode);
-  writeNotNull('storeOthersAsComment', instance.storeOthersAsComment);
-  writeNotNull('maxTextLength', instance.maxTextLength);
-  writeNotNull('maxOthersLength', instance.maxOthersLength);
-  writeNotNull('goNextPageAutomatic', instance.goNextPageAutomatic);
-  writeNotNull('clearInvisibleValues', instance.clearInvisibleValues);
-  writeNotNull('checkErrorsMode', instance.checkErrorsMode);
-  writeNotNull('textUpdateMode', instance.textUpdateMode);
-  writeNotNull('startSurveyText', instance.startSurveyText);
-  writeNotNull('pagePrevText', instance.pagePrevText);
-  writeNotNull('pageNextText', instance.pageNextText);
-  writeNotNull('completeText', instance.completeText);
-  writeNotNull('previewText', instance.previewText);
-  writeNotNull('editText', instance.editText);
-  writeNotNull('requiredText', instance.requiredText);
-  writeNotNull('questionStartIndex', instance.questionStartIndex);
-  writeNotNull('questionTitlePattern', instance.questionTitlePattern);
-  writeNotNull('questionTitleTemplate', instance.questionTitleTemplate);
-  writeNotNull('firstPageIsStarted', instance.firstPageIsStarted);
-  writeNotNull('isSinglePage', instance.isSinglePage);
-  writeNotNull('questionsOnPageMode', instance.questionsOnPageMode);
-  writeNotNull('showPreviewBeforeComplete', instance.showPreviewBeforeComplete);
-  writeNotNull('maxTimeToFinish', instance.maxTimeToFinish);
-  writeNotNull('maxTimeToFinishPage', instance.maxTimeToFinishPage);
-  writeNotNull('showTimerPanel', instance.showTimerPanel);
-  writeNotNull('showTimerPanelMode', instance.showTimerPanelMode);
-  return val;
-}
+Map<String, dynamic> _$SurveyToJson(Survey instance) => <String, dynamic>{
+  'locale': ?instance.locale,
+  'title': ?instance.title,
+  'description': ?instance.description,
+  'logo': ?instance.logo,
+  'logoWidth': ?instance.logoWidth,
+  'logoFit': ?instance.logoFit,
+  'logoPosition': ?instance.logoPosition,
+  'focusFirstQuestionAutomatic': ?instance.focusFirstQuestionAutomatic,
+  'focusOnFirstError': ?instance.focusOnFirstError,
+  'completedHtml': ?instance.completedHtml,
+  'completedBeforeHtml': ?instance.completedBeforeHtml,
+  'completedHtmlOnCondition': ?instance.completedHtmlOnCondition,
+  'loadingHtml': ?instance.loadingHtml,
+  'pages': ?instance.pages,
+  'triggers': ?instance.triggers,
+  'calculatedValues': ?instance.calculatedValues,
+  'surveyId': ?instance.surveyId,
+  'surveyPostId': ?instance.surveyPostId,
+  'surveyShowDataSaving': ?instance.surveyShowDataSaving,
+  'cookieName': ?instance.cookieName,
+  'sendResultOnPageNext': ?instance.sendResultOnPageNext,
+  'showNavigationButtons': ?instance.showNavigationButtons,
+  'showPrevButton': ?instance.showPrevButton,
+  'showTitle': ?instance.showTitle,
+  'showPageTitles': ?instance.showPageTitles,
+  'showCompletedPage': ?instance.showCompletedPage,
+  'navigateToUrl': ?instance.navigateToUrl,
+  'navigateToUrlOnCondition': ?instance.navigateToUrlOnCondition,
+  'questionsOrder': ?instance.questionsOrder,
+  'showPageNumbers': ?instance.showPageNumbers,
+  'showQuestionNumbers': ?instance.showQuestionNumbers,
+  'questionTitleLocation': ?instance.questionTitleLocation,
+  'questionDescriptionLocation': ?instance.questionDescriptionLocation,
+  'questionErrorLocation': ?instance.questionErrorLocation,
+  'showProgressBar': ?instance.showProgressBar,
+  'progressBarType': ?instance.progressBarType,
+  'mode': ?instance.mode,
+  'storeOthersAsComment': ?instance.storeOthersAsComment,
+  'maxTextLength': ?instance.maxTextLength,
+  'maxOthersLength': ?instance.maxOthersLength,
+  'goNextPageAutomatic': ?instance.goNextPageAutomatic,
+  'clearInvisibleValues': ?instance.clearInvisibleValues,
+  'checkErrorsMode': ?instance.checkErrorsMode,
+  'textUpdateMode': ?instance.textUpdateMode,
+  'startSurveyText': ?instance.startSurveyText,
+  'pagePrevText': ?instance.pagePrevText,
+  'pageNextText': ?instance.pageNextText,
+  'completeText': ?instance.completeText,
+  'previewText': ?instance.previewText,
+  'editText': ?instance.editText,
+  'requiredText': ?instance.requiredText,
+  'questionStartIndex': ?instance.questionStartIndex,
+  'questionTitlePattern': ?instance.questionTitlePattern,
+  'questionTitleTemplate': ?instance.questionTitleTemplate,
+  'firstPageIsStarted': ?instance.firstPageIsStarted,
+  'isSinglePage': ?instance.isSinglePage,
+  'questionsOnPageMode': ?instance.questionsOnPageMode,
+  'showPreviewBeforeComplete': ?instance.showPreviewBeforeComplete,
+  'maxTimeToFinish': ?instance.maxTimeToFinish,
+  'maxTimeToFinishPage': ?instance.maxTimeToFinishPage,
+  'showTimerPanel': ?instance.showTimerPanel,
+  'showTimerPanelMode': ?instance.showTimerPanelMode,
+};
 
 ChoicesRestful _$ChoicesRestfulFromJson(Map<String, dynamic> json) =>
     ChoicesRestful();
@@ -174,7 +163,7 @@ CheckBox _$CheckBoxFromJson(Map<String, dynamic> json) => CheckBox()
   ..minWidth = json['minWidth'] as String?
   ..maxWidth = json['maxWidth'] as String?
   ..startWithNewLine = json['startWithNewLine'] as bool?
-  ..indent = json['indent'] as int?
+  ..indent = (json['indent'] as num?)?.toInt()
   ..page = json['page'] as String?
   ..title = json['title'] as String?
   ..titleLocation = json['titleLocation'] as String?
@@ -195,8 +184,10 @@ CheckBox _$CheckBoxFromJson(Map<String, dynamic> json) => CheckBox()
       .toList()
   ..bindings = json['bindings'] as String?
   ..renderAs = json['renderAs'] as String?
-  ..hasComment = json['hasComment'] as String?
+  ..hasComment = _boolFromJson(json['hasComment'])
+  ..showCommentArea = _boolFromJson(json['showCommentArea'])
   ..commentText = json['commentText'] as String?
+  ..commentPlaceholder = json['commentPlaceholder'] as String?
   ..choicesFromQuestion = json['choicesFromQuestion'] as String?
   ..choices = ItemValue.fromListJson(json['choices'] as List?)
   ..choicesFromQuestionMode = json['choicesFromQuestionMode'] as String?
@@ -207,80 +198,79 @@ CheckBox _$CheckBoxFromJson(Map<String, dynamic> json) => CheckBox()
   ..hideIfChoicesEmpty = json['hideIfChoicesEmpty'] as bool?
   ..choicesVisibleIf = json['choicesVisibleIf'] as String?
   ..choicesEnableIf = json['choicesEnableIf'] as String?
-  ..hasOther = json['hasOther'] as bool?
-  ..hasNone = json['hasNone'] as bool?
+  ..hasOther = _boolFromJson(json['hasOther'])
+  ..showOtherItem = _boolFromJson(json['showOtherItem'])
+  ..hasNone = _boolFromJson(json['hasNone'])
+  ..showNoneItem = _boolFromJson(json['showNoneItem'])
   ..otherPlaceHolder = json['otherPlaceHolder'] as String?
+  ..otherPlaceholder = json['otherPlaceholder'] as String?
   ..noneText = json['noneText'] as String?
   ..otherText = json['otherText'] as String?
   ..otherErrorText = json['otherErrorText'] as String?
-  ..storeOthersAsComment = json['storeOthersAsComment'] as String?
-  ..colCount = json['colCount'] as int?
+  ..storeOthersAsComment = _boolFromJson(json['storeOthersAsComment'])
+  ..colCount = (json['colCount'] as num?)?.toInt()
   ..type = json['type'] as String?
   ..hasSelectAll = json['hasSelectAll'] as bool?
-  ..maxSelectedChoices = json['maxSelectedChoices'] as int?
+  ..maxSelectedChoices = (json['maxSelectedChoices'] as num?)?.toInt()
   ..selectAllText = json['selectAllText'] as String?;
 
-Map<String, dynamic> _$CheckBoxToJson(CheckBox instance) {
-  final val = <String, dynamic>{};
-
-  void writeNotNull(String key, dynamic value) {
-    if (value != null) {
-      val[key] = value;
-    }
-  }
-
-  writeNotNull('state', instance.state);
-  writeNotNull('name', instance.name);
-  writeNotNull('visible', instance.visible);
-  writeNotNull('useDisplayValuesInTitle', instance.useDisplayValuesInTitle);
-  writeNotNull('visibleIf', instance.visibleIf);
-  writeNotNull('width', instance.width);
-  writeNotNull('minWidth', instance.minWidth);
-  writeNotNull('maxWidth', instance.maxWidth);
-  writeNotNull('startWithNewLine', instance.startWithNewLine);
-  writeNotNull('indent', instance.indent);
-  writeNotNull('page', instance.page);
-  writeNotNull('title', instance.title);
-  writeNotNull('titleLocation', instance.titleLocation);
-  writeNotNull('description', instance.description);
-  writeNotNull('descriptionLocation', instance.descriptionLocation);
-  writeNotNull('hideNumber', instance.hideNumber);
-  writeNotNull('valueName', instance.valueName);
-  writeNotNull('enableIf', instance.enableIf);
-  writeNotNull('defaultValue', instance.defaultValue);
-  writeNotNull('defaultValueExpression', instance.defaultValueExpression);
-  writeNotNull('correctAnswer', instance.correctAnswer);
-  writeNotNull('isRequired', instance.isRequired);
-  writeNotNull('requiredIf', instance.requiredIf);
-  writeNotNull('requiredErrorText', instance.requiredErrorText);
-  writeNotNull('readOnly', instance.readOnly);
-  writeNotNull('validators', instance.validators);
-  writeNotNull('bindings', instance.bindings);
-  writeNotNull('renderAs', instance.renderAs);
-  writeNotNull('hasComment', instance.hasComment);
-  writeNotNull('commentText', instance.commentText);
-  writeNotNull('choicesFromQuestion', instance.choicesFromQuestion);
-  writeNotNull('choices', instance.choices);
-  writeNotNull('choicesFromQuestionMode', instance.choicesFromQuestionMode);
-  writeNotNull('choicesOrder', instance.choicesOrder);
-  writeNotNull('choicesByUrl', instance.choicesByUrl);
-  writeNotNull('hideIfChoicesEmpty', instance.hideIfChoicesEmpty);
-  writeNotNull('choicesVisibleIf', instance.choicesVisibleIf);
-  writeNotNull('choicesEnableIf', instance.choicesEnableIf);
-  writeNotNull('hasOther', instance.hasOther);
-  writeNotNull('hasNone', instance.hasNone);
-  writeNotNull('otherPlaceHolder', instance.otherPlaceHolder);
-  writeNotNull('noneText', instance.noneText);
-  writeNotNull('otherText', instance.otherText);
-  writeNotNull('otherErrorText', instance.otherErrorText);
-  writeNotNull('storeOthersAsComment', instance.storeOthersAsComment);
-  writeNotNull('colCount', instance.colCount);
-  writeNotNull('type', instance.type);
-  writeNotNull('hasSelectAll', instance.hasSelectAll);
-  writeNotNull('maxSelectedChoices', instance.maxSelectedChoices);
-  writeNotNull('selectAllText', instance.selectAllText);
-  return val;
-}
+Map<String, dynamic> _$CheckBoxToJson(CheckBox instance) => <String, dynamic>{
+  'state': ?instance.state,
+  'name': ?instance.name,
+  'visible': ?instance.visible,
+  'useDisplayValuesInTitle': ?instance.useDisplayValuesInTitle,
+  'visibleIf': ?instance.visibleIf,
+  'width': ?instance.width,
+  'minWidth': ?instance.minWidth,
+  'maxWidth': ?instance.maxWidth,
+  'startWithNewLine': ?instance.startWithNewLine,
+  'indent': ?instance.indent,
+  'page': ?instance.page,
+  'title': ?instance.title,
+  'titleLocation': ?instance.titleLocation,
+  'description': ?instance.description,
+  'descriptionLocation': ?instance.descriptionLocation,
+  'hideNumber': ?instance.hideNumber,
+  'valueName': ?instance.valueName,
+  'enableIf': ?instance.enableIf,
+  'defaultValue': ?instance.defaultValue,
+  'defaultValueExpression': ?instance.defaultValueExpression,
+  'correctAnswer': ?instance.correctAnswer,
+  'isRequired': ?instance.isRequired,
+  'requiredIf': ?instance.requiredIf,
+  'requiredErrorText': ?instance.requiredErrorText,
+  'readOnly': ?instance.readOnly,
+  'validators': ?instance.validators,
+  'bindings': ?instance.bindings,
+  'renderAs': ?instance.renderAs,
+  'hasComment': ?instance.hasComment,
+  'showCommentArea': ?instance.showCommentArea,
+  'commentText': ?instance.commentText,
+  'commentPlaceholder': ?instance.commentPlaceholder,
+  'choicesFromQuestion': ?instance.choicesFromQuestion,
+  'choices': ?instance.choices,
+  'choicesFromQuestionMode': ?instance.choicesFromQuestionMode,
+  'choicesOrder': ?instance.choicesOrder,
+  'choicesByUrl': ?instance.choicesByUrl,
+  'hideIfChoicesEmpty': ?instance.hideIfChoicesEmpty,
+  'choicesVisibleIf': ?instance.choicesVisibleIf,
+  'choicesEnableIf': ?instance.choicesEnableIf,
+  'hasOther': ?instance.hasOther,
+  'showOtherItem': ?instance.showOtherItem,
+  'hasNone': ?instance.hasNone,
+  'showNoneItem': ?instance.showNoneItem,
+  'otherPlaceHolder': ?instance.otherPlaceHolder,
+  'otherPlaceholder': ?instance.otherPlaceholder,
+  'noneText': ?instance.noneText,
+  'otherText': ?instance.otherText,
+  'otherErrorText': ?instance.otherErrorText,
+  'storeOthersAsComment': ?instance.storeOthersAsComment,
+  'colCount': ?instance.colCount,
+  'type': ?instance.type,
+  'hasSelectAll': ?instance.hasSelectAll,
+  'maxSelectedChoices': ?instance.maxSelectedChoices,
+  'selectAllText': ?instance.selectAllText,
+};
 
 Ranking _$RankingFromJson(Map<String, dynamic> json) => Ranking()
   ..state = json['state'] as String?
@@ -292,7 +282,7 @@ Ranking _$RankingFromJson(Map<String, dynamic> json) => Ranking()
   ..minWidth = json['minWidth'] as String?
   ..maxWidth = json['maxWidth'] as String?
   ..startWithNewLine = json['startWithNewLine'] as bool?
-  ..indent = json['indent'] as int?
+  ..indent = (json['indent'] as num?)?.toInt()
   ..page = json['page'] as String?
   ..title = json['title'] as String?
   ..titleLocation = json['titleLocation'] as String?
@@ -313,8 +303,10 @@ Ranking _$RankingFromJson(Map<String, dynamic> json) => Ranking()
       .toList()
   ..bindings = json['bindings'] as String?
   ..renderAs = json['renderAs'] as String?
-  ..hasComment = json['hasComment'] as String?
+  ..hasComment = _boolFromJson(json['hasComment'])
+  ..showCommentArea = _boolFromJson(json['showCommentArea'])
   ..commentText = json['commentText'] as String?
+  ..commentPlaceholder = json['commentPlaceholder'] as String?
   ..choicesFromQuestion = json['choicesFromQuestion'] as String?
   ..choices = ItemValue.fromListJson(json['choices'] as List?)
   ..choicesFromQuestionMode = json['choicesFromQuestionMode'] as String?
@@ -325,80 +317,79 @@ Ranking _$RankingFromJson(Map<String, dynamic> json) => Ranking()
   ..hideIfChoicesEmpty = json['hideIfChoicesEmpty'] as bool?
   ..choicesVisibleIf = json['choicesVisibleIf'] as String?
   ..choicesEnableIf = json['choicesEnableIf'] as String?
-  ..hasOther = json['hasOther'] as bool?
-  ..hasNone = json['hasNone'] as bool?
+  ..hasOther = _boolFromJson(json['hasOther'])
+  ..showOtherItem = _boolFromJson(json['showOtherItem'])
+  ..hasNone = _boolFromJson(json['hasNone'])
+  ..showNoneItem = _boolFromJson(json['showNoneItem'])
   ..otherPlaceHolder = json['otherPlaceHolder'] as String?
+  ..otherPlaceholder = json['otherPlaceholder'] as String?
   ..hasSelectAll = json['hasSelectAll'] as bool?
-  ..maxSelectedChoices = json['maxSelectedChoices'] as int?
+  ..maxSelectedChoices = (json['maxSelectedChoices'] as num?)?.toInt()
   ..type = json['type'] as String?
   ..otherText = json['otherText'] as String?
   ..otherErrorText = json['otherErrorText'] as String?
-  ..storeOthersAsComment = json['storeOthersAsComment'] as String?
+  ..storeOthersAsComment = _boolFromJson(json['storeOthersAsComment'])
   ..noneText = json['noneText'] as String?
   ..selectAllText = json['selectAllText'] as String?
-  ..colCount = json['colCount'] as int?;
+  ..colCount = (json['colCount'] as num?)?.toInt();
 
-Map<String, dynamic> _$RankingToJson(Ranking instance) {
-  final val = <String, dynamic>{};
-
-  void writeNotNull(String key, dynamic value) {
-    if (value != null) {
-      val[key] = value;
-    }
-  }
-
-  writeNotNull('state', instance.state);
-  writeNotNull('name', instance.name);
-  writeNotNull('visible', instance.visible);
-  writeNotNull('useDisplayValuesInTitle', instance.useDisplayValuesInTitle);
-  writeNotNull('visibleIf', instance.visibleIf);
-  writeNotNull('width', instance.width);
-  writeNotNull('minWidth', instance.minWidth);
-  writeNotNull('maxWidth', instance.maxWidth);
-  writeNotNull('startWithNewLine', instance.startWithNewLine);
-  writeNotNull('indent', instance.indent);
-  writeNotNull('page', instance.page);
-  writeNotNull('title', instance.title);
-  writeNotNull('titleLocation', instance.titleLocation);
-  writeNotNull('description', instance.description);
-  writeNotNull('descriptionLocation', instance.descriptionLocation);
-  writeNotNull('hideNumber', instance.hideNumber);
-  writeNotNull('valueName', instance.valueName);
-  writeNotNull('enableIf', instance.enableIf);
-  writeNotNull('defaultValue', instance.defaultValue);
-  writeNotNull('defaultValueExpression', instance.defaultValueExpression);
-  writeNotNull('correctAnswer', instance.correctAnswer);
-  writeNotNull('isRequired', instance.isRequired);
-  writeNotNull('requiredIf', instance.requiredIf);
-  writeNotNull('requiredErrorText', instance.requiredErrorText);
-  writeNotNull('readOnly', instance.readOnly);
-  writeNotNull('validators', instance.validators);
-  writeNotNull('bindings', instance.bindings);
-  writeNotNull('renderAs', instance.renderAs);
-  writeNotNull('hasComment', instance.hasComment);
-  writeNotNull('commentText', instance.commentText);
-  writeNotNull('choicesFromQuestion', instance.choicesFromQuestion);
-  writeNotNull('choices', instance.choices);
-  writeNotNull('choicesFromQuestionMode', instance.choicesFromQuestionMode);
-  writeNotNull('choicesOrder', instance.choicesOrder);
-  writeNotNull('choicesByUrl', instance.choicesByUrl);
-  writeNotNull('hideIfChoicesEmpty', instance.hideIfChoicesEmpty);
-  writeNotNull('choicesVisibleIf', instance.choicesVisibleIf);
-  writeNotNull('choicesEnableIf', instance.choicesEnableIf);
-  writeNotNull('hasOther', instance.hasOther);
-  writeNotNull('hasNone', instance.hasNone);
-  writeNotNull('otherPlaceHolder', instance.otherPlaceHolder);
-  writeNotNull('hasSelectAll', instance.hasSelectAll);
-  writeNotNull('maxSelectedChoices', instance.maxSelectedChoices);
-  writeNotNull('type', instance.type);
-  writeNotNull('otherText', instance.otherText);
-  writeNotNull('otherErrorText', instance.otherErrorText);
-  writeNotNull('storeOthersAsComment', instance.storeOthersAsComment);
-  writeNotNull('noneText', instance.noneText);
-  writeNotNull('selectAllText', instance.selectAllText);
-  writeNotNull('colCount', instance.colCount);
-  return val;
-}
+Map<String, dynamic> _$RankingToJson(Ranking instance) => <String, dynamic>{
+  'state': ?instance.state,
+  'name': ?instance.name,
+  'visible': ?instance.visible,
+  'useDisplayValuesInTitle': ?instance.useDisplayValuesInTitle,
+  'visibleIf': ?instance.visibleIf,
+  'width': ?instance.width,
+  'minWidth': ?instance.minWidth,
+  'maxWidth': ?instance.maxWidth,
+  'startWithNewLine': ?instance.startWithNewLine,
+  'indent': ?instance.indent,
+  'page': ?instance.page,
+  'title': ?instance.title,
+  'titleLocation': ?instance.titleLocation,
+  'description': ?instance.description,
+  'descriptionLocation': ?instance.descriptionLocation,
+  'hideNumber': ?instance.hideNumber,
+  'valueName': ?instance.valueName,
+  'enableIf': ?instance.enableIf,
+  'defaultValue': ?instance.defaultValue,
+  'defaultValueExpression': ?instance.defaultValueExpression,
+  'correctAnswer': ?instance.correctAnswer,
+  'isRequired': ?instance.isRequired,
+  'requiredIf': ?instance.requiredIf,
+  'requiredErrorText': ?instance.requiredErrorText,
+  'readOnly': ?instance.readOnly,
+  'validators': ?instance.validators,
+  'bindings': ?instance.bindings,
+  'renderAs': ?instance.renderAs,
+  'hasComment': ?instance.hasComment,
+  'showCommentArea': ?instance.showCommentArea,
+  'commentText': ?instance.commentText,
+  'commentPlaceholder': ?instance.commentPlaceholder,
+  'choicesFromQuestion': ?instance.choicesFromQuestion,
+  'choices': ?instance.choices,
+  'choicesFromQuestionMode': ?instance.choicesFromQuestionMode,
+  'choicesOrder': ?instance.choicesOrder,
+  'choicesByUrl': ?instance.choicesByUrl,
+  'hideIfChoicesEmpty': ?instance.hideIfChoicesEmpty,
+  'choicesVisibleIf': ?instance.choicesVisibleIf,
+  'choicesEnableIf': ?instance.choicesEnableIf,
+  'hasOther': ?instance.hasOther,
+  'showOtherItem': ?instance.showOtherItem,
+  'hasNone': ?instance.hasNone,
+  'showNoneItem': ?instance.showNoneItem,
+  'otherPlaceHolder': ?instance.otherPlaceHolder,
+  'otherPlaceholder': ?instance.otherPlaceholder,
+  'hasSelectAll': ?instance.hasSelectAll,
+  'maxSelectedChoices': ?instance.maxSelectedChoices,
+  'type': ?instance.type,
+  'otherText': ?instance.otherText,
+  'otherErrorText': ?instance.otherErrorText,
+  'storeOthersAsComment': ?instance.storeOthersAsComment,
+  'noneText': ?instance.noneText,
+  'selectAllText': ?instance.selectAllText,
+  'colCount': ?instance.colCount,
+};
 
 RadioGroup _$RadioGroupFromJson(Map<String, dynamic> json) => RadioGroup()
   ..state = json['state'] as String?
@@ -410,7 +401,7 @@ RadioGroup _$RadioGroupFromJson(Map<String, dynamic> json) => RadioGroup()
   ..minWidth = json['minWidth'] as String?
   ..maxWidth = json['maxWidth'] as String?
   ..startWithNewLine = json['startWithNewLine'] as bool?
-  ..indent = json['indent'] as int?
+  ..indent = (json['indent'] as num?)?.toInt()
   ..page = json['page'] as String?
   ..title = json['title'] as String?
   ..titleLocation = json['titleLocation'] as String?
@@ -431,8 +422,10 @@ RadioGroup _$RadioGroupFromJson(Map<String, dynamic> json) => RadioGroup()
       .toList()
   ..bindings = json['bindings'] as String?
   ..renderAs = json['renderAs'] as String?
-  ..hasComment = json['hasComment'] as String?
+  ..hasComment = _boolFromJson(json['hasComment'])
+  ..showCommentArea = _boolFromJson(json['showCommentArea'])
   ..commentText = json['commentText'] as String?
+  ..commentPlaceholder = json['commentPlaceholder'] as String?
   ..choicesFromQuestion = json['choicesFromQuestion'] as String?
   ..choices = ItemValue.fromListJson(json['choices'] as List?)
   ..choicesFromQuestionMode = json['choicesFromQuestionMode'] as String?
@@ -443,76 +436,76 @@ RadioGroup _$RadioGroupFromJson(Map<String, dynamic> json) => RadioGroup()
   ..hideIfChoicesEmpty = json['hideIfChoicesEmpty'] as bool?
   ..choicesVisibleIf = json['choicesVisibleIf'] as String?
   ..choicesEnableIf = json['choicesEnableIf'] as String?
-  ..hasOther = json['hasOther'] as bool?
-  ..hasNone = json['hasNone'] as bool?
+  ..hasOther = _boolFromJson(json['hasOther'])
+  ..showOtherItem = _boolFromJson(json['showOtherItem'])
+  ..hasNone = _boolFromJson(json['hasNone'])
+  ..showNoneItem = _boolFromJson(json['showNoneItem'])
   ..otherPlaceHolder = json['otherPlaceHolder'] as String?
+  ..otherPlaceholder = json['otherPlaceholder'] as String?
   ..noneText = json['noneText'] as String?
   ..otherText = json['otherText'] as String?
   ..otherErrorText = json['otherErrorText'] as String?
-  ..storeOthersAsComment = json['storeOthersAsComment'] as String?
-  ..colCount = json['colCount'] as int?
+  ..storeOthersAsComment = _boolFromJson(json['storeOthersAsComment'])
+  ..colCount = (json['colCount'] as num?)?.toInt()
   ..type = json['type'] as String?
   ..showClearButton = json['showClearButton'] as bool?;
 
-Map<String, dynamic> _$RadioGroupToJson(RadioGroup instance) {
-  final val = <String, dynamic>{};
-
-  void writeNotNull(String key, dynamic value) {
-    if (value != null) {
-      val[key] = value;
-    }
-  }
-
-  writeNotNull('state', instance.state);
-  writeNotNull('name', instance.name);
-  writeNotNull('visible', instance.visible);
-  writeNotNull('useDisplayValuesInTitle', instance.useDisplayValuesInTitle);
-  writeNotNull('visibleIf', instance.visibleIf);
-  writeNotNull('width', instance.width);
-  writeNotNull('minWidth', instance.minWidth);
-  writeNotNull('maxWidth', instance.maxWidth);
-  writeNotNull('startWithNewLine', instance.startWithNewLine);
-  writeNotNull('indent', instance.indent);
-  writeNotNull('page', instance.page);
-  writeNotNull('title', instance.title);
-  writeNotNull('titleLocation', instance.titleLocation);
-  writeNotNull('description', instance.description);
-  writeNotNull('descriptionLocation', instance.descriptionLocation);
-  writeNotNull('hideNumber', instance.hideNumber);
-  writeNotNull('valueName', instance.valueName);
-  writeNotNull('enableIf', instance.enableIf);
-  writeNotNull('defaultValue', instance.defaultValue);
-  writeNotNull('defaultValueExpression', instance.defaultValueExpression);
-  writeNotNull('correctAnswer', instance.correctAnswer);
-  writeNotNull('isRequired', instance.isRequired);
-  writeNotNull('requiredIf', instance.requiredIf);
-  writeNotNull('requiredErrorText', instance.requiredErrorText);
-  writeNotNull('readOnly', instance.readOnly);
-  writeNotNull('validators', instance.validators);
-  writeNotNull('bindings', instance.bindings);
-  writeNotNull('renderAs', instance.renderAs);
-  writeNotNull('hasComment', instance.hasComment);
-  writeNotNull('commentText', instance.commentText);
-  writeNotNull('choicesFromQuestion', instance.choicesFromQuestion);
-  writeNotNull('choices', instance.choices);
-  writeNotNull('choicesFromQuestionMode', instance.choicesFromQuestionMode);
-  writeNotNull('choicesOrder', instance.choicesOrder);
-  writeNotNull('choicesByUrl', instance.choicesByUrl);
-  writeNotNull('hideIfChoicesEmpty', instance.hideIfChoicesEmpty);
-  writeNotNull('choicesVisibleIf', instance.choicesVisibleIf);
-  writeNotNull('choicesEnableIf', instance.choicesEnableIf);
-  writeNotNull('hasOther', instance.hasOther);
-  writeNotNull('hasNone', instance.hasNone);
-  writeNotNull('otherPlaceHolder', instance.otherPlaceHolder);
-  writeNotNull('noneText', instance.noneText);
-  writeNotNull('otherText', instance.otherText);
-  writeNotNull('otherErrorText', instance.otherErrorText);
-  writeNotNull('storeOthersAsComment', instance.storeOthersAsComment);
-  writeNotNull('colCount', instance.colCount);
-  writeNotNull('type', instance.type);
-  writeNotNull('showClearButton', instance.showClearButton);
-  return val;
-}
+Map<String, dynamic> _$RadioGroupToJson(RadioGroup instance) =>
+    <String, dynamic>{
+      'state': ?instance.state,
+      'name': ?instance.name,
+      'visible': ?instance.visible,
+      'useDisplayValuesInTitle': ?instance.useDisplayValuesInTitle,
+      'visibleIf': ?instance.visibleIf,
+      'width': ?instance.width,
+      'minWidth': ?instance.minWidth,
+      'maxWidth': ?instance.maxWidth,
+      'startWithNewLine': ?instance.startWithNewLine,
+      'indent': ?instance.indent,
+      'page': ?instance.page,
+      'title': ?instance.title,
+      'titleLocation': ?instance.titleLocation,
+      'description': ?instance.description,
+      'descriptionLocation': ?instance.descriptionLocation,
+      'hideNumber': ?instance.hideNumber,
+      'valueName': ?instance.valueName,
+      'enableIf': ?instance.enableIf,
+      'defaultValue': ?instance.defaultValue,
+      'defaultValueExpression': ?instance.defaultValueExpression,
+      'correctAnswer': ?instance.correctAnswer,
+      'isRequired': ?instance.isRequired,
+      'requiredIf': ?instance.requiredIf,
+      'requiredErrorText': ?instance.requiredErrorText,
+      'readOnly': ?instance.readOnly,
+      'validators': ?instance.validators,
+      'bindings': ?instance.bindings,
+      'renderAs': ?instance.renderAs,
+      'hasComment': ?instance.hasComment,
+      'showCommentArea': ?instance.showCommentArea,
+      'commentText': ?instance.commentText,
+      'commentPlaceholder': ?instance.commentPlaceholder,
+      'choicesFromQuestion': ?instance.choicesFromQuestion,
+      'choices': ?instance.choices,
+      'choicesFromQuestionMode': ?instance.choicesFromQuestionMode,
+      'choicesOrder': ?instance.choicesOrder,
+      'choicesByUrl': ?instance.choicesByUrl,
+      'hideIfChoicesEmpty': ?instance.hideIfChoicesEmpty,
+      'choicesVisibleIf': ?instance.choicesVisibleIf,
+      'choicesEnableIf': ?instance.choicesEnableIf,
+      'hasOther': ?instance.hasOther,
+      'showOtherItem': ?instance.showOtherItem,
+      'hasNone': ?instance.hasNone,
+      'showNoneItem': ?instance.showNoneItem,
+      'otherPlaceHolder': ?instance.otherPlaceHolder,
+      'otherPlaceholder': ?instance.otherPlaceholder,
+      'noneText': ?instance.noneText,
+      'otherText': ?instance.otherText,
+      'otherErrorText': ?instance.otherErrorText,
+      'storeOthersAsComment': ?instance.storeOthersAsComment,
+      'colCount': ?instance.colCount,
+      'type': ?instance.type,
+      'showClearButton': ?instance.showClearButton,
+    };
 
 ImagePicker _$ImagePickerFromJson(Map<String, dynamic> json) => ImagePicker()
   ..state = json['state'] as String?
@@ -524,7 +517,7 @@ ImagePicker _$ImagePickerFromJson(Map<String, dynamic> json) => ImagePicker()
   ..minWidth = json['minWidth'] as String?
   ..maxWidth = json['maxWidth'] as String?
   ..startWithNewLine = json['startWithNewLine'] as bool?
-  ..indent = json['indent'] as int?
+  ..indent = (json['indent'] as num?)?.toInt()
   ..page = json['page'] as String?
   ..title = json['title'] as String?
   ..titleLocation = json['titleLocation'] as String?
@@ -545,8 +538,10 @@ ImagePicker _$ImagePickerFromJson(Map<String, dynamic> json) => ImagePicker()
       .toList()
   ..bindings = json['bindings'] as String?
   ..renderAs = json['renderAs'] as String?
-  ..hasComment = json['hasComment'] as String?
+  ..hasComment = _boolFromJson(json['hasComment'])
+  ..showCommentArea = _boolFromJson(json['showCommentArea'])
   ..commentText = json['commentText'] as String?
+  ..commentPlaceholder = json['commentPlaceholder'] as String?
   ..choicesFromQuestion = json['choicesFromQuestion'] as String?
   ..choicesFromQuestionMode = json['choicesFromQuestionMode'] as String?
   ..choicesOrder = json['choicesOrder'] as String?
@@ -556,89 +551,89 @@ ImagePicker _$ImagePickerFromJson(Map<String, dynamic> json) => ImagePicker()
   ..hideIfChoicesEmpty = json['hideIfChoicesEmpty'] as bool?
   ..choicesVisibleIf = json['choicesVisibleIf'] as String?
   ..choicesEnableIf = json['choicesEnableIf'] as String?
-  ..hasOther = json['hasOther'] as bool?
-  ..hasNone = json['hasNone'] as bool?
+  ..hasOther = _boolFromJson(json['hasOther'])
+  ..showOtherItem = _boolFromJson(json['showOtherItem'])
+  ..hasNone = _boolFromJson(json['hasNone'])
+  ..showNoneItem = _boolFromJson(json['showNoneItem'])
   ..otherPlaceHolder = json['otherPlaceHolder'] as String?
+  ..otherPlaceholder = json['otherPlaceholder'] as String?
   ..type = json['type'] as String?
   ..otherText = json['otherText'] as String?
   ..noneText = json['noneText'] as String?
   ..optionsCaption = json['optionsCaption'] as String?
   ..otherErrorText = json['otherErrorText'] as String?
-  ..storeOthersAsComment = json['storeOthersAsComment'] as String?
+  ..storeOthersAsComment = _boolFromJson(json['storeOthersAsComment'])
   ..contentMode = json['contentMode'] as String?
   ..imageFit = json['imageFit'] as String?
-  ..imageHeight = json['imageHeight'] as int?
-  ..imageWidth = json['imageWidth'] as int?
+  ..imageHeight = (json['imageHeight'] as num?)?.toInt()
+  ..imageWidth = (json['imageWidth'] as num?)?.toInt()
   ..showLabel = json['showLabel'] as bool?
-  ..colCount = json['colCount'] as int?
+  ..colCount = (json['colCount'] as num?)?.toInt()
   ..multiSelect = json['multiSelect'] as bool?
   ..choices = ImageItemValue.fromListJson(json['choices'] as List?);
 
-Map<String, dynamic> _$ImagePickerToJson(ImagePicker instance) {
-  final val = <String, dynamic>{};
-
-  void writeNotNull(String key, dynamic value) {
-    if (value != null) {
-      val[key] = value;
-    }
-  }
-
-  writeNotNull('state', instance.state);
-  writeNotNull('name', instance.name);
-  writeNotNull('visible', instance.visible);
-  writeNotNull('useDisplayValuesInTitle', instance.useDisplayValuesInTitle);
-  writeNotNull('visibleIf', instance.visibleIf);
-  writeNotNull('width', instance.width);
-  writeNotNull('minWidth', instance.minWidth);
-  writeNotNull('maxWidth', instance.maxWidth);
-  writeNotNull('startWithNewLine', instance.startWithNewLine);
-  writeNotNull('indent', instance.indent);
-  writeNotNull('page', instance.page);
-  writeNotNull('title', instance.title);
-  writeNotNull('titleLocation', instance.titleLocation);
-  writeNotNull('description', instance.description);
-  writeNotNull('descriptionLocation', instance.descriptionLocation);
-  writeNotNull('hideNumber', instance.hideNumber);
-  writeNotNull('valueName', instance.valueName);
-  writeNotNull('enableIf', instance.enableIf);
-  writeNotNull('defaultValue', instance.defaultValue);
-  writeNotNull('defaultValueExpression', instance.defaultValueExpression);
-  writeNotNull('correctAnswer', instance.correctAnswer);
-  writeNotNull('isRequired', instance.isRequired);
-  writeNotNull('requiredIf', instance.requiredIf);
-  writeNotNull('requiredErrorText', instance.requiredErrorText);
-  writeNotNull('readOnly', instance.readOnly);
-  writeNotNull('validators', instance.validators);
-  writeNotNull('bindings', instance.bindings);
-  writeNotNull('renderAs', instance.renderAs);
-  writeNotNull('hasComment', instance.hasComment);
-  writeNotNull('commentText', instance.commentText);
-  writeNotNull('choicesFromQuestion', instance.choicesFromQuestion);
-  writeNotNull('choicesFromQuestionMode', instance.choicesFromQuestionMode);
-  writeNotNull('choicesOrder', instance.choicesOrder);
-  writeNotNull('choicesByUrl', instance.choicesByUrl);
-  writeNotNull('hideIfChoicesEmpty', instance.hideIfChoicesEmpty);
-  writeNotNull('choicesVisibleIf', instance.choicesVisibleIf);
-  writeNotNull('choicesEnableIf', instance.choicesEnableIf);
-  writeNotNull('hasOther', instance.hasOther);
-  writeNotNull('hasNone', instance.hasNone);
-  writeNotNull('otherPlaceHolder', instance.otherPlaceHolder);
-  writeNotNull('type', instance.type);
-  writeNotNull('otherText', instance.otherText);
-  writeNotNull('noneText', instance.noneText);
-  writeNotNull('optionsCaption', instance.optionsCaption);
-  writeNotNull('otherErrorText', instance.otherErrorText);
-  writeNotNull('storeOthersAsComment', instance.storeOthersAsComment);
-  writeNotNull('contentMode', instance.contentMode);
-  writeNotNull('imageFit', instance.imageFit);
-  writeNotNull('imageHeight', instance.imageHeight);
-  writeNotNull('imageWidth', instance.imageWidth);
-  writeNotNull('showLabel', instance.showLabel);
-  writeNotNull('colCount', instance.colCount);
-  writeNotNull('multiSelect', instance.multiSelect);
-  writeNotNull('choices', instance.choices);
-  return val;
-}
+Map<String, dynamic> _$ImagePickerToJson(ImagePicker instance) =>
+    <String, dynamic>{
+      'state': ?instance.state,
+      'name': ?instance.name,
+      'visible': ?instance.visible,
+      'useDisplayValuesInTitle': ?instance.useDisplayValuesInTitle,
+      'visibleIf': ?instance.visibleIf,
+      'width': ?instance.width,
+      'minWidth': ?instance.minWidth,
+      'maxWidth': ?instance.maxWidth,
+      'startWithNewLine': ?instance.startWithNewLine,
+      'indent': ?instance.indent,
+      'page': ?instance.page,
+      'title': ?instance.title,
+      'titleLocation': ?instance.titleLocation,
+      'description': ?instance.description,
+      'descriptionLocation': ?instance.descriptionLocation,
+      'hideNumber': ?instance.hideNumber,
+      'valueName': ?instance.valueName,
+      'enableIf': ?instance.enableIf,
+      'defaultValue': ?instance.defaultValue,
+      'defaultValueExpression': ?instance.defaultValueExpression,
+      'correctAnswer': ?instance.correctAnswer,
+      'isRequired': ?instance.isRequired,
+      'requiredIf': ?instance.requiredIf,
+      'requiredErrorText': ?instance.requiredErrorText,
+      'readOnly': ?instance.readOnly,
+      'validators': ?instance.validators,
+      'bindings': ?instance.bindings,
+      'renderAs': ?instance.renderAs,
+      'hasComment': ?instance.hasComment,
+      'showCommentArea': ?instance.showCommentArea,
+      'commentText': ?instance.commentText,
+      'commentPlaceholder': ?instance.commentPlaceholder,
+      'choicesFromQuestion': ?instance.choicesFromQuestion,
+      'choicesFromQuestionMode': ?instance.choicesFromQuestionMode,
+      'choicesOrder': ?instance.choicesOrder,
+      'choicesByUrl': ?instance.choicesByUrl,
+      'hideIfChoicesEmpty': ?instance.hideIfChoicesEmpty,
+      'choicesVisibleIf': ?instance.choicesVisibleIf,
+      'choicesEnableIf': ?instance.choicesEnableIf,
+      'hasOther': ?instance.hasOther,
+      'showOtherItem': ?instance.showOtherItem,
+      'hasNone': ?instance.hasNone,
+      'showNoneItem': ?instance.showNoneItem,
+      'otherPlaceHolder': ?instance.otherPlaceHolder,
+      'otherPlaceholder': ?instance.otherPlaceholder,
+      'type': ?instance.type,
+      'otherText': ?instance.otherText,
+      'noneText': ?instance.noneText,
+      'optionsCaption': ?instance.optionsCaption,
+      'otherErrorText': ?instance.otherErrorText,
+      'storeOthersAsComment': ?instance.storeOthersAsComment,
+      'contentMode': ?instance.contentMode,
+      'imageFit': ?instance.imageFit,
+      'imageHeight': ?instance.imageHeight,
+      'imageWidth': ?instance.imageWidth,
+      'showLabel': ?instance.showLabel,
+      'colCount': ?instance.colCount,
+      'multiSelect': ?instance.multiSelect,
+      'choices': ?instance.choices,
+    };
 
 Dropdown _$DropdownFromJson(Map<String, dynamic> json) => Dropdown()
   ..state = json['state'] as String?
@@ -650,7 +645,7 @@ Dropdown _$DropdownFromJson(Map<String, dynamic> json) => Dropdown()
   ..minWidth = json['minWidth'] as String?
   ..maxWidth = json['maxWidth'] as String?
   ..startWithNewLine = json['startWithNewLine'] as bool?
-  ..indent = json['indent'] as int?
+  ..indent = (json['indent'] as num?)?.toInt()
   ..page = json['page'] as String?
   ..title = json['title'] as String?
   ..titleLocation = json['titleLocation'] as String?
@@ -671,8 +666,10 @@ Dropdown _$DropdownFromJson(Map<String, dynamic> json) => Dropdown()
       .toList()
   ..bindings = json['bindings'] as String?
   ..renderAs = json['renderAs'] as String?
-  ..hasComment = json['hasComment'] as String?
+  ..hasComment = _boolFromJson(json['hasComment'])
+  ..showCommentArea = _boolFromJson(json['showCommentArea'])
   ..commentText = json['commentText'] as String?
+  ..commentPlaceholder = json['commentPlaceholder'] as String?
   ..choicesFromQuestion = json['choicesFromQuestion'] as String?
   ..choices = ItemValue.fromListJson(json['choices'] as List?)
   ..choicesFromQuestionMode = json['choicesFromQuestionMode'] as String?
@@ -683,13 +680,16 @@ Dropdown _$DropdownFromJson(Map<String, dynamic> json) => Dropdown()
   ..hideIfChoicesEmpty = json['hideIfChoicesEmpty'] as bool?
   ..choicesVisibleIf = json['choicesVisibleIf'] as String?
   ..choicesEnableIf = json['choicesEnableIf'] as String?
-  ..hasOther = json['hasOther'] as bool?
-  ..hasNone = json['hasNone'] as bool?
+  ..hasOther = _boolFromJson(json['hasOther'])
+  ..showOtherItem = _boolFromJson(json['showOtherItem'])
+  ..hasNone = _boolFromJson(json['hasNone'])
+  ..showNoneItem = _boolFromJson(json['showNoneItem'])
   ..otherPlaceHolder = json['otherPlaceHolder'] as String?
+  ..otherPlaceholder = json['otherPlaceholder'] as String?
   ..noneText = json['noneText'] as String?
   ..otherText = json['otherText'] as String?
   ..otherErrorText = json['otherErrorText'] as String?
-  ..storeOthersAsComment = json['storeOthersAsComment'] as String?
+  ..storeOthersAsComment = _boolFromJson(json['storeOthersAsComment'])
   ..type = json['type'] as String?
   ..optionsCaption = json['optionsCaption'] as String?
   ..showOptionsCaption = json['showOptionsCaption'] as bool?
@@ -698,69 +698,65 @@ Dropdown _$DropdownFromJson(Map<String, dynamic> json) => Dropdown()
   ..choicesStep = json['choicesStep'] as num?
   ..autoComplete = json['autoComplete'] as String?;
 
-Map<String, dynamic> _$DropdownToJson(Dropdown instance) {
-  final val = <String, dynamic>{};
-
-  void writeNotNull(String key, dynamic value) {
-    if (value != null) {
-      val[key] = value;
-    }
-  }
-
-  writeNotNull('state', instance.state);
-  writeNotNull('name', instance.name);
-  writeNotNull('visible', instance.visible);
-  writeNotNull('useDisplayValuesInTitle', instance.useDisplayValuesInTitle);
-  writeNotNull('visibleIf', instance.visibleIf);
-  writeNotNull('width', instance.width);
-  writeNotNull('minWidth', instance.minWidth);
-  writeNotNull('maxWidth', instance.maxWidth);
-  writeNotNull('startWithNewLine', instance.startWithNewLine);
-  writeNotNull('indent', instance.indent);
-  writeNotNull('page', instance.page);
-  writeNotNull('title', instance.title);
-  writeNotNull('titleLocation', instance.titleLocation);
-  writeNotNull('description', instance.description);
-  writeNotNull('descriptionLocation', instance.descriptionLocation);
-  writeNotNull('hideNumber', instance.hideNumber);
-  writeNotNull('valueName', instance.valueName);
-  writeNotNull('enableIf', instance.enableIf);
-  writeNotNull('defaultValue', instance.defaultValue);
-  writeNotNull('defaultValueExpression', instance.defaultValueExpression);
-  writeNotNull('correctAnswer', instance.correctAnswer);
-  writeNotNull('isRequired', instance.isRequired);
-  writeNotNull('requiredIf', instance.requiredIf);
-  writeNotNull('requiredErrorText', instance.requiredErrorText);
-  writeNotNull('readOnly', instance.readOnly);
-  writeNotNull('validators', instance.validators);
-  writeNotNull('bindings', instance.bindings);
-  writeNotNull('renderAs', instance.renderAs);
-  writeNotNull('hasComment', instance.hasComment);
-  writeNotNull('commentText', instance.commentText);
-  writeNotNull('choicesFromQuestion', instance.choicesFromQuestion);
-  writeNotNull('choices', instance.choices);
-  writeNotNull('choicesFromQuestionMode', instance.choicesFromQuestionMode);
-  writeNotNull('choicesOrder', instance.choicesOrder);
-  writeNotNull('choicesByUrl', instance.choicesByUrl);
-  writeNotNull('hideIfChoicesEmpty', instance.hideIfChoicesEmpty);
-  writeNotNull('choicesVisibleIf', instance.choicesVisibleIf);
-  writeNotNull('choicesEnableIf', instance.choicesEnableIf);
-  writeNotNull('hasOther', instance.hasOther);
-  writeNotNull('hasNone', instance.hasNone);
-  writeNotNull('otherPlaceHolder', instance.otherPlaceHolder);
-  writeNotNull('noneText', instance.noneText);
-  writeNotNull('otherText', instance.otherText);
-  writeNotNull('otherErrorText', instance.otherErrorText);
-  writeNotNull('storeOthersAsComment', instance.storeOthersAsComment);
-  writeNotNull('type', instance.type);
-  writeNotNull('optionsCaption', instance.optionsCaption);
-  writeNotNull('showOptionsCaption', instance.showOptionsCaption);
-  writeNotNull('choicesMin', instance.choicesMin);
-  writeNotNull('choicesMax', instance.choicesMax);
-  writeNotNull('choicesStep', instance.choicesStep);
-  writeNotNull('autoComplete', instance.autoComplete);
-  return val;
-}
+Map<String, dynamic> _$DropdownToJson(Dropdown instance) => <String, dynamic>{
+  'state': ?instance.state,
+  'name': ?instance.name,
+  'visible': ?instance.visible,
+  'useDisplayValuesInTitle': ?instance.useDisplayValuesInTitle,
+  'visibleIf': ?instance.visibleIf,
+  'width': ?instance.width,
+  'minWidth': ?instance.minWidth,
+  'maxWidth': ?instance.maxWidth,
+  'startWithNewLine': ?instance.startWithNewLine,
+  'indent': ?instance.indent,
+  'page': ?instance.page,
+  'title': ?instance.title,
+  'titleLocation': ?instance.titleLocation,
+  'description': ?instance.description,
+  'descriptionLocation': ?instance.descriptionLocation,
+  'hideNumber': ?instance.hideNumber,
+  'valueName': ?instance.valueName,
+  'enableIf': ?instance.enableIf,
+  'defaultValue': ?instance.defaultValue,
+  'defaultValueExpression': ?instance.defaultValueExpression,
+  'correctAnswer': ?instance.correctAnswer,
+  'isRequired': ?instance.isRequired,
+  'requiredIf': ?instance.requiredIf,
+  'requiredErrorText': ?instance.requiredErrorText,
+  'readOnly': ?instance.readOnly,
+  'validators': ?instance.validators,
+  'bindings': ?instance.bindings,
+  'renderAs': ?instance.renderAs,
+  'hasComment': ?instance.hasComment,
+  'showCommentArea': ?instance.showCommentArea,
+  'commentText': ?instance.commentText,
+  'commentPlaceholder': ?instance.commentPlaceholder,
+  'choicesFromQuestion': ?instance.choicesFromQuestion,
+  'choices': ?instance.choices,
+  'choicesFromQuestionMode': ?instance.choicesFromQuestionMode,
+  'choicesOrder': ?instance.choicesOrder,
+  'choicesByUrl': ?instance.choicesByUrl,
+  'hideIfChoicesEmpty': ?instance.hideIfChoicesEmpty,
+  'choicesVisibleIf': ?instance.choicesVisibleIf,
+  'choicesEnableIf': ?instance.choicesEnableIf,
+  'hasOther': ?instance.hasOther,
+  'showOtherItem': ?instance.showOtherItem,
+  'hasNone': ?instance.hasNone,
+  'showNoneItem': ?instance.showNoneItem,
+  'otherPlaceHolder': ?instance.otherPlaceHolder,
+  'otherPlaceholder': ?instance.otherPlaceholder,
+  'noneText': ?instance.noneText,
+  'otherText': ?instance.otherText,
+  'otherErrorText': ?instance.otherErrorText,
+  'storeOthersAsComment': ?instance.storeOthersAsComment,
+  'type': ?instance.type,
+  'optionsCaption': ?instance.optionsCaption,
+  'showOptionsCaption': ?instance.showOptionsCaption,
+  'choicesMin': ?instance.choicesMin,
+  'choicesMax': ?instance.choicesMax,
+  'choicesStep': ?instance.choicesStep,
+  'autoComplete': ?instance.autoComplete,
+};
 
 Text _$TextFromJson(Map<String, dynamic> json) => Text()
   ..state = json['state'] as String?
@@ -772,7 +768,7 @@ Text _$TextFromJson(Map<String, dynamic> json) => Text()
   ..minWidth = json['minWidth'] as String?
   ..maxWidth = json['maxWidth'] as String?
   ..startWithNewLine = json['startWithNewLine'] as bool?
-  ..indent = json['indent'] as int?
+  ..indent = (json['indent'] as num?)?.toInt()
   ..page = json['page'] as String?
   ..title = json['title'] as String?
   ..titleLocation = json['titleLocation'] as String?
@@ -795,7 +791,7 @@ Text _$TextFromJson(Map<String, dynamic> json) => Text()
   ..renderAs = json['renderAs'] as String?
   ..type = json['type'] as String?
   ..inputType = json['inputType'] as String?
-  ..size = json['size'] as int?
+  ..size = (json['size'] as num?)?.toInt()
   ..textUpdateMode = json['textUpdateMode'] as String?
   ..autoComplete = json['autoComplete'] as String?
   ..min = json['min'] as String?
@@ -804,66 +800,58 @@ Text _$TextFromJson(Map<String, dynamic> json) => Text()
   ..maxValueExpression = json['maxValueExpression'] as String?
   ..minErrorText = json['minErrorText'] as String?
   ..maxErrorText = json['maxErrorText'] as String?
-  ..step = json['step'] as int?
-  ..maxLength = json['maxLength'] as int?
+  ..step = (json['step'] as num?)?.toInt()
+  ..maxLength = (json['maxLength'] as num?)?.toInt()
   ..placeHolder = json['placeHolder'] as String?
-  ..dataList =
-      (json['dataList'] as List<dynamic>?)?.map((e) => e as String).toList();
+  ..dataList = (json['dataList'] as List<dynamic>?)
+      ?.map((e) => e as String)
+      .toList();
 
-Map<String, dynamic> _$TextToJson(Text instance) {
-  final val = <String, dynamic>{};
-
-  void writeNotNull(String key, dynamic value) {
-    if (value != null) {
-      val[key] = value;
-    }
-  }
-
-  writeNotNull('state', instance.state);
-  writeNotNull('name', instance.name);
-  writeNotNull('visible', instance.visible);
-  writeNotNull('useDisplayValuesInTitle', instance.useDisplayValuesInTitle);
-  writeNotNull('visibleIf', instance.visibleIf);
-  writeNotNull('width', instance.width);
-  writeNotNull('minWidth', instance.minWidth);
-  writeNotNull('maxWidth', instance.maxWidth);
-  writeNotNull('startWithNewLine', instance.startWithNewLine);
-  writeNotNull('indent', instance.indent);
-  writeNotNull('page', instance.page);
-  writeNotNull('title', instance.title);
-  writeNotNull('titleLocation', instance.titleLocation);
-  writeNotNull('description', instance.description);
-  writeNotNull('descriptionLocation', instance.descriptionLocation);
-  writeNotNull('hideNumber', instance.hideNumber);
-  writeNotNull('valueName', instance.valueName);
-  writeNotNull('enableIf', instance.enableIf);
-  writeNotNull('defaultValue', instance.defaultValue);
-  writeNotNull('defaultValueExpression', instance.defaultValueExpression);
-  writeNotNull('correctAnswer', instance.correctAnswer);
-  writeNotNull('isRequired', instance.isRequired);
-  writeNotNull('requiredIf', instance.requiredIf);
-  writeNotNull('requiredErrorText', instance.requiredErrorText);
-  writeNotNull('readOnly', instance.readOnly);
-  writeNotNull('validators', instance.validators);
-  writeNotNull('bindings', instance.bindings);
-  writeNotNull('renderAs', instance.renderAs);
-  writeNotNull('type', instance.type);
-  writeNotNull('inputType', instance.inputType);
-  writeNotNull('size', instance.size);
-  writeNotNull('textUpdateMode', instance.textUpdateMode);
-  writeNotNull('autoComplete', instance.autoComplete);
-  writeNotNull('min', instance.min);
-  writeNotNull('max', instance.max);
-  writeNotNull('minValueExpression', instance.minValueExpression);
-  writeNotNull('maxValueExpression', instance.maxValueExpression);
-  writeNotNull('minErrorText', instance.minErrorText);
-  writeNotNull('maxErrorText', instance.maxErrorText);
-  writeNotNull('step', instance.step);
-  writeNotNull('maxLength', instance.maxLength);
-  writeNotNull('placeHolder', instance.placeHolder);
-  writeNotNull('dataList', instance.dataList);
-  return val;
-}
+Map<String, dynamic> _$TextToJson(Text instance) => <String, dynamic>{
+  'state': ?instance.state,
+  'name': ?instance.name,
+  'visible': ?instance.visible,
+  'useDisplayValuesInTitle': ?instance.useDisplayValuesInTitle,
+  'visibleIf': ?instance.visibleIf,
+  'width': ?instance.width,
+  'minWidth': ?instance.minWidth,
+  'maxWidth': ?instance.maxWidth,
+  'startWithNewLine': ?instance.startWithNewLine,
+  'indent': ?instance.indent,
+  'page': ?instance.page,
+  'title': ?instance.title,
+  'titleLocation': ?instance.titleLocation,
+  'description': ?instance.description,
+  'descriptionLocation': ?instance.descriptionLocation,
+  'hideNumber': ?instance.hideNumber,
+  'valueName': ?instance.valueName,
+  'enableIf': ?instance.enableIf,
+  'defaultValue': ?instance.defaultValue,
+  'defaultValueExpression': ?instance.defaultValueExpression,
+  'correctAnswer': ?instance.correctAnswer,
+  'isRequired': ?instance.isRequired,
+  'requiredIf': ?instance.requiredIf,
+  'requiredErrorText': ?instance.requiredErrorText,
+  'readOnly': ?instance.readOnly,
+  'validators': ?instance.validators,
+  'bindings': ?instance.bindings,
+  'renderAs': ?instance.renderAs,
+  'type': ?instance.type,
+  'inputType': ?instance.inputType,
+  'size': ?instance.size,
+  'textUpdateMode': ?instance.textUpdateMode,
+  'autoComplete': ?instance.autoComplete,
+  'min': ?instance.min,
+  'max': ?instance.max,
+  'minValueExpression': ?instance.minValueExpression,
+  'maxValueExpression': ?instance.maxValueExpression,
+  'minErrorText': ?instance.minErrorText,
+  'maxErrorText': ?instance.maxErrorText,
+  'step': ?instance.step,
+  'maxLength': ?instance.maxLength,
+  'placeHolder': ?instance.placeHolder,
+  'dataList': ?instance.dataList,
+};
 
 MultipleText _$MultipleTextFromJson(Map<String, dynamic> json) => MultipleText()
   ..state = json['state'] as String?
@@ -875,7 +863,7 @@ MultipleText _$MultipleTextFromJson(Map<String, dynamic> json) => MultipleText()
   ..minWidth = json['minWidth'] as String?
   ..maxWidth = json['maxWidth'] as String?
   ..startWithNewLine = json['startWithNewLine'] as bool?
-  ..indent = json['indent'] as int?
+  ..indent = (json['indent'] as num?)?.toInt()
   ..page = json['page'] as String?
   ..title = json['title'] as String?
   ..titleLocation = json['titleLocation'] as String?
@@ -900,52 +888,44 @@ MultipleText _$MultipleTextFromJson(Map<String, dynamic> json) => MultipleText()
   ..items = (json['items'] as List<dynamic>?)
       ?.map((e) => MultipleTextItem.fromJson(e as Map<String, dynamic>))
       .toList()
-  ..itemSize = json['itemSize'] as int?
-  ..colCount = json['colCount'] as int?;
+  ..itemSize = (json['itemSize'] as num?)?.toInt()
+  ..colCount = (json['colCount'] as num?)?.toInt();
 
-Map<String, dynamic> _$MultipleTextToJson(MultipleText instance) {
-  final val = <String, dynamic>{};
-
-  void writeNotNull(String key, dynamic value) {
-    if (value != null) {
-      val[key] = value;
-    }
-  }
-
-  writeNotNull('state', instance.state);
-  writeNotNull('name', instance.name);
-  writeNotNull('visible', instance.visible);
-  writeNotNull('useDisplayValuesInTitle', instance.useDisplayValuesInTitle);
-  writeNotNull('visibleIf', instance.visibleIf);
-  writeNotNull('width', instance.width);
-  writeNotNull('minWidth', instance.minWidth);
-  writeNotNull('maxWidth', instance.maxWidth);
-  writeNotNull('startWithNewLine', instance.startWithNewLine);
-  writeNotNull('indent', instance.indent);
-  writeNotNull('page', instance.page);
-  writeNotNull('title', instance.title);
-  writeNotNull('titleLocation', instance.titleLocation);
-  writeNotNull('description', instance.description);
-  writeNotNull('descriptionLocation', instance.descriptionLocation);
-  writeNotNull('hideNumber', instance.hideNumber);
-  writeNotNull('valueName', instance.valueName);
-  writeNotNull('enableIf', instance.enableIf);
-  writeNotNull('defaultValue', instance.defaultValue);
-  writeNotNull('defaultValueExpression', instance.defaultValueExpression);
-  writeNotNull('correctAnswer', instance.correctAnswer);
-  writeNotNull('isRequired', instance.isRequired);
-  writeNotNull('requiredIf', instance.requiredIf);
-  writeNotNull('requiredErrorText', instance.requiredErrorText);
-  writeNotNull('readOnly', instance.readOnly);
-  writeNotNull('validators', instance.validators);
-  writeNotNull('bindings', instance.bindings);
-  writeNotNull('renderAs', instance.renderAs);
-  writeNotNull('type', instance.type);
-  writeNotNull('items', instance.items);
-  writeNotNull('itemSize', instance.itemSize);
-  writeNotNull('colCount', instance.colCount);
-  return val;
-}
+Map<String, dynamic> _$MultipleTextToJson(MultipleText instance) =>
+    <String, dynamic>{
+      'state': ?instance.state,
+      'name': ?instance.name,
+      'visible': ?instance.visible,
+      'useDisplayValuesInTitle': ?instance.useDisplayValuesInTitle,
+      'visibleIf': ?instance.visibleIf,
+      'width': ?instance.width,
+      'minWidth': ?instance.minWidth,
+      'maxWidth': ?instance.maxWidth,
+      'startWithNewLine': ?instance.startWithNewLine,
+      'indent': ?instance.indent,
+      'page': ?instance.page,
+      'title': ?instance.title,
+      'titleLocation': ?instance.titleLocation,
+      'description': ?instance.description,
+      'descriptionLocation': ?instance.descriptionLocation,
+      'hideNumber': ?instance.hideNumber,
+      'valueName': ?instance.valueName,
+      'enableIf': ?instance.enableIf,
+      'defaultValue': ?instance.defaultValue,
+      'defaultValueExpression': ?instance.defaultValueExpression,
+      'correctAnswer': ?instance.correctAnswer,
+      'isRequired': ?instance.isRequired,
+      'requiredIf': ?instance.requiredIf,
+      'requiredErrorText': ?instance.requiredErrorText,
+      'readOnly': ?instance.readOnly,
+      'validators': ?instance.validators,
+      'bindings': ?instance.bindings,
+      'renderAs': ?instance.renderAs,
+      'type': ?instance.type,
+      'items': ?instance.items,
+      'itemSize': ?instance.itemSize,
+      'colCount': ?instance.colCount,
+    };
 
 MultipleTextItem _$MultipleTextItemFromJson(Map<String, dynamic> json) =>
     MultipleTextItem()
@@ -954,33 +934,25 @@ MultipleTextItem _$MultipleTextItemFromJson(Map<String, dynamic> json) =>
       ..placeHolder = json['placeHolder'] as String?
       ..inputType = json['inputType'] as String?
       ..title = json['title'] as String?
-      ..maxLength = json['maxLength'] as int?
-      ..size = json['size'] as int?
+      ..maxLength = (json['maxLength'] as num?)?.toInt()
+      ..size = (json['size'] as num?)?.toInt()
       ..requiredErrorText = json['requiredErrorText'] as String?
       ..validators = (json['validators'] as List<dynamic>?)
           ?.map((e) => SurveyValidator.fromJson(e as Map<String, dynamic>))
           .toList();
 
-Map<String, dynamic> _$MultipleTextItemToJson(MultipleTextItem instance) {
-  final val = <String, dynamic>{};
-
-  void writeNotNull(String key, dynamic value) {
-    if (value != null) {
-      val[key] = value;
-    }
-  }
-
-  writeNotNull('name', instance.name);
-  writeNotNull('isRequired', instance.isRequired);
-  writeNotNull('placeHolder', instance.placeHolder);
-  writeNotNull('inputType', instance.inputType);
-  writeNotNull('title', instance.title);
-  writeNotNull('maxLength', instance.maxLength);
-  writeNotNull('size', instance.size);
-  writeNotNull('requiredErrorText', instance.requiredErrorText);
-  writeNotNull('validators', instance.validators);
-  return val;
-}
+Map<String, dynamic> _$MultipleTextItemToJson(MultipleTextItem instance) =>
+    <String, dynamic>{
+      'name': ?instance.name,
+      'isRequired': ?instance.isRequired,
+      'placeHolder': ?instance.placeHolder,
+      'inputType': ?instance.inputType,
+      'title': ?instance.title,
+      'maxLength': ?instance.maxLength,
+      'size': ?instance.size,
+      'requiredErrorText': ?instance.requiredErrorText,
+      'validators': ?instance.validators,
+    };
 
 NonValue _$NonValueFromJson(Map<String, dynamic> json) => NonValue()
   ..state = json['state'] as String?
@@ -992,7 +964,7 @@ NonValue _$NonValueFromJson(Map<String, dynamic> json) => NonValue()
   ..minWidth = json['minWidth'] as String?
   ..maxWidth = json['maxWidth'] as String?
   ..startWithNewLine = json['startWithNewLine'] as bool?
-  ..indent = json['indent'] as int?
+  ..indent = (json['indent'] as num?)?.toInt()
   ..page = json['page'] as String?
   ..descriptionLocation = json['descriptionLocation'] as String?
   ..hideNumber = json['hideNumber'] as bool?
@@ -1015,46 +987,37 @@ NonValue _$NonValueFromJson(Map<String, dynamic> json) => NonValue()
   ..requiredIf = json['requiredIf'] as String?
   ..titleLocation = json['titleLocation'] as String?;
 
-Map<String, dynamic> _$NonValueToJson(NonValue instance) {
-  final val = <String, dynamic>{};
-
-  void writeNotNull(String key, dynamic value) {
-    if (value != null) {
-      val[key] = value;
-    }
-  }
-
-  writeNotNull('state', instance.state);
-  writeNotNull('name', instance.name);
-  writeNotNull('visible', instance.visible);
-  writeNotNull('useDisplayValuesInTitle', instance.useDisplayValuesInTitle);
-  writeNotNull('visibleIf', instance.visibleIf);
-  writeNotNull('width', instance.width);
-  writeNotNull('minWidth', instance.minWidth);
-  writeNotNull('maxWidth', instance.maxWidth);
-  writeNotNull('startWithNewLine', instance.startWithNewLine);
-  writeNotNull('indent', instance.indent);
-  writeNotNull('page', instance.page);
-  writeNotNull('descriptionLocation', instance.descriptionLocation);
-  writeNotNull('hideNumber', instance.hideNumber);
-  writeNotNull('defaultValue', instance.defaultValue);
-  writeNotNull('defaultValueExpression', instance.defaultValueExpression);
-  writeNotNull('readOnly', instance.readOnly);
-  writeNotNull('validators', instance.validators);
-  writeNotNull('bindings', instance.bindings);
-  writeNotNull('renderAs', instance.renderAs);
-  writeNotNull('type', instance.type);
-  writeNotNull('title', instance.title);
-  writeNotNull('description', instance.description);
-  writeNotNull('valueName', instance.valueName);
-  writeNotNull('enableIf', instance.enableIf);
-  writeNotNull('correctAnswer', instance.correctAnswer);
-  writeNotNull('isRequired', instance.isRequired);
-  writeNotNull('requiredErrorText', instance.requiredErrorText);
-  writeNotNull('requiredIf', instance.requiredIf);
-  writeNotNull('titleLocation', instance.titleLocation);
-  return val;
-}
+Map<String, dynamic> _$NonValueToJson(NonValue instance) => <String, dynamic>{
+  'state': ?instance.state,
+  'name': ?instance.name,
+  'visible': ?instance.visible,
+  'useDisplayValuesInTitle': ?instance.useDisplayValuesInTitle,
+  'visibleIf': ?instance.visibleIf,
+  'width': ?instance.width,
+  'minWidth': ?instance.minWidth,
+  'maxWidth': ?instance.maxWidth,
+  'startWithNewLine': ?instance.startWithNewLine,
+  'indent': ?instance.indent,
+  'page': ?instance.page,
+  'descriptionLocation': ?instance.descriptionLocation,
+  'hideNumber': ?instance.hideNumber,
+  'defaultValue': ?instance.defaultValue,
+  'defaultValueExpression': ?instance.defaultValueExpression,
+  'readOnly': ?instance.readOnly,
+  'validators': ?instance.validators,
+  'bindings': ?instance.bindings,
+  'renderAs': ?instance.renderAs,
+  'type': ?instance.type,
+  'title': ?instance.title,
+  'description': ?instance.description,
+  'valueName': ?instance.valueName,
+  'enableIf': ?instance.enableIf,
+  'correctAnswer': ?instance.correctAnswer,
+  'isRequired': ?instance.isRequired,
+  'requiredErrorText': ?instance.requiredErrorText,
+  'requiredIf': ?instance.requiredIf,
+  'titleLocation': ?instance.titleLocation,
+};
 
 Html _$HtmlFromJson(Map<String, dynamic> json) => Html()
   ..state = json['state'] as String?
@@ -1066,7 +1029,7 @@ Html _$HtmlFromJson(Map<String, dynamic> json) => Html()
   ..minWidth = json['minWidth'] as String?
   ..maxWidth = json['maxWidth'] as String?
   ..startWithNewLine = json['startWithNewLine'] as bool?
-  ..indent = json['indent'] as int?
+  ..indent = (json['indent'] as num?)?.toInt()
   ..page = json['page'] as String?
   ..descriptionLocation = json['descriptionLocation'] as String?
   ..hideNumber = json['hideNumber'] as bool?
@@ -1090,47 +1053,38 @@ Html _$HtmlFromJson(Map<String, dynamic> json) => Html()
   ..type = json['type'] as String?
   ..html = json['html'] as String?;
 
-Map<String, dynamic> _$HtmlToJson(Html instance) {
-  final val = <String, dynamic>{};
-
-  void writeNotNull(String key, dynamic value) {
-    if (value != null) {
-      val[key] = value;
-    }
-  }
-
-  writeNotNull('state', instance.state);
-  writeNotNull('name', instance.name);
-  writeNotNull('visible', instance.visible);
-  writeNotNull('useDisplayValuesInTitle', instance.useDisplayValuesInTitle);
-  writeNotNull('visibleIf', instance.visibleIf);
-  writeNotNull('width', instance.width);
-  writeNotNull('minWidth', instance.minWidth);
-  writeNotNull('maxWidth', instance.maxWidth);
-  writeNotNull('startWithNewLine', instance.startWithNewLine);
-  writeNotNull('indent', instance.indent);
-  writeNotNull('page', instance.page);
-  writeNotNull('descriptionLocation', instance.descriptionLocation);
-  writeNotNull('hideNumber', instance.hideNumber);
-  writeNotNull('defaultValue', instance.defaultValue);
-  writeNotNull('defaultValueExpression', instance.defaultValueExpression);
-  writeNotNull('readOnly', instance.readOnly);
-  writeNotNull('validators', instance.validators);
-  writeNotNull('bindings', instance.bindings);
-  writeNotNull('renderAs', instance.renderAs);
-  writeNotNull('title', instance.title);
-  writeNotNull('description', instance.description);
-  writeNotNull('valueName', instance.valueName);
-  writeNotNull('enableIf', instance.enableIf);
-  writeNotNull('correctAnswer', instance.correctAnswer);
-  writeNotNull('isRequired', instance.isRequired);
-  writeNotNull('requiredErrorText', instance.requiredErrorText);
-  writeNotNull('requiredIf', instance.requiredIf);
-  writeNotNull('titleLocation', instance.titleLocation);
-  writeNotNull('type', instance.type);
-  writeNotNull('html', instance.html);
-  return val;
-}
+Map<String, dynamic> _$HtmlToJson(Html instance) => <String, dynamic>{
+  'state': ?instance.state,
+  'name': ?instance.name,
+  'visible': ?instance.visible,
+  'useDisplayValuesInTitle': ?instance.useDisplayValuesInTitle,
+  'visibleIf': ?instance.visibleIf,
+  'width': ?instance.width,
+  'minWidth': ?instance.minWidth,
+  'maxWidth': ?instance.maxWidth,
+  'startWithNewLine': ?instance.startWithNewLine,
+  'indent': ?instance.indent,
+  'page': ?instance.page,
+  'descriptionLocation': ?instance.descriptionLocation,
+  'hideNumber': ?instance.hideNumber,
+  'defaultValue': ?instance.defaultValue,
+  'defaultValueExpression': ?instance.defaultValueExpression,
+  'readOnly': ?instance.readOnly,
+  'validators': ?instance.validators,
+  'bindings': ?instance.bindings,
+  'renderAs': ?instance.renderAs,
+  'title': ?instance.title,
+  'description': ?instance.description,
+  'valueName': ?instance.valueName,
+  'enableIf': ?instance.enableIf,
+  'correctAnswer': ?instance.correctAnswer,
+  'isRequired': ?instance.isRequired,
+  'requiredErrorText': ?instance.requiredErrorText,
+  'requiredIf': ?instance.requiredIf,
+  'titleLocation': ?instance.titleLocation,
+  'type': ?instance.type,
+  'html': ?instance.html,
+};
 
 Image _$ImageFromJson(Map<String, dynamic> json) => Image()
   ..state = json['state'] as String?
@@ -1142,7 +1096,7 @@ Image _$ImageFromJson(Map<String, dynamic> json) => Image()
   ..minWidth = json['minWidth'] as String?
   ..maxWidth = json['maxWidth'] as String?
   ..startWithNewLine = json['startWithNewLine'] as bool?
-  ..indent = json['indent'] as int?
+  ..indent = (json['indent'] as num?)?.toInt()
   ..page = json['page'] as String?
   ..descriptionLocation = json['descriptionLocation'] as String?
   ..hideNumber = json['hideNumber'] as bool?
@@ -1168,55 +1122,46 @@ Image _$ImageFromJson(Map<String, dynamic> json) => Image()
   ..text = json['text'] as String?
   ..contentMode = json['contentMode'] as String?
   ..imageFit = json['imageFit'] as String?
-  ..imageHeight = json['imageHeight'] as int?
-  ..imageWidth = json['imageWidth'] as int?;
+  ..imageHeight = (json['imageHeight'] as num?)?.toInt()
+  ..imageWidth = (json['imageWidth'] as num?)?.toInt();
 
-Map<String, dynamic> _$ImageToJson(Image instance) {
-  final val = <String, dynamic>{};
-
-  void writeNotNull(String key, dynamic value) {
-    if (value != null) {
-      val[key] = value;
-    }
-  }
-
-  writeNotNull('state', instance.state);
-  writeNotNull('name', instance.name);
-  writeNotNull('visible', instance.visible);
-  writeNotNull('useDisplayValuesInTitle', instance.useDisplayValuesInTitle);
-  writeNotNull('visibleIf', instance.visibleIf);
-  writeNotNull('width', instance.width);
-  writeNotNull('minWidth', instance.minWidth);
-  writeNotNull('maxWidth', instance.maxWidth);
-  writeNotNull('startWithNewLine', instance.startWithNewLine);
-  writeNotNull('indent', instance.indent);
-  writeNotNull('page', instance.page);
-  writeNotNull('descriptionLocation', instance.descriptionLocation);
-  writeNotNull('hideNumber', instance.hideNumber);
-  writeNotNull('defaultValue', instance.defaultValue);
-  writeNotNull('defaultValueExpression', instance.defaultValueExpression);
-  writeNotNull('readOnly', instance.readOnly);
-  writeNotNull('validators', instance.validators);
-  writeNotNull('bindings', instance.bindings);
-  writeNotNull('renderAs', instance.renderAs);
-  writeNotNull('title', instance.title);
-  writeNotNull('description', instance.description);
-  writeNotNull('valueName', instance.valueName);
-  writeNotNull('enableIf', instance.enableIf);
-  writeNotNull('correctAnswer', instance.correctAnswer);
-  writeNotNull('isRequired', instance.isRequired);
-  writeNotNull('requiredErrorText', instance.requiredErrorText);
-  writeNotNull('requiredIf', instance.requiredIf);
-  writeNotNull('titleLocation', instance.titleLocation);
-  writeNotNull('type', instance.type);
-  writeNotNull('imageLink', instance.imageLink);
-  writeNotNull('text', instance.text);
-  writeNotNull('contentMode', instance.contentMode);
-  writeNotNull('imageFit', instance.imageFit);
-  writeNotNull('imageHeight', instance.imageHeight);
-  writeNotNull('imageWidth', instance.imageWidth);
-  return val;
-}
+Map<String, dynamic> _$ImageToJson(Image instance) => <String, dynamic>{
+  'state': ?instance.state,
+  'name': ?instance.name,
+  'visible': ?instance.visible,
+  'useDisplayValuesInTitle': ?instance.useDisplayValuesInTitle,
+  'visibleIf': ?instance.visibleIf,
+  'width': ?instance.width,
+  'minWidth': ?instance.minWidth,
+  'maxWidth': ?instance.maxWidth,
+  'startWithNewLine': ?instance.startWithNewLine,
+  'indent': ?instance.indent,
+  'page': ?instance.page,
+  'descriptionLocation': ?instance.descriptionLocation,
+  'hideNumber': ?instance.hideNumber,
+  'defaultValue': ?instance.defaultValue,
+  'defaultValueExpression': ?instance.defaultValueExpression,
+  'readOnly': ?instance.readOnly,
+  'validators': ?instance.validators,
+  'bindings': ?instance.bindings,
+  'renderAs': ?instance.renderAs,
+  'title': ?instance.title,
+  'description': ?instance.description,
+  'valueName': ?instance.valueName,
+  'enableIf': ?instance.enableIf,
+  'correctAnswer': ?instance.correctAnswer,
+  'isRequired': ?instance.isRequired,
+  'requiredErrorText': ?instance.requiredErrorText,
+  'requiredIf': ?instance.requiredIf,
+  'titleLocation': ?instance.titleLocation,
+  'type': ?instance.type,
+  'imageLink': ?instance.imageLink,
+  'text': ?instance.text,
+  'contentMode': ?instance.contentMode,
+  'imageFit': ?instance.imageFit,
+  'imageHeight': ?instance.imageHeight,
+  'imageWidth': ?instance.imageWidth,
+};
 
 Empty _$EmptyFromJson(Map<String, dynamic> json) => Empty()
   ..state = json['state'] as String?
@@ -1228,7 +1173,7 @@ Empty _$EmptyFromJson(Map<String, dynamic> json) => Empty()
   ..minWidth = json['minWidth'] as String?
   ..maxWidth = json['maxWidth'] as String?
   ..startWithNewLine = json['startWithNewLine'] as bool?
-  ..indent = json['indent'] as int?
+  ..indent = (json['indent'] as num?)?.toInt()
   ..page = json['page'] as String?
   ..title = json['title'] as String?
   ..titleLocation = json['titleLocation'] as String?
@@ -1251,46 +1196,37 @@ Empty _$EmptyFromJson(Map<String, dynamic> json) => Empty()
   ..renderAs = json['renderAs'] as String?
   ..type = json['type'] as String?;
 
-Map<String, dynamic> _$EmptyToJson(Empty instance) {
-  final val = <String, dynamic>{};
-
-  void writeNotNull(String key, dynamic value) {
-    if (value != null) {
-      val[key] = value;
-    }
-  }
-
-  writeNotNull('state', instance.state);
-  writeNotNull('name', instance.name);
-  writeNotNull('visible', instance.visible);
-  writeNotNull('useDisplayValuesInTitle', instance.useDisplayValuesInTitle);
-  writeNotNull('visibleIf', instance.visibleIf);
-  writeNotNull('width', instance.width);
-  writeNotNull('minWidth', instance.minWidth);
-  writeNotNull('maxWidth', instance.maxWidth);
-  writeNotNull('startWithNewLine', instance.startWithNewLine);
-  writeNotNull('indent', instance.indent);
-  writeNotNull('page', instance.page);
-  writeNotNull('title', instance.title);
-  writeNotNull('titleLocation', instance.titleLocation);
-  writeNotNull('description', instance.description);
-  writeNotNull('descriptionLocation', instance.descriptionLocation);
-  writeNotNull('hideNumber', instance.hideNumber);
-  writeNotNull('valueName', instance.valueName);
-  writeNotNull('enableIf', instance.enableIf);
-  writeNotNull('defaultValue', instance.defaultValue);
-  writeNotNull('defaultValueExpression', instance.defaultValueExpression);
-  writeNotNull('correctAnswer', instance.correctAnswer);
-  writeNotNull('isRequired', instance.isRequired);
-  writeNotNull('requiredIf', instance.requiredIf);
-  writeNotNull('requiredErrorText', instance.requiredErrorText);
-  writeNotNull('readOnly', instance.readOnly);
-  writeNotNull('validators', instance.validators);
-  writeNotNull('bindings', instance.bindings);
-  writeNotNull('renderAs', instance.renderAs);
-  writeNotNull('type', instance.type);
-  return val;
-}
+Map<String, dynamic> _$EmptyToJson(Empty instance) => <String, dynamic>{
+  'state': ?instance.state,
+  'name': ?instance.name,
+  'visible': ?instance.visible,
+  'useDisplayValuesInTitle': ?instance.useDisplayValuesInTitle,
+  'visibleIf': ?instance.visibleIf,
+  'width': ?instance.width,
+  'minWidth': ?instance.minWidth,
+  'maxWidth': ?instance.maxWidth,
+  'startWithNewLine': ?instance.startWithNewLine,
+  'indent': ?instance.indent,
+  'page': ?instance.page,
+  'title': ?instance.title,
+  'titleLocation': ?instance.titleLocation,
+  'description': ?instance.description,
+  'descriptionLocation': ?instance.descriptionLocation,
+  'hideNumber': ?instance.hideNumber,
+  'valueName': ?instance.valueName,
+  'enableIf': ?instance.enableIf,
+  'defaultValue': ?instance.defaultValue,
+  'defaultValueExpression': ?instance.defaultValueExpression,
+  'correctAnswer': ?instance.correctAnswer,
+  'isRequired': ?instance.isRequired,
+  'requiredIf': ?instance.requiredIf,
+  'requiredErrorText': ?instance.requiredErrorText,
+  'readOnly': ?instance.readOnly,
+  'validators': ?instance.validators,
+  'bindings': ?instance.bindings,
+  'renderAs': ?instance.renderAs,
+  'type': ?instance.type,
+};
 
 Comment _$CommentFromJson(Map<String, dynamic> json) => Comment()
   ..state = json['state'] as String?
@@ -1302,7 +1238,7 @@ Comment _$CommentFromJson(Map<String, dynamic> json) => Comment()
   ..minWidth = json['minWidth'] as String?
   ..maxWidth = json['maxWidth'] as String?
   ..startWithNewLine = json['startWithNewLine'] as bool?
-  ..indent = json['indent'] as int?
+  ..indent = (json['indent'] as num?)?.toInt()
   ..page = json['page'] as String?
   ..title = json['title'] as String?
   ..titleLocation = json['titleLocation'] as String?
@@ -1324,57 +1260,48 @@ Comment _$CommentFromJson(Map<String, dynamic> json) => Comment()
   ..bindings = json['bindings'] as String?
   ..renderAs = json['renderAs'] as String?
   ..type = json['type'] as String?
-  ..maxLength = json['maxLength'] as int?
-  ..cols = json['cols'] as int?
-  ..rows = json['rows'] as int?
+  ..maxLength = (json['maxLength'] as num?)?.toInt()
+  ..cols = (json['cols'] as num?)?.toInt()
+  ..rows = (json['rows'] as num?)?.toInt()
   ..placeHolder = json['placeHolder'] as String?
   ..textUpdateMode = json['textUpdateMode'] as String?;
 
-Map<String, dynamic> _$CommentToJson(Comment instance) {
-  final val = <String, dynamic>{};
-
-  void writeNotNull(String key, dynamic value) {
-    if (value != null) {
-      val[key] = value;
-    }
-  }
-
-  writeNotNull('state', instance.state);
-  writeNotNull('name', instance.name);
-  writeNotNull('visible', instance.visible);
-  writeNotNull('useDisplayValuesInTitle', instance.useDisplayValuesInTitle);
-  writeNotNull('visibleIf', instance.visibleIf);
-  writeNotNull('width', instance.width);
-  writeNotNull('minWidth', instance.minWidth);
-  writeNotNull('maxWidth', instance.maxWidth);
-  writeNotNull('startWithNewLine', instance.startWithNewLine);
-  writeNotNull('indent', instance.indent);
-  writeNotNull('page', instance.page);
-  writeNotNull('title', instance.title);
-  writeNotNull('titleLocation', instance.titleLocation);
-  writeNotNull('description', instance.description);
-  writeNotNull('descriptionLocation', instance.descriptionLocation);
-  writeNotNull('hideNumber', instance.hideNumber);
-  writeNotNull('valueName', instance.valueName);
-  writeNotNull('enableIf', instance.enableIf);
-  writeNotNull('defaultValue', instance.defaultValue);
-  writeNotNull('defaultValueExpression', instance.defaultValueExpression);
-  writeNotNull('correctAnswer', instance.correctAnswer);
-  writeNotNull('isRequired', instance.isRequired);
-  writeNotNull('requiredIf', instance.requiredIf);
-  writeNotNull('requiredErrorText', instance.requiredErrorText);
-  writeNotNull('readOnly', instance.readOnly);
-  writeNotNull('validators', instance.validators);
-  writeNotNull('bindings', instance.bindings);
-  writeNotNull('renderAs', instance.renderAs);
-  writeNotNull('type', instance.type);
-  writeNotNull('maxLength', instance.maxLength);
-  writeNotNull('cols', instance.cols);
-  writeNotNull('rows', instance.rows);
-  writeNotNull('placeHolder', instance.placeHolder);
-  writeNotNull('textUpdateMode', instance.textUpdateMode);
-  return val;
-}
+Map<String, dynamic> _$CommentToJson(Comment instance) => <String, dynamic>{
+  'state': ?instance.state,
+  'name': ?instance.name,
+  'visible': ?instance.visible,
+  'useDisplayValuesInTitle': ?instance.useDisplayValuesInTitle,
+  'visibleIf': ?instance.visibleIf,
+  'width': ?instance.width,
+  'minWidth': ?instance.minWidth,
+  'maxWidth': ?instance.maxWidth,
+  'startWithNewLine': ?instance.startWithNewLine,
+  'indent': ?instance.indent,
+  'page': ?instance.page,
+  'title': ?instance.title,
+  'titleLocation': ?instance.titleLocation,
+  'description': ?instance.description,
+  'descriptionLocation': ?instance.descriptionLocation,
+  'hideNumber': ?instance.hideNumber,
+  'valueName': ?instance.valueName,
+  'enableIf': ?instance.enableIf,
+  'defaultValue': ?instance.defaultValue,
+  'defaultValueExpression': ?instance.defaultValueExpression,
+  'correctAnswer': ?instance.correctAnswer,
+  'isRequired': ?instance.isRequired,
+  'requiredIf': ?instance.requiredIf,
+  'requiredErrorText': ?instance.requiredErrorText,
+  'readOnly': ?instance.readOnly,
+  'validators': ?instance.validators,
+  'bindings': ?instance.bindings,
+  'renderAs': ?instance.renderAs,
+  'type': ?instance.type,
+  'maxLength': ?instance.maxLength,
+  'cols': ?instance.cols,
+  'rows': ?instance.rows,
+  'placeHolder': ?instance.placeHolder,
+  'textUpdateMode': ?instance.textUpdateMode,
+};
 
 File _$FileFromJson(Map<String, dynamic> json) => File()
   ..state = json['state'] as String?
@@ -1386,7 +1313,7 @@ File _$FileFromJson(Map<String, dynamic> json) => File()
   ..minWidth = json['minWidth'] as String?
   ..maxWidth = json['maxWidth'] as String?
   ..startWithNewLine = json['startWithNewLine'] as bool?
-  ..indent = json['indent'] as int?
+  ..indent = (json['indent'] as num?)?.toInt()
   ..page = json['page'] as String?
   ..title = json['title'] as String?
   ..titleLocation = json['titleLocation'] as String?
@@ -1407,72 +1334,63 @@ File _$FileFromJson(Map<String, dynamic> json) => File()
   ..bindings = json['bindings'] as String?
   ..renderAs = json['renderAs'] as String?
   ..type = json['type'] as String?
-  ..hasComment = json['hasComment'] as String?
+  ..hasComment = _boolFromJson(json['hasComment'])
   ..commentText = json['commentText'] as String?
   ..showPreview = json['showPreview'] as bool?
   ..allowMultiple = json['allowMultiple'] as bool?
   ..allowImagesPreview = json['allowImagesPreview'] as bool?
-  ..imageHeight = json['imageHeight'] as int?
-  ..imageWidth = json['imageWidth'] as int?
+  ..imageHeight = (json['imageHeight'] as num?)?.toInt()
+  ..imageWidth = (json['imageWidth'] as num?)?.toInt()
   ..acceptedTypes = json['acceptedTypes'] as String?
   ..storeDataAsText = json['storeDataAsText'] as bool?
   ..waitForUpload = json['waitForUpload'] as bool?
-  ..maxSize = json['maxSize'] as int?
+  ..maxSize = (json['maxSize'] as num?)?.toInt()
   ..correctAnswer = json['correctAnswer'] as String?
   ..needConfirmRemoveFile = json['needConfirmRemoveFile'] as bool?;
 
-Map<String, dynamic> _$FileToJson(File instance) {
-  final val = <String, dynamic>{};
-
-  void writeNotNull(String key, dynamic value) {
-    if (value != null) {
-      val[key] = value;
-    }
-  }
-
-  writeNotNull('state', instance.state);
-  writeNotNull('name', instance.name);
-  writeNotNull('visible', instance.visible);
-  writeNotNull('useDisplayValuesInTitle', instance.useDisplayValuesInTitle);
-  writeNotNull('visibleIf', instance.visibleIf);
-  writeNotNull('width', instance.width);
-  writeNotNull('minWidth', instance.minWidth);
-  writeNotNull('maxWidth', instance.maxWidth);
-  writeNotNull('startWithNewLine', instance.startWithNewLine);
-  writeNotNull('indent', instance.indent);
-  writeNotNull('page', instance.page);
-  writeNotNull('title', instance.title);
-  writeNotNull('titleLocation', instance.titleLocation);
-  writeNotNull('description', instance.description);
-  writeNotNull('descriptionLocation', instance.descriptionLocation);
-  writeNotNull('hideNumber', instance.hideNumber);
-  writeNotNull('valueName', instance.valueName);
-  writeNotNull('enableIf', instance.enableIf);
-  writeNotNull('defaultValue', instance.defaultValue);
-  writeNotNull('defaultValueExpression', instance.defaultValueExpression);
-  writeNotNull('isRequired', instance.isRequired);
-  writeNotNull('requiredIf', instance.requiredIf);
-  writeNotNull('requiredErrorText', instance.requiredErrorText);
-  writeNotNull('readOnly', instance.readOnly);
-  writeNotNull('validators', instance.validators);
-  writeNotNull('bindings', instance.bindings);
-  writeNotNull('renderAs', instance.renderAs);
-  writeNotNull('type', instance.type);
-  writeNotNull('hasComment', instance.hasComment);
-  writeNotNull('commentText', instance.commentText);
-  writeNotNull('showPreview', instance.showPreview);
-  writeNotNull('allowMultiple', instance.allowMultiple);
-  writeNotNull('allowImagesPreview', instance.allowImagesPreview);
-  writeNotNull('imageHeight', instance.imageHeight);
-  writeNotNull('imageWidth', instance.imageWidth);
-  writeNotNull('acceptedTypes', instance.acceptedTypes);
-  writeNotNull('storeDataAsText', instance.storeDataAsText);
-  writeNotNull('waitForUpload', instance.waitForUpload);
-  writeNotNull('maxSize', instance.maxSize);
-  writeNotNull('correctAnswer', instance.correctAnswer);
-  writeNotNull('needConfirmRemoveFile', instance.needConfirmRemoveFile);
-  return val;
-}
+Map<String, dynamic> _$FileToJson(File instance) => <String, dynamic>{
+  'state': ?instance.state,
+  'name': ?instance.name,
+  'visible': ?instance.visible,
+  'useDisplayValuesInTitle': ?instance.useDisplayValuesInTitle,
+  'visibleIf': ?instance.visibleIf,
+  'width': ?instance.width,
+  'minWidth': ?instance.minWidth,
+  'maxWidth': ?instance.maxWidth,
+  'startWithNewLine': ?instance.startWithNewLine,
+  'indent': ?instance.indent,
+  'page': ?instance.page,
+  'title': ?instance.title,
+  'titleLocation': ?instance.titleLocation,
+  'description': ?instance.description,
+  'descriptionLocation': ?instance.descriptionLocation,
+  'hideNumber': ?instance.hideNumber,
+  'valueName': ?instance.valueName,
+  'enableIf': ?instance.enableIf,
+  'defaultValue': ?instance.defaultValue,
+  'defaultValueExpression': ?instance.defaultValueExpression,
+  'isRequired': ?instance.isRequired,
+  'requiredIf': ?instance.requiredIf,
+  'requiredErrorText': ?instance.requiredErrorText,
+  'readOnly': ?instance.readOnly,
+  'validators': ?instance.validators,
+  'bindings': ?instance.bindings,
+  'renderAs': ?instance.renderAs,
+  'type': ?instance.type,
+  'hasComment': ?instance.hasComment,
+  'commentText': ?instance.commentText,
+  'showPreview': ?instance.showPreview,
+  'allowMultiple': ?instance.allowMultiple,
+  'allowImagesPreview': ?instance.allowImagesPreview,
+  'imageHeight': ?instance.imageHeight,
+  'imageWidth': ?instance.imageWidth,
+  'acceptedTypes': ?instance.acceptedTypes,
+  'storeDataAsText': ?instance.storeDataAsText,
+  'waitForUpload': ?instance.waitForUpload,
+  'maxSize': ?instance.maxSize,
+  'correctAnswer': ?instance.correctAnswer,
+  'needConfirmRemoveFile': ?instance.needConfirmRemoveFile,
+};
 
 Rating _$RatingFromJson(Map<String, dynamic> json) => Rating()
   ..state = json['state'] as String?
@@ -1484,7 +1402,7 @@ Rating _$RatingFromJson(Map<String, dynamic> json) => Rating()
   ..minWidth = json['minWidth'] as String?
   ..maxWidth = json['maxWidth'] as String?
   ..startWithNewLine = json['startWithNewLine'] as bool?
-  ..indent = json['indent'] as int?
+  ..indent = (json['indent'] as num?)?.toInt()
   ..page = json['page'] as String?
   ..title = json['title'] as String?
   ..titleLocation = json['titleLocation'] as String?
@@ -1506,65 +1424,56 @@ Rating _$RatingFromJson(Map<String, dynamic> json) => Rating()
   ..bindings = json['bindings'] as String?
   ..renderAs = json['renderAs'] as String?
   ..type = json['type'] as String?
-  ..hasComment = json['hasComment'] as String?
+  ..hasComment = _boolFromJson(json['hasComment'])
   ..commentText = json['commentText'] as String?
   ..rateValues = (json['rateValues'] as List<dynamic>?)
       ?.map((e) => ItemValue.fromJson(e as Map<String, dynamic>))
       .toList()
-  ..rateMin = json['rateMin'] as int?
-  ..rateMax = json['rateMax'] as int?
-  ..rateStep = json['rateStep'] as int?
+  ..rateMin = (json['rateMin'] as num?)?.toInt()
+  ..rateMax = (json['rateMax'] as num?)?.toInt()
+  ..rateStep = (json['rateStep'] as num?)?.toInt()
   ..minRateDescription = json['minRateDescription'] as String?
   ..maxRateDescription = json['maxRateDescription'] as String?;
 
-Map<String, dynamic> _$RatingToJson(Rating instance) {
-  final val = <String, dynamic>{};
-
-  void writeNotNull(String key, dynamic value) {
-    if (value != null) {
-      val[key] = value;
-    }
-  }
-
-  writeNotNull('state', instance.state);
-  writeNotNull('name', instance.name);
-  writeNotNull('visible', instance.visible);
-  writeNotNull('useDisplayValuesInTitle', instance.useDisplayValuesInTitle);
-  writeNotNull('visibleIf', instance.visibleIf);
-  writeNotNull('width', instance.width);
-  writeNotNull('minWidth', instance.minWidth);
-  writeNotNull('maxWidth', instance.maxWidth);
-  writeNotNull('startWithNewLine', instance.startWithNewLine);
-  writeNotNull('indent', instance.indent);
-  writeNotNull('page', instance.page);
-  writeNotNull('title', instance.title);
-  writeNotNull('titleLocation', instance.titleLocation);
-  writeNotNull('description', instance.description);
-  writeNotNull('descriptionLocation', instance.descriptionLocation);
-  writeNotNull('hideNumber', instance.hideNumber);
-  writeNotNull('valueName', instance.valueName);
-  writeNotNull('enableIf', instance.enableIf);
-  writeNotNull('defaultValue', instance.defaultValue);
-  writeNotNull('defaultValueExpression', instance.defaultValueExpression);
-  writeNotNull('correctAnswer', instance.correctAnswer);
-  writeNotNull('isRequired', instance.isRequired);
-  writeNotNull('requiredIf', instance.requiredIf);
-  writeNotNull('requiredErrorText', instance.requiredErrorText);
-  writeNotNull('readOnly', instance.readOnly);
-  writeNotNull('validators', instance.validators);
-  writeNotNull('bindings', instance.bindings);
-  writeNotNull('renderAs', instance.renderAs);
-  writeNotNull('type', instance.type);
-  writeNotNull('hasComment', instance.hasComment);
-  writeNotNull('commentText', instance.commentText);
-  writeNotNull('rateValues', instance.rateValues);
-  writeNotNull('rateMin', instance.rateMin);
-  writeNotNull('rateMax', instance.rateMax);
-  writeNotNull('rateStep', instance.rateStep);
-  writeNotNull('minRateDescription', instance.minRateDescription);
-  writeNotNull('maxRateDescription', instance.maxRateDescription);
-  return val;
-}
+Map<String, dynamic> _$RatingToJson(Rating instance) => <String, dynamic>{
+  'state': ?instance.state,
+  'name': ?instance.name,
+  'visible': ?instance.visible,
+  'useDisplayValuesInTitle': ?instance.useDisplayValuesInTitle,
+  'visibleIf': ?instance.visibleIf,
+  'width': ?instance.width,
+  'minWidth': ?instance.minWidth,
+  'maxWidth': ?instance.maxWidth,
+  'startWithNewLine': ?instance.startWithNewLine,
+  'indent': ?instance.indent,
+  'page': ?instance.page,
+  'title': ?instance.title,
+  'titleLocation': ?instance.titleLocation,
+  'description': ?instance.description,
+  'descriptionLocation': ?instance.descriptionLocation,
+  'hideNumber': ?instance.hideNumber,
+  'valueName': ?instance.valueName,
+  'enableIf': ?instance.enableIf,
+  'defaultValue': ?instance.defaultValue,
+  'defaultValueExpression': ?instance.defaultValueExpression,
+  'correctAnswer': ?instance.correctAnswer,
+  'isRequired': ?instance.isRequired,
+  'requiredIf': ?instance.requiredIf,
+  'requiredErrorText': ?instance.requiredErrorText,
+  'readOnly': ?instance.readOnly,
+  'validators': ?instance.validators,
+  'bindings': ?instance.bindings,
+  'renderAs': ?instance.renderAs,
+  'type': ?instance.type,
+  'hasComment': ?instance.hasComment,
+  'commentText': ?instance.commentText,
+  'rateValues': ?instance.rateValues,
+  'rateMin': ?instance.rateMin,
+  'rateMax': ?instance.rateMax,
+  'rateStep': ?instance.rateStep,
+  'minRateDescription': ?instance.minRateDescription,
+  'maxRateDescription': ?instance.maxRateDescription,
+};
 
 Boolean _$BooleanFromJson(Map<String, dynamic> json) => Boolean()
   ..state = json['state'] as String?
@@ -1576,7 +1485,7 @@ Boolean _$BooleanFromJson(Map<String, dynamic> json) => Boolean()
   ..minWidth = json['minWidth'] as String?
   ..maxWidth = json['maxWidth'] as String?
   ..startWithNewLine = json['startWithNewLine'] as bool?
-  ..indent = json['indent'] as int?
+  ..indent = (json['indent'] as num?)?.toInt()
   ..page = json['page'] as String?
   ..title = json['title'] as String?
   ..titleLocation = json['titleLocation'] as String?
@@ -1605,52 +1514,43 @@ Boolean _$BooleanFromJson(Map<String, dynamic> json) => Boolean()
   ..valueFalse = json['valueFalse'] as String?
   ..renderAs = json['renderAs'] as String?;
 
-Map<String, dynamic> _$BooleanToJson(Boolean instance) {
-  final val = <String, dynamic>{};
-
-  void writeNotNull(String key, dynamic value) {
-    if (value != null) {
-      val[key] = value;
-    }
-  }
-
-  writeNotNull('state', instance.state);
-  writeNotNull('name', instance.name);
-  writeNotNull('visible', instance.visible);
-  writeNotNull('useDisplayValuesInTitle', instance.useDisplayValuesInTitle);
-  writeNotNull('visibleIf', instance.visibleIf);
-  writeNotNull('width', instance.width);
-  writeNotNull('minWidth', instance.minWidth);
-  writeNotNull('maxWidth', instance.maxWidth);
-  writeNotNull('startWithNewLine', instance.startWithNewLine);
-  writeNotNull('indent', instance.indent);
-  writeNotNull('page', instance.page);
-  writeNotNull('title', instance.title);
-  writeNotNull('titleLocation', instance.titleLocation);
-  writeNotNull('description', instance.description);
-  writeNotNull('descriptionLocation', instance.descriptionLocation);
-  writeNotNull('hideNumber', instance.hideNumber);
-  writeNotNull('valueName', instance.valueName);
-  writeNotNull('enableIf', instance.enableIf);
-  writeNotNull('defaultValue', instance.defaultValue);
-  writeNotNull('defaultValueExpression', instance.defaultValueExpression);
-  writeNotNull('correctAnswer', instance.correctAnswer);
-  writeNotNull('isRequired', instance.isRequired);
-  writeNotNull('requiredIf', instance.requiredIf);
-  writeNotNull('requiredErrorText', instance.requiredErrorText);
-  writeNotNull('readOnly', instance.readOnly);
-  writeNotNull('validators', instance.validators);
-  writeNotNull('bindings', instance.bindings);
-  writeNotNull('type', instance.type);
-  writeNotNull('label', instance.label);
-  writeNotNull('labelTrue', instance.labelTrue);
-  writeNotNull('labelFalse', instance.labelFalse);
-  writeNotNull('showTitle', instance.showTitle);
-  writeNotNull('valueTrue', instance.valueTrue);
-  writeNotNull('valueFalse', instance.valueFalse);
-  writeNotNull('renderAs', instance.renderAs);
-  return val;
-}
+Map<String, dynamic> _$BooleanToJson(Boolean instance) => <String, dynamic>{
+  'state': ?instance.state,
+  'name': ?instance.name,
+  'visible': ?instance.visible,
+  'useDisplayValuesInTitle': ?instance.useDisplayValuesInTitle,
+  'visibleIf': ?instance.visibleIf,
+  'width': ?instance.width,
+  'minWidth': ?instance.minWidth,
+  'maxWidth': ?instance.maxWidth,
+  'startWithNewLine': ?instance.startWithNewLine,
+  'indent': ?instance.indent,
+  'page': ?instance.page,
+  'title': ?instance.title,
+  'titleLocation': ?instance.titleLocation,
+  'description': ?instance.description,
+  'descriptionLocation': ?instance.descriptionLocation,
+  'hideNumber': ?instance.hideNumber,
+  'valueName': ?instance.valueName,
+  'enableIf': ?instance.enableIf,
+  'defaultValue': ?instance.defaultValue,
+  'defaultValueExpression': ?instance.defaultValueExpression,
+  'correctAnswer': ?instance.correctAnswer,
+  'isRequired': ?instance.isRequired,
+  'requiredIf': ?instance.requiredIf,
+  'requiredErrorText': ?instance.requiredErrorText,
+  'readOnly': ?instance.readOnly,
+  'validators': ?instance.validators,
+  'bindings': ?instance.bindings,
+  'type': ?instance.type,
+  'label': ?instance.label,
+  'labelTrue': ?instance.labelTrue,
+  'labelFalse': ?instance.labelFalse,
+  'showTitle': ?instance.showTitle,
+  'valueTrue': ?instance.valueTrue,
+  'valueFalse': ?instance.valueFalse,
+  'renderAs': ?instance.renderAs,
+};
 
 SignaturePad _$SignaturePadFromJson(Map<String, dynamic> json) => SignaturePad()
   ..state = json['state'] as String?
@@ -1662,7 +1562,7 @@ SignaturePad _$SignaturePadFromJson(Map<String, dynamic> json) => SignaturePad()
   ..minWidth = json['minWidth'] as String?
   ..maxWidth = json['maxWidth'] as String?
   ..startWithNewLine = json['startWithNewLine'] as bool?
-  ..indent = json['indent'] as int?
+  ..indent = (json['indent'] as num?)?.toInt()
   ..page = json['page'] as String?
   ..title = json['title'] as String?
   ..titleLocation = json['titleLocation'] as String?
@@ -1683,58 +1583,50 @@ SignaturePad _$SignaturePadFromJson(Map<String, dynamic> json) => SignaturePad()
   ..bindings = json['bindings'] as String?
   ..renderAs = json['renderAs'] as String?
   ..type = json['type'] as String?
-  ..height = json['height'] as int?
+  ..height = (json['height'] as num?)?.toInt()
   ..allowClear = json['allowClear'] as bool?
   ..penColor = json['penColor'] as String?
   ..backgroundColor = json['backgroundColor'] as String?
   ..dataFormat = json['dataFormat'] as String?
   ..correctAnswer = json['correctAnswer'] as String?;
 
-Map<String, dynamic> _$SignaturePadToJson(SignaturePad instance) {
-  final val = <String, dynamic>{};
-
-  void writeNotNull(String key, dynamic value) {
-    if (value != null) {
-      val[key] = value;
-    }
-  }
-
-  writeNotNull('state', instance.state);
-  writeNotNull('name', instance.name);
-  writeNotNull('visible', instance.visible);
-  writeNotNull('useDisplayValuesInTitle', instance.useDisplayValuesInTitle);
-  writeNotNull('visibleIf', instance.visibleIf);
-  writeNotNull('width', instance.width);
-  writeNotNull('minWidth', instance.minWidth);
-  writeNotNull('maxWidth', instance.maxWidth);
-  writeNotNull('startWithNewLine', instance.startWithNewLine);
-  writeNotNull('indent', instance.indent);
-  writeNotNull('page', instance.page);
-  writeNotNull('title', instance.title);
-  writeNotNull('titleLocation', instance.titleLocation);
-  writeNotNull('description', instance.description);
-  writeNotNull('descriptionLocation', instance.descriptionLocation);
-  writeNotNull('hideNumber', instance.hideNumber);
-  writeNotNull('valueName', instance.valueName);
-  writeNotNull('enableIf', instance.enableIf);
-  writeNotNull('defaultValue', instance.defaultValue);
-  writeNotNull('defaultValueExpression', instance.defaultValueExpression);
-  writeNotNull('isRequired', instance.isRequired);
-  writeNotNull('requiredIf', instance.requiredIf);
-  writeNotNull('requiredErrorText', instance.requiredErrorText);
-  writeNotNull('readOnly', instance.readOnly);
-  writeNotNull('validators', instance.validators);
-  writeNotNull('bindings', instance.bindings);
-  writeNotNull('renderAs', instance.renderAs);
-  writeNotNull('type', instance.type);
-  writeNotNull('height', instance.height);
-  writeNotNull('allowClear', instance.allowClear);
-  writeNotNull('penColor', instance.penColor);
-  writeNotNull('backgroundColor', instance.backgroundColor);
-  writeNotNull('dataFormat', instance.dataFormat);
-  writeNotNull('correctAnswer', instance.correctAnswer);
-  return val;
-}
+Map<String, dynamic> _$SignaturePadToJson(SignaturePad instance) =>
+    <String, dynamic>{
+      'state': ?instance.state,
+      'name': ?instance.name,
+      'visible': ?instance.visible,
+      'useDisplayValuesInTitle': ?instance.useDisplayValuesInTitle,
+      'visibleIf': ?instance.visibleIf,
+      'width': ?instance.width,
+      'minWidth': ?instance.minWidth,
+      'maxWidth': ?instance.maxWidth,
+      'startWithNewLine': ?instance.startWithNewLine,
+      'indent': ?instance.indent,
+      'page': ?instance.page,
+      'title': ?instance.title,
+      'titleLocation': ?instance.titleLocation,
+      'description': ?instance.description,
+      'descriptionLocation': ?instance.descriptionLocation,
+      'hideNumber': ?instance.hideNumber,
+      'valueName': ?instance.valueName,
+      'enableIf': ?instance.enableIf,
+      'defaultValue': ?instance.defaultValue,
+      'defaultValueExpression': ?instance.defaultValueExpression,
+      'isRequired': ?instance.isRequired,
+      'requiredIf': ?instance.requiredIf,
+      'requiredErrorText': ?instance.requiredErrorText,
+      'readOnly': ?instance.readOnly,
+      'validators': ?instance.validators,
+      'bindings': ?instance.bindings,
+      'renderAs': ?instance.renderAs,
+      'type': ?instance.type,
+      'height': ?instance.height,
+      'allowClear': ?instance.allowClear,
+      'penColor': ?instance.penColor,
+      'backgroundColor': ?instance.backgroundColor,
+      'dataFormat': ?instance.dataFormat,
+      'correctAnswer': ?instance.correctAnswer,
+    };
 
 CalculatedValue _$CalculatedValueFromJson(Map<String, dynamic> json) =>
     CalculatedValue()
@@ -1742,20 +1634,12 @@ CalculatedValue _$CalculatedValueFromJson(Map<String, dynamic> json) =>
       ..expression = json['expression'] as String?
       ..includeIntoResult = json['includeIntoResult'] as bool?;
 
-Map<String, dynamic> _$CalculatedValueToJson(CalculatedValue instance) {
-  final val = <String, dynamic>{};
-
-  void writeNotNull(String key, dynamic value) {
-    if (value != null) {
-      val[key] = value;
-    }
-  }
-
-  writeNotNull('name', instance.name);
-  writeNotNull('expression', instance.expression);
-  writeNotNull('includeIntoResult', instance.includeIntoResult);
-  return val;
-}
+Map<String, dynamic> _$CalculatedValueToJson(CalculatedValue instance) =>
+    <String, dynamic>{
+      'name': ?instance.name,
+      'expression': ?instance.expression,
+      'includeIntoResult': ?instance.includeIntoResult,
+    };
 
 ButtonGroup _$ButtonGroupFromJson(Map<String, dynamic> json) => ButtonGroup()
   ..state = json['state'] as String?
@@ -1767,7 +1651,7 @@ ButtonGroup _$ButtonGroupFromJson(Map<String, dynamic> json) => ButtonGroup()
   ..minWidth = json['minWidth'] as String?
   ..maxWidth = json['maxWidth'] as String?
   ..startWithNewLine = json['startWithNewLine'] as bool?
-  ..indent = json['indent'] as int?
+  ..indent = (json['indent'] as num?)?.toInt()
   ..page = json['page'] as String?
   ..title = json['title'] as String?
   ..titleLocation = json['titleLocation'] as String?
@@ -1788,8 +1672,10 @@ ButtonGroup _$ButtonGroupFromJson(Map<String, dynamic> json) => ButtonGroup()
       .toList()
   ..bindings = json['bindings'] as String?
   ..renderAs = json['renderAs'] as String?
-  ..hasComment = json['hasComment'] as String?
+  ..hasComment = _boolFromJson(json['hasComment'])
+  ..showCommentArea = _boolFromJson(json['showCommentArea'])
   ..commentText = json['commentText'] as String?
+  ..commentPlaceholder = json['commentPlaceholder'] as String?
   ..choicesFromQuestion = json['choicesFromQuestion'] as String?
   ..choicesFromQuestionMode = json['choicesFromQuestionMode'] as String?
   ..choicesOrder = json['choicesOrder'] as String?
@@ -1799,75 +1685,75 @@ ButtonGroup _$ButtonGroupFromJson(Map<String, dynamic> json) => ButtonGroup()
   ..hideIfChoicesEmpty = json['hideIfChoicesEmpty'] as bool?
   ..choicesVisibleIf = json['choicesVisibleIf'] as String?
   ..choicesEnableIf = json['choicesEnableIf'] as String?
-  ..hasOther = json['hasOther'] as bool?
-  ..hasNone = json['hasNone'] as bool?
+  ..hasOther = _boolFromJson(json['hasOther'])
+  ..showOtherItem = _boolFromJson(json['showOtherItem'])
+  ..hasNone = _boolFromJson(json['hasNone'])
+  ..showNoneItem = _boolFromJson(json['showNoneItem'])
   ..otherPlaceHolder = json['otherPlaceHolder'] as String?
+  ..otherPlaceholder = json['otherPlaceholder'] as String?
   ..noneText = json['noneText'] as String?
   ..otherText = json['otherText'] as String?
   ..otherErrorText = json['otherErrorText'] as String?
-  ..storeOthersAsComment = json['storeOthersAsComment'] as String?
-  ..colCount = json['colCount'] as int?
+  ..storeOthersAsComment = _boolFromJson(json['storeOthersAsComment'])
+  ..colCount = (json['colCount'] as num?)?.toInt()
   ..type = json['type'] as String?
   ..choices = ButtonGroupItemValue.fromListJson(json['choices'] as List?);
 
-Map<String, dynamic> _$ButtonGroupToJson(ButtonGroup instance) {
-  final val = <String, dynamic>{};
-
-  void writeNotNull(String key, dynamic value) {
-    if (value != null) {
-      val[key] = value;
-    }
-  }
-
-  writeNotNull('state', instance.state);
-  writeNotNull('name', instance.name);
-  writeNotNull('visible', instance.visible);
-  writeNotNull('useDisplayValuesInTitle', instance.useDisplayValuesInTitle);
-  writeNotNull('visibleIf', instance.visibleIf);
-  writeNotNull('width', instance.width);
-  writeNotNull('minWidth', instance.minWidth);
-  writeNotNull('maxWidth', instance.maxWidth);
-  writeNotNull('startWithNewLine', instance.startWithNewLine);
-  writeNotNull('indent', instance.indent);
-  writeNotNull('page', instance.page);
-  writeNotNull('title', instance.title);
-  writeNotNull('titleLocation', instance.titleLocation);
-  writeNotNull('description', instance.description);
-  writeNotNull('descriptionLocation', instance.descriptionLocation);
-  writeNotNull('hideNumber', instance.hideNumber);
-  writeNotNull('valueName', instance.valueName);
-  writeNotNull('enableIf', instance.enableIf);
-  writeNotNull('defaultValue', instance.defaultValue);
-  writeNotNull('defaultValueExpression', instance.defaultValueExpression);
-  writeNotNull('correctAnswer', instance.correctAnswer);
-  writeNotNull('isRequired', instance.isRequired);
-  writeNotNull('requiredIf', instance.requiredIf);
-  writeNotNull('requiredErrorText', instance.requiredErrorText);
-  writeNotNull('readOnly', instance.readOnly);
-  writeNotNull('validators', instance.validators);
-  writeNotNull('bindings', instance.bindings);
-  writeNotNull('renderAs', instance.renderAs);
-  writeNotNull('hasComment', instance.hasComment);
-  writeNotNull('commentText', instance.commentText);
-  writeNotNull('choicesFromQuestion', instance.choicesFromQuestion);
-  writeNotNull('choicesFromQuestionMode', instance.choicesFromQuestionMode);
-  writeNotNull('choicesOrder', instance.choicesOrder);
-  writeNotNull('choicesByUrl', instance.choicesByUrl);
-  writeNotNull('hideIfChoicesEmpty', instance.hideIfChoicesEmpty);
-  writeNotNull('choicesVisibleIf', instance.choicesVisibleIf);
-  writeNotNull('choicesEnableIf', instance.choicesEnableIf);
-  writeNotNull('hasOther', instance.hasOther);
-  writeNotNull('hasNone', instance.hasNone);
-  writeNotNull('otherPlaceHolder', instance.otherPlaceHolder);
-  writeNotNull('noneText', instance.noneText);
-  writeNotNull('otherText', instance.otherText);
-  writeNotNull('otherErrorText', instance.otherErrorText);
-  writeNotNull('storeOthersAsComment', instance.storeOthersAsComment);
-  writeNotNull('colCount', instance.colCount);
-  writeNotNull('type', instance.type);
-  writeNotNull('choices', instance.choices);
-  return val;
-}
+Map<String, dynamic> _$ButtonGroupToJson(ButtonGroup instance) =>
+    <String, dynamic>{
+      'state': ?instance.state,
+      'name': ?instance.name,
+      'visible': ?instance.visible,
+      'useDisplayValuesInTitle': ?instance.useDisplayValuesInTitle,
+      'visibleIf': ?instance.visibleIf,
+      'width': ?instance.width,
+      'minWidth': ?instance.minWidth,
+      'maxWidth': ?instance.maxWidth,
+      'startWithNewLine': ?instance.startWithNewLine,
+      'indent': ?instance.indent,
+      'page': ?instance.page,
+      'title': ?instance.title,
+      'titleLocation': ?instance.titleLocation,
+      'description': ?instance.description,
+      'descriptionLocation': ?instance.descriptionLocation,
+      'hideNumber': ?instance.hideNumber,
+      'valueName': ?instance.valueName,
+      'enableIf': ?instance.enableIf,
+      'defaultValue': ?instance.defaultValue,
+      'defaultValueExpression': ?instance.defaultValueExpression,
+      'correctAnswer': ?instance.correctAnswer,
+      'isRequired': ?instance.isRequired,
+      'requiredIf': ?instance.requiredIf,
+      'requiredErrorText': ?instance.requiredErrorText,
+      'readOnly': ?instance.readOnly,
+      'validators': ?instance.validators,
+      'bindings': ?instance.bindings,
+      'renderAs': ?instance.renderAs,
+      'hasComment': ?instance.hasComment,
+      'showCommentArea': ?instance.showCommentArea,
+      'commentText': ?instance.commentText,
+      'commentPlaceholder': ?instance.commentPlaceholder,
+      'choicesFromQuestion': ?instance.choicesFromQuestion,
+      'choicesFromQuestionMode': ?instance.choicesFromQuestionMode,
+      'choicesOrder': ?instance.choicesOrder,
+      'choicesByUrl': ?instance.choicesByUrl,
+      'hideIfChoicesEmpty': ?instance.hideIfChoicesEmpty,
+      'choicesVisibleIf': ?instance.choicesVisibleIf,
+      'choicesEnableIf': ?instance.choicesEnableIf,
+      'hasOther': ?instance.hasOther,
+      'showOtherItem': ?instance.showOtherItem,
+      'hasNone': ?instance.hasNone,
+      'showNoneItem': ?instance.showNoneItem,
+      'otherPlaceHolder': ?instance.otherPlaceHolder,
+      'otherPlaceholder': ?instance.otherPlaceholder,
+      'noneText': ?instance.noneText,
+      'otherText': ?instance.otherText,
+      'otherErrorText': ?instance.otherErrorText,
+      'storeOthersAsComment': ?instance.storeOthersAsComment,
+      'colCount': ?instance.colCount,
+      'type': ?instance.type,
+      'choices': ?instance.choices,
+    };
 
 ItemValue _$ItemValueFromJson(Map<String, dynamic> json) => ItemValue()
   ..value = json['value']
@@ -1875,21 +1761,12 @@ ItemValue _$ItemValueFromJson(Map<String, dynamic> json) => ItemValue()
   ..visibleIf = json['visibleIf'] as String?
   ..enableIf = json['enableIf'] as String?;
 
-Map<String, dynamic> _$ItemValueToJson(ItemValue instance) {
-  final val = <String, dynamic>{};
-
-  void writeNotNull(String key, dynamic value) {
-    if (value != null) {
-      val[key] = value;
-    }
-  }
-
-  writeNotNull('value', instance.value);
-  writeNotNull('text', instance.text);
-  writeNotNull('visibleIf', instance.visibleIf);
-  writeNotNull('enableIf', instance.enableIf);
-  return val;
-}
+Map<String, dynamic> _$ItemValueToJson(ItemValue instance) => <String, dynamic>{
+  'value': ?instance.value,
+  'text': ?instance.text,
+  'visibleIf': ?instance.visibleIf,
+  'enableIf': ?instance.enableIf,
+};
 
 ImageItemValue _$ImageItemValueFromJson(Map<String, dynamic> json) =>
     ImageItemValue()
@@ -1899,53 +1776,37 @@ ImageItemValue _$ImageItemValueFromJson(Map<String, dynamic> json) =>
       ..enableIf = json['enableIf'] as String?
       ..imageLink = json['imageLink'] as String?;
 
-Map<String, dynamic> _$ImageItemValueToJson(ImageItemValue instance) {
-  final val = <String, dynamic>{};
-
-  void writeNotNull(String key, dynamic value) {
-    if (value != null) {
-      val[key] = value;
-    }
-  }
-
-  writeNotNull('value', instance.value);
-  writeNotNull('text', instance.text);
-  writeNotNull('visibleIf', instance.visibleIf);
-  writeNotNull('enableIf', instance.enableIf);
-  writeNotNull('imageLink', instance.imageLink);
-  return val;
-}
+Map<String, dynamic> _$ImageItemValueToJson(ImageItemValue instance) =>
+    <String, dynamic>{
+      'value': ?instance.value,
+      'text': ?instance.text,
+      'visibleIf': ?instance.visibleIf,
+      'enableIf': ?instance.enableIf,
+      'imageLink': ?instance.imageLink,
+    };
 
 ButtonGroupItemValue _$ButtonGroupItemValueFromJson(
-        Map<String, dynamic> json) =>
-    ButtonGroupItemValue()
-      ..value = json['value']
-      ..text = json['text'] as String?
-      ..visibleIf = json['visibleIf'] as String?
-      ..enableIf = json['enableIf'] as String?
-      ..showCaption = json['showCaption'] as bool?
-      ..iconName = json['iconName'] as String?
-      ..iconSize = json['iconSize'] as int?;
+  Map<String, dynamic> json,
+) => ButtonGroupItemValue()
+  ..value = json['value']
+  ..text = json['text'] as String?
+  ..visibleIf = json['visibleIf'] as String?
+  ..enableIf = json['enableIf'] as String?
+  ..showCaption = json['showCaption'] as bool?
+  ..iconName = json['iconName'] as String?
+  ..iconSize = (json['iconSize'] as num?)?.toInt();
 
 Map<String, dynamic> _$ButtonGroupItemValueToJson(
-    ButtonGroupItemValue instance) {
-  final val = <String, dynamic>{};
-
-  void writeNotNull(String key, dynamic value) {
-    if (value != null) {
-      val[key] = value;
-    }
-  }
-
-  writeNotNull('value', instance.value);
-  writeNotNull('text', instance.text);
-  writeNotNull('visibleIf', instance.visibleIf);
-  writeNotNull('enableIf', instance.enableIf);
-  writeNotNull('showCaption', instance.showCaption);
-  writeNotNull('iconName', instance.iconName);
-  writeNotNull('iconSize', instance.iconSize);
-  return val;
-}
+  ButtonGroupItemValue instance,
+) => <String, dynamic>{
+  'value': ?instance.value,
+  'text': ?instance.text,
+  'visibleIf': ?instance.visibleIf,
+  'enableIf': ?instance.enableIf,
+  'showCaption': ?instance.showCaption,
+  'iconName': ?instance.iconName,
+  'iconSize': ?instance.iconSize,
+};
 
 Expression _$ExpressionFromJson(Map<String, dynamic> json) => Expression()
   ..state = json['state'] as String?
@@ -1957,7 +1818,7 @@ Expression _$ExpressionFromJson(Map<String, dynamic> json) => Expression()
   ..minWidth = json['minWidth'] as String?
   ..maxWidth = json['maxWidth'] as String?
   ..startWithNewLine = json['startWithNewLine'] as bool?
-  ..indent = json['indent'] as int?
+  ..indent = (json['indent'] as num?)?.toInt()
   ..page = json['page'] as String?
   ..title = json['title'] as String?
   ..titleLocation = json['titleLocation'] as String?
@@ -1978,8 +1839,8 @@ Expression _$ExpressionFromJson(Map<String, dynamic> json) => Expression()
   ..format = json['format'] as String?
   ..displayStyle = json['displayStyle'] as String?
   ..currency = json['currency'] as String?
-  ..maximumFractionDigits = json['maximumFractionDigits'] as int?
-  ..minimumFractionDigits = json['minimumFractionDigits'] as int?
+  ..maximumFractionDigits = (json['maximumFractionDigits'] as num?)?.toInt()
+  ..minimumFractionDigits = (json['minimumFractionDigits'] as num?)?.toInt()
   ..useGrouping = json['useGrouping'] as bool?
   ..enableIf = json['enableIf'] as String?
   ..isRequired = json['isRequired'] as bool?
@@ -1987,107 +1848,70 @@ Expression _$ExpressionFromJson(Map<String, dynamic> json) => Expression()
   ..correctAnswer = json['correctAnswer'] as String?
   ..requiredIf = json['requiredIf'] as String?;
 
-Map<String, dynamic> _$ExpressionToJson(Expression instance) {
-  final val = <String, dynamic>{};
-
-  void writeNotNull(String key, dynamic value) {
-    if (value != null) {
-      val[key] = value;
-    }
-  }
-
-  writeNotNull('state', instance.state);
-  writeNotNull('name', instance.name);
-  writeNotNull('visible', instance.visible);
-  writeNotNull('useDisplayValuesInTitle', instance.useDisplayValuesInTitle);
-  writeNotNull('visibleIf', instance.visibleIf);
-  writeNotNull('width', instance.width);
-  writeNotNull('minWidth', instance.minWidth);
-  writeNotNull('maxWidth', instance.maxWidth);
-  writeNotNull('startWithNewLine', instance.startWithNewLine);
-  writeNotNull('indent', instance.indent);
-  writeNotNull('page', instance.page);
-  writeNotNull('title', instance.title);
-  writeNotNull('titleLocation', instance.titleLocation);
-  writeNotNull('description', instance.description);
-  writeNotNull('descriptionLocation', instance.descriptionLocation);
-  writeNotNull('hideNumber', instance.hideNumber);
-  writeNotNull('valueName', instance.valueName);
-  writeNotNull('defaultValue', instance.defaultValue);
-  writeNotNull('defaultValueExpression', instance.defaultValueExpression);
-  writeNotNull('readOnly', instance.readOnly);
-  writeNotNull('validators', instance.validators);
-  writeNotNull('bindings', instance.bindings);
-  writeNotNull('renderAs', instance.renderAs);
-  writeNotNull('type', instance.type);
-  writeNotNull('expression', instance.expression);
-  writeNotNull('format', instance.format);
-  writeNotNull('displayStyle', instance.displayStyle);
-  writeNotNull('currency', instance.currency);
-  writeNotNull('maximumFractionDigits', instance.maximumFractionDigits);
-  writeNotNull('minimumFractionDigits', instance.minimumFractionDigits);
-  writeNotNull('useGrouping', instance.useGrouping);
-  writeNotNull('enableIf', instance.enableIf);
-  writeNotNull('isRequired', instance.isRequired);
-  writeNotNull('requiredErrorText', instance.requiredErrorText);
-  writeNotNull('correctAnswer', instance.correctAnswer);
-  writeNotNull('requiredIf', instance.requiredIf);
-  return val;
-}
+Map<String, dynamic> _$ExpressionToJson(Expression instance) =>
+    <String, dynamic>{
+      'state': ?instance.state,
+      'name': ?instance.name,
+      'visible': ?instance.visible,
+      'useDisplayValuesInTitle': ?instance.useDisplayValuesInTitle,
+      'visibleIf': ?instance.visibleIf,
+      'width': ?instance.width,
+      'minWidth': ?instance.minWidth,
+      'maxWidth': ?instance.maxWidth,
+      'startWithNewLine': ?instance.startWithNewLine,
+      'indent': ?instance.indent,
+      'page': ?instance.page,
+      'title': ?instance.title,
+      'titleLocation': ?instance.titleLocation,
+      'description': ?instance.description,
+      'descriptionLocation': ?instance.descriptionLocation,
+      'hideNumber': ?instance.hideNumber,
+      'valueName': ?instance.valueName,
+      'defaultValue': ?instance.defaultValue,
+      'defaultValueExpression': ?instance.defaultValueExpression,
+      'readOnly': ?instance.readOnly,
+      'validators': ?instance.validators,
+      'bindings': ?instance.bindings,
+      'renderAs': ?instance.renderAs,
+      'type': ?instance.type,
+      'expression': ?instance.expression,
+      'format': ?instance.format,
+      'displayStyle': ?instance.displayStyle,
+      'currency': ?instance.currency,
+      'maximumFractionDigits': ?instance.maximumFractionDigits,
+      'minimumFractionDigits': ?instance.minimumFractionDigits,
+      'useGrouping': ?instance.useGrouping,
+      'enableIf': ?instance.enableIf,
+      'isRequired': ?instance.isRequired,
+      'requiredErrorText': ?instance.requiredErrorText,
+      'correctAnswer': ?instance.correctAnswer,
+      'requiredIf': ?instance.requiredIf,
+    };
 
 ExpressionItem _$ExpressionItemFromJson(Map<String, dynamic> json) =>
     ExpressionItem()..expression = json['expression'] as String?;
 
-Map<String, dynamic> _$ExpressionItemToJson(ExpressionItem instance) {
-  final val = <String, dynamic>{};
-
-  void writeNotNull(String key, dynamic value) {
-    if (value != null) {
-      val[key] = value;
-    }
-  }
-
-  writeNotNull('expression', instance.expression);
-  return val;
-}
+Map<String, dynamic> _$ExpressionItemToJson(ExpressionItem instance) =>
+    <String, dynamic>{'expression': ?instance.expression};
 
 UrlConditionItem _$UrlConditionItemFromJson(Map<String, dynamic> json) =>
     UrlConditionItem()
       ..expression = json['expression'] as String?
       ..url = json['url'] as String?;
 
-Map<String, dynamic> _$UrlConditionItemToJson(UrlConditionItem instance) {
-  final val = <String, dynamic>{};
-
-  void writeNotNull(String key, dynamic value) {
-    if (value != null) {
-      val[key] = value;
-    }
-  }
-
-  writeNotNull('expression', instance.expression);
-  writeNotNull('url', instance.url);
-  return val;
-}
+Map<String, dynamic> _$UrlConditionItemToJson(UrlConditionItem instance) =>
+    <String, dynamic>{'expression': ?instance.expression, 'url': ?instance.url};
 
 HtmlConditionItem _$HtmlConditionItemFromJson(Map<String, dynamic> json) =>
     HtmlConditionItem()
       ..expression = json['expression'] as String?
       ..html = json['html'] as String?;
 
-Map<String, dynamic> _$HtmlConditionItemToJson(HtmlConditionItem instance) {
-  final val = <String, dynamic>{};
-
-  void writeNotNull(String key, dynamic value) {
-    if (value != null) {
-      val[key] = value;
-    }
-  }
-
-  writeNotNull('expression', instance.expression);
-  writeNotNull('html', instance.html);
-  return val;
-}
+Map<String, dynamic> _$HtmlConditionItemToJson(HtmlConditionItem instance) =>
+    <String, dynamic>{
+      'expression': ?instance.expression,
+      'html': ?instance.html,
+    };
 
 MatrixDropdown _$MatrixDropdownFromJson(Map<String, dynamic> json) =>
     MatrixDropdown()
@@ -2100,7 +1924,7 @@ MatrixDropdown _$MatrixDropdownFromJson(Map<String, dynamic> json) =>
       ..minWidth = json['minWidth'] as String?
       ..maxWidth = json['maxWidth'] as String?
       ..startWithNewLine = json['startWithNewLine'] as bool?
-      ..indent = json['indent'] as int?
+      ..indent = (json['indent'] as num?)?.toInt()
       ..page = json['page'] as String?
       ..title = json['title'] as String?
       ..titleLocation = json['titleLocation'] as String?
@@ -2135,7 +1959,7 @@ MatrixDropdown _$MatrixDropdownFromJson(Map<String, dynamic> json) =>
       ..choices = ItemValue.fromListJson(json['choices'] as List?)
       ..keyDuplicationError = json['keyDuplicationError'] as String?
       ..cellType = json['cellType'] as String?
-      ..columnColCount = json['columnColCount'] as int?
+      ..columnColCount = (json['columnColCount'] as num?)?.toInt()
       ..columnMinWidth = json['columnMinWidth'] as String?
       ..type = json['type'] as String?
       ..rows = ItemValue.fromListJson(json['rows'] as List?)
@@ -2143,64 +1967,56 @@ MatrixDropdown _$MatrixDropdownFromJson(Map<String, dynamic> json) =>
       ..rowTitleWidth = json['rowTitleWidth'] as String?
       ..totalText = json['totalText'] as String?;
 
-Map<String, dynamic> _$MatrixDropdownToJson(MatrixDropdown instance) {
-  final val = <String, dynamic>{};
-
-  void writeNotNull(String key, dynamic value) {
-    if (value != null) {
-      val[key] = value;
-    }
-  }
-
-  writeNotNull('state', instance.state);
-  writeNotNull('name', instance.name);
-  writeNotNull('visible', instance.visible);
-  writeNotNull('useDisplayValuesInTitle', instance.useDisplayValuesInTitle);
-  writeNotNull('visibleIf', instance.visibleIf);
-  writeNotNull('width', instance.width);
-  writeNotNull('minWidth', instance.minWidth);
-  writeNotNull('maxWidth', instance.maxWidth);
-  writeNotNull('startWithNewLine', instance.startWithNewLine);
-  writeNotNull('indent', instance.indent);
-  writeNotNull('page', instance.page);
-  writeNotNull('title', instance.title);
-  writeNotNull('titleLocation', instance.titleLocation);
-  writeNotNull('description', instance.description);
-  writeNotNull('descriptionLocation', instance.descriptionLocation);
-  writeNotNull('hideNumber', instance.hideNumber);
-  writeNotNull('valueName', instance.valueName);
-  writeNotNull('enableIf', instance.enableIf);
-  writeNotNull('defaultValue', instance.defaultValue);
-  writeNotNull('defaultValueExpression', instance.defaultValueExpression);
-  writeNotNull('correctAnswer', instance.correctAnswer);
-  writeNotNull('isRequired', instance.isRequired);
-  writeNotNull('requiredIf', instance.requiredIf);
-  writeNotNull('requiredErrorText', instance.requiredErrorText);
-  writeNotNull('readOnly', instance.readOnly);
-  writeNotNull('validators', instance.validators);
-  writeNotNull('bindings', instance.bindings);
-  writeNotNull('renderAs', instance.renderAs);
-  writeNotNull('columnsVisibleIf', instance.columnsVisibleIf);
-  writeNotNull('showHeader', instance.showHeader);
-  writeNotNull('allowRowsDragAndDrop', instance.allowRowsDragAndDrop);
-  writeNotNull('columns', instance.columns);
-  writeNotNull('columnLayout', instance.columnLayout);
-  writeNotNull('detailElements', instance.detailElements);
-  writeNotNull('detailPanelMode', instance.detailPanelMode);
-  writeNotNull('horizontalScroll', instance.horizontalScroll);
-  writeNotNull('optionsCaption', instance.optionsCaption);
-  writeNotNull('choices', instance.choices);
-  writeNotNull('keyDuplicationError', instance.keyDuplicationError);
-  writeNotNull('cellType', instance.cellType);
-  writeNotNull('columnColCount', instance.columnColCount);
-  writeNotNull('columnMinWidth', instance.columnMinWidth);
-  writeNotNull('type', instance.type);
-  writeNotNull('rows', instance.rows);
-  writeNotNull('rowsVisibleIf', instance.rowsVisibleIf);
-  writeNotNull('rowTitleWidth', instance.rowTitleWidth);
-  writeNotNull('totalText', instance.totalText);
-  return val;
-}
+Map<String, dynamic> _$MatrixDropdownToJson(MatrixDropdown instance) =>
+    <String, dynamic>{
+      'state': ?instance.state,
+      'name': ?instance.name,
+      'visible': ?instance.visible,
+      'useDisplayValuesInTitle': ?instance.useDisplayValuesInTitle,
+      'visibleIf': ?instance.visibleIf,
+      'width': ?instance.width,
+      'minWidth': ?instance.minWidth,
+      'maxWidth': ?instance.maxWidth,
+      'startWithNewLine': ?instance.startWithNewLine,
+      'indent': ?instance.indent,
+      'page': ?instance.page,
+      'title': ?instance.title,
+      'titleLocation': ?instance.titleLocation,
+      'description': ?instance.description,
+      'descriptionLocation': ?instance.descriptionLocation,
+      'hideNumber': ?instance.hideNumber,
+      'valueName': ?instance.valueName,
+      'enableIf': ?instance.enableIf,
+      'defaultValue': ?instance.defaultValue,
+      'defaultValueExpression': ?instance.defaultValueExpression,
+      'correctAnswer': ?instance.correctAnswer,
+      'isRequired': ?instance.isRequired,
+      'requiredIf': ?instance.requiredIf,
+      'requiredErrorText': ?instance.requiredErrorText,
+      'readOnly': ?instance.readOnly,
+      'validators': ?instance.validators,
+      'bindings': ?instance.bindings,
+      'renderAs': ?instance.renderAs,
+      'columnsVisibleIf': ?instance.columnsVisibleIf,
+      'showHeader': ?instance.showHeader,
+      'allowRowsDragAndDrop': ?instance.allowRowsDragAndDrop,
+      'columns': ?instance.columns,
+      'columnLayout': ?instance.columnLayout,
+      'detailElements': ?instance.detailElements,
+      'detailPanelMode': ?instance.detailPanelMode,
+      'horizontalScroll': ?instance.horizontalScroll,
+      'optionsCaption': ?instance.optionsCaption,
+      'choices': ?instance.choices,
+      'keyDuplicationError': ?instance.keyDuplicationError,
+      'cellType': ?instance.cellType,
+      'columnColCount': ?instance.columnColCount,
+      'columnMinWidth': ?instance.columnMinWidth,
+      'type': ?instance.type,
+      'rows': ?instance.rows,
+      'rowsVisibleIf': ?instance.rowsVisibleIf,
+      'rowTitleWidth': ?instance.rowTitleWidth,
+      'totalText': ?instance.totalText,
+    };
 
 MatrixDynamic _$MatrixDynamicFromJson(Map<String, dynamic> json) =>
     MatrixDynamic()
@@ -2213,7 +2029,7 @@ MatrixDynamic _$MatrixDynamicFromJson(Map<String, dynamic> json) =>
       ..minWidth = json['minWidth'] as String?
       ..maxWidth = json['maxWidth'] as String?
       ..startWithNewLine = json['startWithNewLine'] as bool?
-      ..indent = json['indent'] as int?
+      ..indent = (json['indent'] as num?)?.toInt()
       ..page = json['page'] as String?
       ..title = json['title'] as String?
       ..titleLocation = json['titleLocation'] as String?
@@ -2248,15 +2064,15 @@ MatrixDynamic _$MatrixDynamicFromJson(Map<String, dynamic> json) =>
       ..choices = ItemValue.fromListJson(json['choices'] as List?)
       ..keyDuplicationError = json['keyDuplicationError'] as String?
       ..cellType = json['cellType'] as String?
-      ..columnColCount = json['columnColCount'] as int?
+      ..columnColCount = (json['columnColCount'] as num?)?.toInt()
       ..columnMinWidth = json['columnMinWidth'] as String?
       ..type = json['type'] as String?
       ..rowsVisibleIf = json['rowsVisibleIf'] as String?
       ..allowAddRows = json['allowAddRows'] as bool?
       ..allowRemoveRows = json['allowRemoveRows'] as bool?
-      ..rowCount = json['rowCount'] as int?
-      ..minRowCount = json['minRowCount'] as int?
-      ..maxRowCount = json['maxRowCount'] as int?
+      ..rowCount = (json['rowCount'] as num?)?.toInt()
+      ..minRowCount = (json['minRowCount'] as num?)?.toInt()
+      ..maxRowCount = (json['maxRowCount'] as num?)?.toInt()
       ..keyName = json['keyName'] as String?
       ..defaultRowValue = json['defaultRowValue']
       ..defaultValueFromLastRow = json['defaultValueFromLastRow'] as bool?
@@ -2268,76 +2084,68 @@ MatrixDynamic _$MatrixDynamicFromJson(Map<String, dynamic> json) =>
       ..hideColumnsIfEmpty = json['hideColumnsIfEmpty'] as bool?
       ..emptyRowsText = json['emptyRowsText'] as String?;
 
-Map<String, dynamic> _$MatrixDynamicToJson(MatrixDynamic instance) {
-  final val = <String, dynamic>{};
-
-  void writeNotNull(String key, dynamic value) {
-    if (value != null) {
-      val[key] = value;
-    }
-  }
-
-  writeNotNull('state', instance.state);
-  writeNotNull('name', instance.name);
-  writeNotNull('visible', instance.visible);
-  writeNotNull('useDisplayValuesInTitle', instance.useDisplayValuesInTitle);
-  writeNotNull('visibleIf', instance.visibleIf);
-  writeNotNull('width', instance.width);
-  writeNotNull('minWidth', instance.minWidth);
-  writeNotNull('maxWidth', instance.maxWidth);
-  writeNotNull('startWithNewLine', instance.startWithNewLine);
-  writeNotNull('indent', instance.indent);
-  writeNotNull('page', instance.page);
-  writeNotNull('title', instance.title);
-  writeNotNull('titleLocation', instance.titleLocation);
-  writeNotNull('description', instance.description);
-  writeNotNull('descriptionLocation', instance.descriptionLocation);
-  writeNotNull('hideNumber', instance.hideNumber);
-  writeNotNull('valueName', instance.valueName);
-  writeNotNull('enableIf', instance.enableIf);
-  writeNotNull('defaultValue', instance.defaultValue);
-  writeNotNull('defaultValueExpression', instance.defaultValueExpression);
-  writeNotNull('correctAnswer', instance.correctAnswer);
-  writeNotNull('isRequired', instance.isRequired);
-  writeNotNull('requiredIf', instance.requiredIf);
-  writeNotNull('requiredErrorText', instance.requiredErrorText);
-  writeNotNull('readOnly', instance.readOnly);
-  writeNotNull('validators', instance.validators);
-  writeNotNull('bindings', instance.bindings);
-  writeNotNull('renderAs', instance.renderAs);
-  writeNotNull('columnsVisibleIf', instance.columnsVisibleIf);
-  writeNotNull('showHeader', instance.showHeader);
-  writeNotNull('allowRowsDragAndDrop', instance.allowRowsDragAndDrop);
-  writeNotNull('columns', instance.columns);
-  writeNotNull('columnLayout', instance.columnLayout);
-  writeNotNull('detailElements', instance.detailElements);
-  writeNotNull('detailPanelMode', instance.detailPanelMode);
-  writeNotNull('horizontalScroll', instance.horizontalScroll);
-  writeNotNull('optionsCaption', instance.optionsCaption);
-  writeNotNull('choices', instance.choices);
-  writeNotNull('keyDuplicationError', instance.keyDuplicationError);
-  writeNotNull('cellType', instance.cellType);
-  writeNotNull('columnColCount', instance.columnColCount);
-  writeNotNull('columnMinWidth', instance.columnMinWidth);
-  writeNotNull('type', instance.type);
-  writeNotNull('rowsVisibleIf', instance.rowsVisibleIf);
-  writeNotNull('allowAddRows', instance.allowAddRows);
-  writeNotNull('allowRemoveRows', instance.allowRemoveRows);
-  writeNotNull('rowCount', instance.rowCount);
-  writeNotNull('minRowCount', instance.minRowCount);
-  writeNotNull('maxRowCount', instance.maxRowCount);
-  writeNotNull('keyName', instance.keyName);
-  writeNotNull('defaultRowValue', instance.defaultRowValue);
-  writeNotNull('defaultValueFromLastRow', instance.defaultValueFromLastRow);
-  writeNotNull('confirmDelete', instance.confirmDelete);
-  writeNotNull('confirmDeleteText', instance.confirmDeleteText);
-  writeNotNull('addRowLocation', instance.addRowLocation);
-  writeNotNull('addRowText', instance.addRowText);
-  writeNotNull('removeRowText', instance.removeRowText);
-  writeNotNull('hideColumnsIfEmpty', instance.hideColumnsIfEmpty);
-  writeNotNull('emptyRowsText', instance.emptyRowsText);
-  return val;
-}
+Map<String, dynamic> _$MatrixDynamicToJson(MatrixDynamic instance) =>
+    <String, dynamic>{
+      'state': ?instance.state,
+      'name': ?instance.name,
+      'visible': ?instance.visible,
+      'useDisplayValuesInTitle': ?instance.useDisplayValuesInTitle,
+      'visibleIf': ?instance.visibleIf,
+      'width': ?instance.width,
+      'minWidth': ?instance.minWidth,
+      'maxWidth': ?instance.maxWidth,
+      'startWithNewLine': ?instance.startWithNewLine,
+      'indent': ?instance.indent,
+      'page': ?instance.page,
+      'title': ?instance.title,
+      'titleLocation': ?instance.titleLocation,
+      'description': ?instance.description,
+      'descriptionLocation': ?instance.descriptionLocation,
+      'hideNumber': ?instance.hideNumber,
+      'valueName': ?instance.valueName,
+      'enableIf': ?instance.enableIf,
+      'defaultValue': ?instance.defaultValue,
+      'defaultValueExpression': ?instance.defaultValueExpression,
+      'correctAnswer': ?instance.correctAnswer,
+      'isRequired': ?instance.isRequired,
+      'requiredIf': ?instance.requiredIf,
+      'requiredErrorText': ?instance.requiredErrorText,
+      'readOnly': ?instance.readOnly,
+      'validators': ?instance.validators,
+      'bindings': ?instance.bindings,
+      'renderAs': ?instance.renderAs,
+      'columnsVisibleIf': ?instance.columnsVisibleIf,
+      'showHeader': ?instance.showHeader,
+      'allowRowsDragAndDrop': ?instance.allowRowsDragAndDrop,
+      'columns': ?instance.columns,
+      'columnLayout': ?instance.columnLayout,
+      'detailElements': ?instance.detailElements,
+      'detailPanelMode': ?instance.detailPanelMode,
+      'horizontalScroll': ?instance.horizontalScroll,
+      'optionsCaption': ?instance.optionsCaption,
+      'choices': ?instance.choices,
+      'keyDuplicationError': ?instance.keyDuplicationError,
+      'cellType': ?instance.cellType,
+      'columnColCount': ?instance.columnColCount,
+      'columnMinWidth': ?instance.columnMinWidth,
+      'type': ?instance.type,
+      'rowsVisibleIf': ?instance.rowsVisibleIf,
+      'allowAddRows': ?instance.allowAddRows,
+      'allowRemoveRows': ?instance.allowRemoveRows,
+      'rowCount': ?instance.rowCount,
+      'minRowCount': ?instance.minRowCount,
+      'maxRowCount': ?instance.maxRowCount,
+      'keyName': ?instance.keyName,
+      'defaultRowValue': ?instance.defaultRowValue,
+      'defaultValueFromLastRow': ?instance.defaultValueFromLastRow,
+      'confirmDelete': ?instance.confirmDelete,
+      'confirmDeleteText': ?instance.confirmDeleteText,
+      'addRowLocation': ?instance.addRowLocation,
+      'addRowText': ?instance.addRowText,
+      'removeRowText': ?instance.removeRowText,
+      'hideColumnsIfEmpty': ?instance.hideColumnsIfEmpty,
+      'emptyRowsText': ?instance.emptyRowsText,
+    };
 
 Matrix _$MatrixFromJson(Map<String, dynamic> json) => Matrix()
   ..state = json['state'] as String?
@@ -2349,7 +2157,7 @@ Matrix _$MatrixFromJson(Map<String, dynamic> json) => Matrix()
   ..minWidth = json['minWidth'] as String?
   ..maxWidth = json['maxWidth'] as String?
   ..startWithNewLine = json['startWithNewLine'] as bool?
-  ..indent = json['indent'] as int?
+  ..indent = (json['indent'] as num?)?.toInt()
   ..page = json['page'] as String?
   ..title = json['title'] as String?
   ..titleLocation = json['titleLocation'] as String?
@@ -2384,123 +2192,104 @@ Matrix _$MatrixFromJson(Map<String, dynamic> json) => Matrix()
   ..isAllRowRequired = json['isAllRowRequired'] as bool?
   ..hideIfRowsEmpty = json['hideIfRowsEmpty'] as bool?;
 
-Map<String, dynamic> _$MatrixToJson(Matrix instance) {
-  final val = <String, dynamic>{};
-
-  void writeNotNull(String key, dynamic value) {
-    if (value != null) {
-      val[key] = value;
-    }
-  }
-
-  writeNotNull('state', instance.state);
-  writeNotNull('name', instance.name);
-  writeNotNull('visible', instance.visible);
-  writeNotNull('useDisplayValuesInTitle', instance.useDisplayValuesInTitle);
-  writeNotNull('visibleIf', instance.visibleIf);
-  writeNotNull('width', instance.width);
-  writeNotNull('minWidth', instance.minWidth);
-  writeNotNull('maxWidth', instance.maxWidth);
-  writeNotNull('startWithNewLine', instance.startWithNewLine);
-  writeNotNull('indent', instance.indent);
-  writeNotNull('page', instance.page);
-  writeNotNull('title', instance.title);
-  writeNotNull('titleLocation', instance.titleLocation);
-  writeNotNull('description', instance.description);
-  writeNotNull('descriptionLocation', instance.descriptionLocation);
-  writeNotNull('hideNumber', instance.hideNumber);
-  writeNotNull('valueName', instance.valueName);
-  writeNotNull('enableIf', instance.enableIf);
-  writeNotNull('defaultValue', instance.defaultValue);
-  writeNotNull('defaultValueExpression', instance.defaultValueExpression);
-  writeNotNull('correctAnswer', instance.correctAnswer);
-  writeNotNull('isRequired', instance.isRequired);
-  writeNotNull('requiredIf', instance.requiredIf);
-  writeNotNull('requiredErrorText', instance.requiredErrorText);
-  writeNotNull('readOnly', instance.readOnly);
-  writeNotNull('validators', instance.validators);
-  writeNotNull('bindings', instance.bindings);
-  writeNotNull('renderAs', instance.renderAs);
-  writeNotNull('columnsVisibleIf', instance.columnsVisibleIf);
-  writeNotNull('rowsVisibleIf', instance.rowsVisibleIf);
-  writeNotNull('showHeader', instance.showHeader);
-  writeNotNull('allowRowsDragAndDrop', instance.allowRowsDragAndDrop);
-  writeNotNull('type', instance.type);
-  writeNotNull('columns', instance.columns);
-  writeNotNull('rows', instance.rows);
-  writeNotNull('cells', instance.cells);
-  writeNotNull('rowsOrder', instance.rowsOrder);
-  writeNotNull('isAllRowRequired', instance.isAllRowRequired);
-  writeNotNull('hideIfRowsEmpty', instance.hideIfRowsEmpty);
-  return val;
-}
+Map<String, dynamic> _$MatrixToJson(Matrix instance) => <String, dynamic>{
+  'state': ?instance.state,
+  'name': ?instance.name,
+  'visible': ?instance.visible,
+  'useDisplayValuesInTitle': ?instance.useDisplayValuesInTitle,
+  'visibleIf': ?instance.visibleIf,
+  'width': ?instance.width,
+  'minWidth': ?instance.minWidth,
+  'maxWidth': ?instance.maxWidth,
+  'startWithNewLine': ?instance.startWithNewLine,
+  'indent': ?instance.indent,
+  'page': ?instance.page,
+  'title': ?instance.title,
+  'titleLocation': ?instance.titleLocation,
+  'description': ?instance.description,
+  'descriptionLocation': ?instance.descriptionLocation,
+  'hideNumber': ?instance.hideNumber,
+  'valueName': ?instance.valueName,
+  'enableIf': ?instance.enableIf,
+  'defaultValue': ?instance.defaultValue,
+  'defaultValueExpression': ?instance.defaultValueExpression,
+  'correctAnswer': ?instance.correctAnswer,
+  'isRequired': ?instance.isRequired,
+  'requiredIf': ?instance.requiredIf,
+  'requiredErrorText': ?instance.requiredErrorText,
+  'readOnly': ?instance.readOnly,
+  'validators': ?instance.validators,
+  'bindings': ?instance.bindings,
+  'renderAs': ?instance.renderAs,
+  'columnsVisibleIf': ?instance.columnsVisibleIf,
+  'rowsVisibleIf': ?instance.rowsVisibleIf,
+  'showHeader': ?instance.showHeader,
+  'allowRowsDragAndDrop': ?instance.allowRowsDragAndDrop,
+  'type': ?instance.type,
+  'columns': ?instance.columns,
+  'rows': ?instance.rows,
+  'cells': ?instance.cells,
+  'rowsOrder': ?instance.rowsOrder,
+  'isAllRowRequired': ?instance.isAllRowRequired,
+  'hideIfRowsEmpty': ?instance.hideIfRowsEmpty,
+};
 
 MatrixDropdownColumn _$MatrixDropdownColumnFromJson(
-        Map<String, dynamic> json) =>
-    MatrixDropdownColumn()
-      ..name = json['name'] as String?
-      ..title = json['title'] as String?
-      ..cellType = json['cellType'] as String?
-      ..colCount = json['colCount'] as String?
-      ..isRequired = json['isRequired'] as bool?
-      ..isUnique = json['isUnique'] as bool?
-      ..requiredErrorText = json['requiredErrorText'] as String?
-      ..readOnly = json['readOnly'] as bool?
-      ..minWidth = json['minWidth'] as String?
-      ..width = json['width'] as String?
-      ..visibleIf = json['visibleIf'] as String?
-      ..enableIf = json['enableIf'] as String?
-      ..requiredIf = json['requiredIf'] as String?
-      ..showInMultipleColumns = json['showInMultipleColumns'] as bool?
-      ..validators = (json['validators'] as List<dynamic>?)
-          ?.map((e) => SurveyValidator.fromJson(e as Map<String, dynamic>))
-          .toList()
-      ..totalType = json['totalType'] as String?
-      ..totalExpression = json['totalExpression'] as String?
-      ..totalFormat = json['totalFormat'] as String?
-      ..totalDisplayStyle = json['totalDisplayStyle'] as String?
-      ..totalCurrency = json['totalCurrency'] as String?
-      ..totalMaximumFractionDigits = json['totalMaximumFractionDigits'] as num?
-      ..totalMinimumFractionDigits = json['totalMinimumFractionDigits'] as num?
-      ..renderAs = json['renderAs'] as String?;
+  Map<String, dynamic> json,
+) => MatrixDropdownColumn()
+  ..name = json['name'] as String?
+  ..title = json['title'] as String?
+  ..cellType = json['cellType'] as String?
+  ..colCount = json['colCount'] as String?
+  ..isRequired = json['isRequired'] as bool?
+  ..isUnique = json['isUnique'] as bool?
+  ..requiredErrorText = json['requiredErrorText'] as String?
+  ..readOnly = json['readOnly'] as bool?
+  ..minWidth = json['minWidth'] as String?
+  ..width = json['width'] as String?
+  ..visibleIf = json['visibleIf'] as String?
+  ..enableIf = json['enableIf'] as String?
+  ..requiredIf = json['requiredIf'] as String?
+  ..showInMultipleColumns = json['showInMultipleColumns'] as bool?
+  ..validators = (json['validators'] as List<dynamic>?)
+      ?.map((e) => SurveyValidator.fromJson(e as Map<String, dynamic>))
+      .toList()
+  ..totalType = json['totalType'] as String?
+  ..totalExpression = json['totalExpression'] as String?
+  ..totalFormat = json['totalFormat'] as String?
+  ..totalDisplayStyle = json['totalDisplayStyle'] as String?
+  ..totalCurrency = json['totalCurrency'] as String?
+  ..totalMaximumFractionDigits = json['totalMaximumFractionDigits'] as num?
+  ..totalMinimumFractionDigits = json['totalMinimumFractionDigits'] as num?
+  ..renderAs = json['renderAs'] as String?;
 
 Map<String, dynamic> _$MatrixDropdownColumnToJson(
-    MatrixDropdownColumn instance) {
-  final val = <String, dynamic>{};
-
-  void writeNotNull(String key, dynamic value) {
-    if (value != null) {
-      val[key] = value;
-    }
-  }
-
-  writeNotNull('name', instance.name);
-  writeNotNull('title', instance.title);
-  writeNotNull('cellType', instance.cellType);
-  writeNotNull('colCount', instance.colCount);
-  writeNotNull('isRequired', instance.isRequired);
-  writeNotNull('isUnique', instance.isUnique);
-  writeNotNull('requiredErrorText', instance.requiredErrorText);
-  writeNotNull('readOnly', instance.readOnly);
-  writeNotNull('minWidth', instance.minWidth);
-  writeNotNull('width', instance.width);
-  writeNotNull('visibleIf', instance.visibleIf);
-  writeNotNull('enableIf', instance.enableIf);
-  writeNotNull('requiredIf', instance.requiredIf);
-  writeNotNull('showInMultipleColumns', instance.showInMultipleColumns);
-  writeNotNull('validators', instance.validators);
-  writeNotNull('totalType', instance.totalType);
-  writeNotNull('totalExpression', instance.totalExpression);
-  writeNotNull('totalFormat', instance.totalFormat);
-  writeNotNull('totalDisplayStyle', instance.totalDisplayStyle);
-  writeNotNull('totalCurrency', instance.totalCurrency);
-  writeNotNull(
-      'totalMaximumFractionDigits', instance.totalMaximumFractionDigits);
-  writeNotNull(
-      'totalMinimumFractionDigits', instance.totalMinimumFractionDigits);
-  writeNotNull('renderAs', instance.renderAs);
-  return val;
-}
+  MatrixDropdownColumn instance,
+) => <String, dynamic>{
+  'name': ?instance.name,
+  'title': ?instance.title,
+  'cellType': ?instance.cellType,
+  'colCount': ?instance.colCount,
+  'isRequired': ?instance.isRequired,
+  'isUnique': ?instance.isUnique,
+  'requiredErrorText': ?instance.requiredErrorText,
+  'readOnly': ?instance.readOnly,
+  'minWidth': ?instance.minWidth,
+  'width': ?instance.width,
+  'visibleIf': ?instance.visibleIf,
+  'enableIf': ?instance.enableIf,
+  'requiredIf': ?instance.requiredIf,
+  'showInMultipleColumns': ?instance.showInMultipleColumns,
+  'validators': ?instance.validators,
+  'totalType': ?instance.totalType,
+  'totalExpression': ?instance.totalExpression,
+  'totalFormat': ?instance.totalFormat,
+  'totalDisplayStyle': ?instance.totalDisplayStyle,
+  'totalCurrency': ?instance.totalCurrency,
+  'totalMaximumFractionDigits': ?instance.totalMaximumFractionDigits,
+  'totalMinimumFractionDigits': ?instance.totalMinimumFractionDigits,
+  'renderAs': ?instance.renderAs,
+};
 
 Page _$PageFromJson(Map<String, dynamic> json) => Page()
   ..name = json['name'] as String?
@@ -2517,37 +2306,27 @@ Page _$PageFromJson(Map<String, dynamic> json) => Page()
   ..description = json['description'] as String?
   ..navigationButtonsVisibility = json['navigationButtonsVisibility'] as String?
   ..questionsOrder = json['questionsOrder'] as String?
-  ..maxTimeToFinish = json['maxTimeToFinish'] as int?
+  ..maxTimeToFinish = (json['maxTimeToFinish'] as num?)?.toInt()
   ..navigationTitle = json['navigationTitle'] as String?
   ..navigationDescription = json['navigationDescription'] as String?;
 
-Map<String, dynamic> _$PageToJson(Page instance) {
-  final val = <String, dynamic>{};
-
-  void writeNotNull(String key, dynamic value) {
-    if (value != null) {
-      val[key] = value;
-    }
-  }
-
-  writeNotNull('name', instance.name);
-  writeNotNull('elements', instance.elements);
-  writeNotNull('visible', instance.visible);
-  writeNotNull('visibleIf', instance.visibleIf);
-  writeNotNull('enableIf', instance.enableIf);
-  writeNotNull('requiredIf', instance.requiredIf);
-  writeNotNull('readOnly', instance.readOnly);
-  writeNotNull('questionTitleLocation', instance.questionTitleLocation);
-  writeNotNull('title', instance.title);
-  writeNotNull('description', instance.description);
-  writeNotNull(
-      'navigationButtonsVisibility', instance.navigationButtonsVisibility);
-  writeNotNull('questionsOrder', instance.questionsOrder);
-  writeNotNull('maxTimeToFinish', instance.maxTimeToFinish);
-  writeNotNull('navigationTitle', instance.navigationTitle);
-  writeNotNull('navigationDescription', instance.navigationDescription);
-  return val;
-}
+Map<String, dynamic> _$PageToJson(Page instance) => <String, dynamic>{
+  'name': ?instance.name,
+  'elements': ?instance.elements,
+  'visible': ?instance.visible,
+  'visibleIf': ?instance.visibleIf,
+  'enableIf': ?instance.enableIf,
+  'requiredIf': ?instance.requiredIf,
+  'readOnly': ?instance.readOnly,
+  'questionTitleLocation': ?instance.questionTitleLocation,
+  'title': ?instance.title,
+  'description': ?instance.description,
+  'navigationButtonsVisibility': ?instance.navigationButtonsVisibility,
+  'questionsOrder': ?instance.questionsOrder,
+  'maxTimeToFinish': ?instance.maxTimeToFinish,
+  'navigationTitle': ?instance.navigationTitle,
+  'navigationDescription': ?instance.navigationDescription,
+};
 
 Panel _$PanelFromJson(Map<String, dynamic> json) => Panel()
   ..name = json['name'] as String?
@@ -2567,45 +2346,36 @@ Panel _$PanelFromJson(Map<String, dynamic> json) => Panel()
   ..requiredErrorText = json['requiredErrorText'] as String?
   ..startWithNewLine = json['startWithNewLine'] as bool?
   ..width = json['width'] as String?
-  ..innerIndent = json['innerIndent'] as int?
-  ..indent = json['indent'] as int?
+  ..innerIndent = (json['innerIndent'] as num?)?.toInt()
+  ..indent = (json['indent'] as num?)?.toInt()
   ..page = json['page'] as String?
   ..showNumber = json['showNumber'] as bool?
   ..showQuestionNumbers = json['showQuestionNumbers'] as String?
   ..questionStartIndex = json['questionStartIndex'] as String?;
 
-Map<String, dynamic> _$PanelToJson(Panel instance) {
-  final val = <String, dynamic>{};
-
-  void writeNotNull(String key, dynamic value) {
-    if (value != null) {
-      val[key] = value;
-    }
-  }
-
-  writeNotNull('name', instance.name);
-  writeNotNull('elements', instance.elements);
-  writeNotNull('visible', instance.visible);
-  writeNotNull('visibleIf', instance.visibleIf);
-  writeNotNull('enableIf', instance.enableIf);
-  writeNotNull('requiredIf', instance.requiredIf);
-  writeNotNull('readOnly', instance.readOnly);
-  writeNotNull('questionTitleLocation', instance.questionTitleLocation);
-  writeNotNull('title', instance.title);
-  writeNotNull('description', instance.description);
-  writeNotNull('state', instance.state);
-  writeNotNull('isRequired', instance.isRequired);
-  writeNotNull('requiredErrorText', instance.requiredErrorText);
-  writeNotNull('startWithNewLine', instance.startWithNewLine);
-  writeNotNull('width', instance.width);
-  writeNotNull('innerIndent', instance.innerIndent);
-  writeNotNull('indent', instance.indent);
-  writeNotNull('page', instance.page);
-  writeNotNull('showNumber', instance.showNumber);
-  writeNotNull('showQuestionNumbers', instance.showQuestionNumbers);
-  writeNotNull('questionStartIndex', instance.questionStartIndex);
-  return val;
-}
+Map<String, dynamic> _$PanelToJson(Panel instance) => <String, dynamic>{
+  'name': ?instance.name,
+  'elements': ?instance.elements,
+  'visible': ?instance.visible,
+  'visibleIf': ?instance.visibleIf,
+  'enableIf': ?instance.enableIf,
+  'requiredIf': ?instance.requiredIf,
+  'readOnly': ?instance.readOnly,
+  'questionTitleLocation': ?instance.questionTitleLocation,
+  'title': ?instance.title,
+  'description': ?instance.description,
+  'state': ?instance.state,
+  'isRequired': ?instance.isRequired,
+  'requiredErrorText': ?instance.requiredErrorText,
+  'startWithNewLine': ?instance.startWithNewLine,
+  'width': ?instance.width,
+  'innerIndent': ?instance.innerIndent,
+  'indent': ?instance.indent,
+  'page': ?instance.page,
+  'showNumber': ?instance.showNumber,
+  'showQuestionNumbers': ?instance.showQuestionNumbers,
+  'questionStartIndex': ?instance.questionStartIndex,
+};
 
 PanelDynamic _$PanelDynamicFromJson(Map<String, dynamic> json) => PanelDynamic()
   ..state = json['state'] as String?
@@ -2617,7 +2387,7 @@ PanelDynamic _$PanelDynamicFromJson(Map<String, dynamic> json) => PanelDynamic()
   ..minWidth = json['minWidth'] as String?
   ..maxWidth = json['maxWidth'] as String?
   ..startWithNewLine = json['startWithNewLine'] as bool?
-  ..indent = json['indent'] as int?
+  ..indent = (json['indent'] as num?)?.toInt()
   ..page = json['page'] as String?
   ..title = json['title'] as String?
   ..titleLocation = json['titleLocation'] as String?
@@ -2646,9 +2416,9 @@ PanelDynamic _$PanelDynamicFromJson(Map<String, dynamic> json) => PanelDynamic()
   ..templateDescription = json['templateDescription'] as String?
   ..allowAddPanel = json['allowAddPanel'] as bool?
   ..allowRemovePanel = json['allowRemovePanel'] as bool?
-  ..panelCount = json['panelCount'] as int?
-  ..minPanelCount = json['minPanelCount'] as int?
-  ..maxPanelCount = json['maxPanelCount'] as int?
+  ..panelCount = (json['panelCount'] as num?)?.toInt()
+  ..minPanelCount = (json['minPanelCount'] as num?)?.toInt()
+  ..maxPanelCount = (json['maxPanelCount'] as num?)?.toInt()
   ..defaultPanelValue = json['defaultPanelValue']
   ..defaultValueFromLastPanel = json['defaultValueFromLastPanel'] as bool?
   ..panelsState = json['panelsState'] as String?
@@ -2666,70 +2436,62 @@ PanelDynamic _$PanelDynamicFromJson(Map<String, dynamic> json) => PanelDynamic()
   ..templateTitleLocation = json['templateTitleLocation'] as String?
   ..panelRemoveButtonLocation = json['panelRemoveButtonLocation'] as String?;
 
-Map<String, dynamic> _$PanelDynamicToJson(PanelDynamic instance) {
-  final val = <String, dynamic>{};
-
-  void writeNotNull(String key, dynamic value) {
-    if (value != null) {
-      val[key] = value;
-    }
-  }
-
-  writeNotNull('state', instance.state);
-  writeNotNull('name', instance.name);
-  writeNotNull('visible', instance.visible);
-  writeNotNull('useDisplayValuesInTitle', instance.useDisplayValuesInTitle);
-  writeNotNull('visibleIf', instance.visibleIf);
-  writeNotNull('width', instance.width);
-  writeNotNull('minWidth', instance.minWidth);
-  writeNotNull('maxWidth', instance.maxWidth);
-  writeNotNull('startWithNewLine', instance.startWithNewLine);
-  writeNotNull('indent', instance.indent);
-  writeNotNull('page', instance.page);
-  writeNotNull('title', instance.title);
-  writeNotNull('titleLocation', instance.titleLocation);
-  writeNotNull('description', instance.description);
-  writeNotNull('descriptionLocation', instance.descriptionLocation);
-  writeNotNull('hideNumber', instance.hideNumber);
-  writeNotNull('valueName', instance.valueName);
-  writeNotNull('enableIf', instance.enableIf);
-  writeNotNull('defaultValue', instance.defaultValue);
-  writeNotNull('defaultValueExpression', instance.defaultValueExpression);
-  writeNotNull('correctAnswer', instance.correctAnswer);
-  writeNotNull('isRequired', instance.isRequired);
-  writeNotNull('requiredIf', instance.requiredIf);
-  writeNotNull('requiredErrorText', instance.requiredErrorText);
-  writeNotNull('readOnly', instance.readOnly);
-  writeNotNull('validators', instance.validators);
-  writeNotNull('bindings', instance.bindings);
-  writeNotNull('renderAs', instance.renderAs);
-  writeNotNull('type', instance.type);
-  writeNotNull('templateElements', instance.templateElements);
-  writeNotNull('templateTitle', instance.templateTitle);
-  writeNotNull('templateDescription', instance.templateDescription);
-  writeNotNull('allowAddPanel', instance.allowAddPanel);
-  writeNotNull('allowRemovePanel', instance.allowRemovePanel);
-  writeNotNull('panelCount', instance.panelCount);
-  writeNotNull('minPanelCount', instance.minPanelCount);
-  writeNotNull('maxPanelCount', instance.maxPanelCount);
-  writeNotNull('defaultPanelValue', instance.defaultPanelValue);
-  writeNotNull('defaultValueFromLastPanel', instance.defaultValueFromLastPanel);
-  writeNotNull('panelsState', instance.panelsState);
-  writeNotNull('keyName', instance.keyName);
-  writeNotNull('keyDuplicationError', instance.keyDuplicationError);
-  writeNotNull('confirmDelete', instance.confirmDelete);
-  writeNotNull('confirmDeleteText', instance.confirmDeleteText);
-  writeNotNull('panelAddText', instance.panelAddText);
-  writeNotNull('panelRemoveText', instance.panelRemoveText);
-  writeNotNull('panelPrevText', instance.panelPrevText);
-  writeNotNull('panelNextText', instance.panelNextText);
-  writeNotNull('showQuestionNumbers', instance.showQuestionNumbers);
-  writeNotNull('showRangeInProgress', instance.showRangeInProgress);
-  writeNotNull('renderMode', instance.renderMode);
-  writeNotNull('templateTitleLocation', instance.templateTitleLocation);
-  writeNotNull('panelRemoveButtonLocation', instance.panelRemoveButtonLocation);
-  return val;
-}
+Map<String, dynamic> _$PanelDynamicToJson(PanelDynamic instance) =>
+    <String, dynamic>{
+      'state': ?instance.state,
+      'name': ?instance.name,
+      'visible': ?instance.visible,
+      'useDisplayValuesInTitle': ?instance.useDisplayValuesInTitle,
+      'visibleIf': ?instance.visibleIf,
+      'width': ?instance.width,
+      'minWidth': ?instance.minWidth,
+      'maxWidth': ?instance.maxWidth,
+      'startWithNewLine': ?instance.startWithNewLine,
+      'indent': ?instance.indent,
+      'page': ?instance.page,
+      'title': ?instance.title,
+      'titleLocation': ?instance.titleLocation,
+      'description': ?instance.description,
+      'descriptionLocation': ?instance.descriptionLocation,
+      'hideNumber': ?instance.hideNumber,
+      'valueName': ?instance.valueName,
+      'enableIf': ?instance.enableIf,
+      'defaultValue': ?instance.defaultValue,
+      'defaultValueExpression': ?instance.defaultValueExpression,
+      'correctAnswer': ?instance.correctAnswer,
+      'isRequired': ?instance.isRequired,
+      'requiredIf': ?instance.requiredIf,
+      'requiredErrorText': ?instance.requiredErrorText,
+      'readOnly': ?instance.readOnly,
+      'validators': ?instance.validators,
+      'bindings': ?instance.bindings,
+      'renderAs': ?instance.renderAs,
+      'type': ?instance.type,
+      'templateElements': ?instance.templateElements,
+      'templateTitle': ?instance.templateTitle,
+      'templateDescription': ?instance.templateDescription,
+      'allowAddPanel': ?instance.allowAddPanel,
+      'allowRemovePanel': ?instance.allowRemovePanel,
+      'panelCount': ?instance.panelCount,
+      'minPanelCount': ?instance.minPanelCount,
+      'maxPanelCount': ?instance.maxPanelCount,
+      'defaultPanelValue': ?instance.defaultPanelValue,
+      'defaultValueFromLastPanel': ?instance.defaultValueFromLastPanel,
+      'panelsState': ?instance.panelsState,
+      'keyName': ?instance.keyName,
+      'keyDuplicationError': ?instance.keyDuplicationError,
+      'confirmDelete': ?instance.confirmDelete,
+      'confirmDeleteText': ?instance.confirmDeleteText,
+      'panelAddText': ?instance.panelAddText,
+      'panelRemoveText': ?instance.panelRemoveText,
+      'panelPrevText': ?instance.panelPrevText,
+      'panelNextText': ?instance.panelNextText,
+      'showQuestionNumbers': ?instance.showQuestionNumbers,
+      'showRangeInProgress': ?instance.showRangeInProgress,
+      'renderMode': ?instance.renderMode,
+      'templateTitleLocation': ?instance.templateTitleLocation,
+      'panelRemoveButtonLocation': ?instance.panelRemoveButtonLocation,
+    };
 
 VisibleTrigger _$VisibleTriggerFromJson(Map<String, dynamic> json) =>
     VisibleTrigger()
@@ -2742,23 +2504,15 @@ VisibleTrigger _$VisibleTriggerFromJson(Map<String, dynamic> json) =>
           ?.map((e) => e as String)
           .toList();
 
-Map<String, dynamic> _$VisibleTriggerToJson(VisibleTrigger instance) {
-  final val = <String, dynamic>{};
-
-  void writeNotNull(String key, dynamic value) {
-    if (value != null) {
-      val[key] = value;
-    }
-  }
-
-  writeNotNull('operator', instance.operator);
-  writeNotNull('value', instance.value);
-  writeNotNull('expression', instance.expression);
-  writeNotNull('name', instance.name);
-  writeNotNull('pages', instance.pages);
-  writeNotNull('questions', instance.questions);
-  return val;
-}
+Map<String, dynamic> _$VisibleTriggerToJson(VisibleTrigger instance) =>
+    <String, dynamic>{
+      'operator': ?instance.operator,
+      'value': ?instance.value,
+      'expression': ?instance.expression,
+      'name': ?instance.name,
+      'pages': ?instance.pages,
+      'questions': ?instance.questions,
+    };
 
 CompleteTrigger _$CompleteTriggerFromJson(Map<String, dynamic> json) =>
     CompleteTrigger()
@@ -2767,21 +2521,13 @@ CompleteTrigger _$CompleteTriggerFromJson(Map<String, dynamic> json) =>
       ..expression = json['expression'] as String?
       ..name = json['name'] as String?;
 
-Map<String, dynamic> _$CompleteTriggerToJson(CompleteTrigger instance) {
-  final val = <String, dynamic>{};
-
-  void writeNotNull(String key, dynamic value) {
-    if (value != null) {
-      val[key] = value;
-    }
-  }
-
-  writeNotNull('operator', instance.operator);
-  writeNotNull('value', instance.value);
-  writeNotNull('expression', instance.expression);
-  writeNotNull('name', instance.name);
-  return val;
-}
+Map<String, dynamic> _$CompleteTriggerToJson(CompleteTrigger instance) =>
+    <String, dynamic>{
+      'operator': ?instance.operator,
+      'value': ?instance.value,
+      'expression': ?instance.expression,
+      'name': ?instance.name,
+    };
 
 SetvalueTrigger _$SetvalueTriggerFromJson(Map<String, dynamic> json) =>
     SetvalueTrigger()
@@ -2793,24 +2539,16 @@ SetvalueTrigger _$SetvalueTriggerFromJson(Map<String, dynamic> json) =>
       ..setValue = json['setValue'] as String?
       ..isVariable = json['isVariable'] as bool?;
 
-Map<String, dynamic> _$SetvalueTriggerToJson(SetvalueTrigger instance) {
-  final val = <String, dynamic>{};
-
-  void writeNotNull(String key, dynamic value) {
-    if (value != null) {
-      val[key] = value;
-    }
-  }
-
-  writeNotNull('operator', instance.operator);
-  writeNotNull('value', instance.value);
-  writeNotNull('expression', instance.expression);
-  writeNotNull('name', instance.name);
-  writeNotNull('setToName', instance.setToName);
-  writeNotNull('setValue', instance.setValue);
-  writeNotNull('isVariable', instance.isVariable);
-  return val;
-}
+Map<String, dynamic> _$SetvalueTriggerToJson(SetvalueTrigger instance) =>
+    <String, dynamic>{
+      'operator': ?instance.operator,
+      'value': ?instance.value,
+      'expression': ?instance.expression,
+      'name': ?instance.name,
+      'setToName': ?instance.setToName,
+      'setValue': ?instance.setValue,
+      'isVariable': ?instance.isVariable,
+    };
 
 CopyValueTrigger _$CopyValueTriggerFromJson(Map<String, dynamic> json) =>
     CopyValueTrigger()
@@ -2821,23 +2559,15 @@ CopyValueTrigger _$CopyValueTriggerFromJson(Map<String, dynamic> json) =>
       ..setToName = json['setToName'] as String?
       ..fromName = json['fromName'] as String?;
 
-Map<String, dynamic> _$CopyValueTriggerToJson(CopyValueTrigger instance) {
-  final val = <String, dynamic>{};
-
-  void writeNotNull(String key, dynamic value) {
-    if (value != null) {
-      val[key] = value;
-    }
-  }
-
-  writeNotNull('operator', instance.operator);
-  writeNotNull('value', instance.value);
-  writeNotNull('expression', instance.expression);
-  writeNotNull('name', instance.name);
-  writeNotNull('setToName', instance.setToName);
-  writeNotNull('fromName', instance.fromName);
-  return val;
-}
+Map<String, dynamic> _$CopyValueTriggerToJson(CopyValueTrigger instance) =>
+    <String, dynamic>{
+      'operator': ?instance.operator,
+      'value': ?instance.value,
+      'expression': ?instance.expression,
+      'name': ?instance.name,
+      'setToName': ?instance.setToName,
+      'fromName': ?instance.fromName,
+    };
 
 SkipTrigger _$SkipTriggerFromJson(Map<String, dynamic> json) => SkipTrigger()
   ..operator = json['operator'] as String?
@@ -2846,51 +2576,35 @@ SkipTrigger _$SkipTriggerFromJson(Map<String, dynamic> json) => SkipTrigger()
   ..name = json['name'] as String?
   ..gotoName = json['gotoName'] as String?;
 
-Map<String, dynamic> _$SkipTriggerToJson(SkipTrigger instance) {
-  final val = <String, dynamic>{};
-
-  void writeNotNull(String key, dynamic value) {
-    if (value != null) {
-      val[key] = value;
-    }
-  }
-
-  writeNotNull('operator', instance.operator);
-  writeNotNull('value', instance.value);
-  writeNotNull('expression', instance.expression);
-  writeNotNull('name', instance.name);
-  writeNotNull('gotoName', instance.gotoName);
-  return val;
-}
+Map<String, dynamic> _$SkipTriggerToJson(SkipTrigger instance) =>
+    <String, dynamic>{
+      'operator': ?instance.operator,
+      'value': ?instance.value,
+      'expression': ?instance.expression,
+      'name': ?instance.name,
+      'gotoName': ?instance.gotoName,
+    };
 
 RunExpressionTrigger _$RunExpressionTriggerFromJson(
-        Map<String, dynamic> json) =>
-    RunExpressionTrigger()
-      ..operator = json['operator'] as String?
-      ..value = json['value'] as String?
-      ..expression = json['expression'] as String?
-      ..name = json['name'] as String?
-      ..setToName = json['setToName'] as String?
-      ..runExpression = json['runExpression'] as String?;
+  Map<String, dynamic> json,
+) => RunExpressionTrigger()
+  ..operator = json['operator'] as String?
+  ..value = json['value'] as String?
+  ..expression = json['expression'] as String?
+  ..name = json['name'] as String?
+  ..setToName = json['setToName'] as String?
+  ..runExpression = json['runExpression'] as String?;
 
 Map<String, dynamic> _$RunExpressionTriggerToJson(
-    RunExpressionTrigger instance) {
-  final val = <String, dynamic>{};
-
-  void writeNotNull(String key, dynamic value) {
-    if (value != null) {
-      val[key] = value;
-    }
-  }
-
-  writeNotNull('operator', instance.operator);
-  writeNotNull('value', instance.value);
-  writeNotNull('expression', instance.expression);
-  writeNotNull('name', instance.name);
-  writeNotNull('setToName', instance.setToName);
-  writeNotNull('runExpression', instance.runExpression);
-  return val;
-}
+  RunExpressionTrigger instance,
+) => <String, dynamic>{
+  'operator': ?instance.operator,
+  'value': ?instance.value,
+  'expression': ?instance.expression,
+  'name': ?instance.name,
+  'setToName': ?instance.setToName,
+  'runExpression': ?instance.runExpression,
+};
 
 NumericValidator _$NumericValidatorFromJson(Map<String, dynamic> json) =>
     NumericValidator()
@@ -2898,117 +2612,65 @@ NumericValidator _$NumericValidatorFromJson(Map<String, dynamic> json) =>
       ..minValue = json['minValue'] as num?
       ..maxValue = json['maxValue'] as num?;
 
-Map<String, dynamic> _$NumericValidatorToJson(NumericValidator instance) {
-  final val = <String, dynamic>{};
-
-  void writeNotNull(String key, dynamic value) {
-    if (value != null) {
-      val[key] = value;
-    }
-  }
-
-  writeNotNull('type', instance.type);
-  writeNotNull('minValue', instance.minValue);
-  writeNotNull('maxValue', instance.maxValue);
-  return val;
-}
+Map<String, dynamic> _$NumericValidatorToJson(NumericValidator instance) =>
+    <String, dynamic>{
+      'type': ?instance.type,
+      'minValue': ?instance.minValue,
+      'maxValue': ?instance.maxValue,
+    };
 
 TextValidator _$TextValidatorFromJson(Map<String, dynamic> json) =>
     TextValidator()
       ..type = json['type'] as String?
-      ..minLength = json['minLength'] as int?
-      ..maxLength = json['maxLength'] as int?
+      ..minLength = (json['minLength'] as num?)?.toInt()
+      ..maxLength = (json['maxLength'] as num?)?.toInt()
       ..allowDigits = json['allowDigits'] as bool?;
 
-Map<String, dynamic> _$TextValidatorToJson(TextValidator instance) {
-  final val = <String, dynamic>{};
-
-  void writeNotNull(String key, dynamic value) {
-    if (value != null) {
-      val[key] = value;
-    }
-  }
-
-  writeNotNull('type', instance.type);
-  writeNotNull('minLength', instance.minLength);
-  writeNotNull('maxLength', instance.maxLength);
-  writeNotNull('allowDigits', instance.allowDigits);
-  return val;
-}
+Map<String, dynamic> _$TextValidatorToJson(TextValidator instance) =>
+    <String, dynamic>{
+      'type': ?instance.type,
+      'minLength': ?instance.minLength,
+      'maxLength': ?instance.maxLength,
+      'allowDigits': ?instance.allowDigits,
+    };
 
 AnswerCountValidator _$AnswerCountValidatorFromJson(
-        Map<String, dynamic> json) =>
-    AnswerCountValidator()
-      ..type = json['type'] as String?
-      ..minCount = json['minCount'] as int?
-      ..maxCount = json['maxCount'] as int?;
+  Map<String, dynamic> json,
+) => AnswerCountValidator()
+  ..type = json['type'] as String?
+  ..minCount = (json['minCount'] as num?)?.toInt()
+  ..maxCount = (json['maxCount'] as num?)?.toInt();
 
 Map<String, dynamic> _$AnswerCountValidatorToJson(
-    AnswerCountValidator instance) {
-  final val = <String, dynamic>{};
-
-  void writeNotNull(String key, dynamic value) {
-    if (value != null) {
-      val[key] = value;
-    }
-  }
-
-  writeNotNull('type', instance.type);
-  writeNotNull('minCount', instance.minCount);
-  writeNotNull('maxCount', instance.maxCount);
-  return val;
-}
+  AnswerCountValidator instance,
+) => <String, dynamic>{
+  'type': ?instance.type,
+  'minCount': ?instance.minCount,
+  'maxCount': ?instance.maxCount,
+};
 
 RegexValidator _$RegexValidatorFromJson(Map<String, dynamic> json) =>
     RegexValidator()
       ..type = json['type'] as String?
       ..regex = json['regex'] as String?;
 
-Map<String, dynamic> _$RegexValidatorToJson(RegexValidator instance) {
-  final val = <String, dynamic>{};
-
-  void writeNotNull(String key, dynamic value) {
-    if (value != null) {
-      val[key] = value;
-    }
-  }
-
-  writeNotNull('type', instance.type);
-  writeNotNull('regex', instance.regex);
-  return val;
-}
+Map<String, dynamic> _$RegexValidatorToJson(RegexValidator instance) =>
+    <String, dynamic>{'type': ?instance.type, 'regex': ?instance.regex};
 
 EmailValidator _$EmailValidatorFromJson(Map<String, dynamic> json) =>
     EmailValidator()..type = json['type'] as String?;
 
-Map<String, dynamic> _$EmailValidatorToJson(EmailValidator instance) {
-  final val = <String, dynamic>{};
-
-  void writeNotNull(String key, dynamic value) {
-    if (value != null) {
-      val[key] = value;
-    }
-  }
-
-  writeNotNull('type', instance.type);
-  return val;
-}
+Map<String, dynamic> _$EmailValidatorToJson(EmailValidator instance) =>
+    <String, dynamic>{'type': ?instance.type};
 
 ExpressionValidator _$ExpressionValidatorFromJson(Map<String, dynamic> json) =>
     ExpressionValidator()
       ..type = json['type'] as String?
       ..expression = json['expression'] as String?;
 
-Map<String, dynamic> _$ExpressionValidatorToJson(ExpressionValidator instance) {
-  final val = <String, dynamic>{};
-
-  void writeNotNull(String key, dynamic value) {
-    if (value != null) {
-      val[key] = value;
-    }
-  }
-
-  writeNotNull('type', instance.type);
-  writeNotNull('expression', instance.expression);
-  return val;
-}
+Map<String, dynamic> _$ExpressionValidatorToJson(
+  ExpressionValidator instance,
+) => <String, dynamic>{
+  'type': ?instance.type,
+  'expression': ?instance.expression,
+};

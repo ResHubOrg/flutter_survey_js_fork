@@ -15,10 +15,12 @@ import 'matrix.dart';
 import 'matrix_dynamic.dart';
 import 'multiple_text.dart';
 import 'panel_dynamic.dart';
+import 'conditionable_widget.dart';
 import 'question_title.dart';
 import 'radio_group.dart';
 import 'ranking.dart';
 import 'rating.dart';
+import 'select_base_extras.dart';
 import 'text.dart';
 
 typedef SurveyElementBuilder = Widget
@@ -144,14 +146,16 @@ class SurveyElementFactory {
 
     register<s.Dropdown>((context, element, {bool hasTitle = true}) {
       final e = (element as s.Dropdown);
-      return ReactiveDropdownField(
-        formControlName: element.name!,
-        items: e.choices
-                ?.map((e) => DropdownMenuItem(
-                    value: e.value,
-                    child: Text(e.text ?? e.value?.toString() ?? "")))
-                .toList(growable: false) ??
-            [],
+      return SelectBaseExtrasWrapper(
+        element: e,
+        child: ReactiveDropdownField(
+          formControlName: element.name!,
+          items: e.visibleChoices
+              .map((e) => DropdownMenuItem(
+                  value: e.value,
+                  child: Text(e.text ?? e.value?.toString() ?? "")))
+              .toList(growable: false),
+        ),
       ).wrapQuestionTitle(element, hasTitle: hasTitle);
     });
     register<s.PanelDynamic>(panelDynamicBuilder);
@@ -216,7 +220,10 @@ class SurveyElementFactory {
         res = unsupported!;
       }
     }
-    return res(context, element, hasTitle: hasTitle);
+    return ConditionWidget(
+      element: element,
+      child: res(context, element, hasTitle: hasTitle),
+    );
   }
 
   SurveyFormControlBuilder? resolveFormControl(s.ElementBase element) {

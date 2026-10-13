@@ -7,6 +7,8 @@ import 'package:flutter_survey_js/survey.dart';
 import 'package:logging/logging.dart';
 import 'package:reactive_forms/reactive_forms.dart';
 
+import 'elements/conditionable_widget.dart';
+import 'elements/select_base_extras.dart';
 import 'elements_state.dart';
 import 'form_control.dart';
 
@@ -51,6 +53,7 @@ class SurveyWidgetState extends State<SurveyWidget> {
   final Logger logger = Logger('SurveyWidgetState');
   late FormGroup formGroup;
   late Map<s.ElementBase, Object> _controlsMap;
+  Map<s.ElementBase, ConditionState> _conditions = {};
 
   late int pageCount;
 
@@ -113,6 +116,7 @@ class SurveyWidgetState extends State<SurveyWidget> {
                 survey: widget.survey,
                 formGroup: formGroup,
                 elementsState: elementsState,
+                conditions: _conditions,
                 currentPage: currentPage,
                 initialPage: initialPage,
                 focusableButtonStyle: widget.focusableButtonStyle,
@@ -140,12 +144,15 @@ class SurveyWidgetState extends State<SurveyWidget> {
         controlsMap: _controlsMap);
 
     if (widget.answer != null) {
-      formGroup.updateValue(widget.answer);
+      formGroup.updateValue(
+          surveyDataToFormValue(widget.answer, _controlsMap.keys));
     }
+    _conditions = applyConditions(_controlsMap);
 
     _listener = this.formGroup.valueChanges.listen((event) {
       logger.fine('Value changed $event');
-      widget.onChange?.call(event);
+      _conditions = applyConditions(_controlsMap);
+      widget.onChange?.call(surveyData);
     });
 
     pageCount = widget.survey.getPageCount();
@@ -154,9 +161,12 @@ class SurveyWidgetState extends State<SurveyWidget> {
     }
   }
 
+  Map<String, Object?>? get surveyData =>
+      formValueToSurveyData(formGroup.value, _controlsMap.keys);
+
   void submit() {
     if (formGroup.valid) {
-      widget.onSubmit?.call(formGroup.value);
+      widget.onSubmit?.call(surveyData);
     } else {
       formGroup.markAllAsTouched();
     }
@@ -193,6 +203,7 @@ class SurveyProvider extends InheritedWidget {
   final s.Survey survey;
   final FormGroup formGroup;
   final ElementsState elementsState;
+  final Map<s.ElementBase, ConditionState> conditions;
   final int currentPage;
   final int initialPage;
   final bool showQuestionsInOnePage;
@@ -213,6 +224,7 @@ class SurveyProvider extends InheritedWidget {
     this.elementDecoration,
     this.elementPadding,
     this.showQuestionsInOnePage = false,
+    this.conditions = const {},
   }) : super(child: child);
 
   static SurveyProvider of(BuildContext context) {

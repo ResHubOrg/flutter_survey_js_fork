@@ -3,13 +3,17 @@ import 'package:flutter_survey_js/survey.dart' as s;
 import 'package:reactive_forms/reactive_forms.dart';
 
 import 'question_title.dart';
+import 'select_base_extras.dart';
 import 'survey_element_factory.dart';
 
 final SurveyElementBuilder checkBoxBuilder =
     (context, element, {bool hasTitle = true}) {
-  return CheckBoxElement(
-    formControlName: element.name!,
+  return SelectBaseExtrasWrapper(
     element: element as s.CheckBox,
+    child: CheckBoxElement(
+      formControlName: element.name!,
+      element: element,
+    ),
   ).wrapQuestionTitle(element, hasTitle: hasTitle);
 };
 
@@ -26,7 +30,7 @@ class CheckBoxElement extends StatelessWidget {
         formArrayName: formControlName,
         builder: (context, formArray, child) {
           final list = <Widget>[];
-          (element.choices ?? []).forEach((element) {
+          element.visibleChoices.forEach((element) {
             list.add(Row(
               children: [
                 Checkbox(
@@ -34,6 +38,13 @@ class CheckBoxElement extends StatelessWidget {
                       formArray.controls.any((c) => c.value == element.value),
                   onChanged: (v) {
                     if (v == true) {
+                      // "None" is exclusive with every other choice
+                      final toRemove = formArray.controls
+                          .where((c) =>
+                              element.value == noneItemValue ||
+                              c.value == noneItemValue)
+                          .toList();
+                      toRemove.forEach(formArray.remove);
                       formArray.add(FormControl<Object>(value: element.value));
                     } else {
                       final rs = formArray.controls
