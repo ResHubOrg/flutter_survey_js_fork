@@ -5,6 +5,7 @@ import 'package:flutter_survey_js/model/survey.dart' as s;
 import 'package:flutter_survey_js/survey.dart';
 import 'package:scrollable_positioned_list/scrollable_positioned_list.dart';
 
+import 'elements/conditionable_widget.dart';
 import 'elements/survey_element_factory.dart';
 import 'panel_title.dart';
 
@@ -140,22 +141,28 @@ class SurveyPageWidgetState extends State<SurveyPageWidget> {
                             SurveyElementFactory()
                                 .separatorBuilder
                                 .call(context),
-                            Container(
-                              decoration:
-                                  SurveyProvider.of(context).elementDecoration,
-                              padding:
-                                  SurveyProvider.of(context).elementPadding,
-                              child: SurveyElementFactory().resolve(
-                                context,
-                                widget.page.elements![index],
+                            if (ConditionWidget.isVisible(
+                                context, widget.page.elements![index]))
+                              Container(
+                                decoration: SurveyProvider.of(context)
+                                    .elementDecoration,
+                                padding:
+                                    SurveyProvider.of(context).elementPadding,
+                                child: SurveyElementFactory().resolve(
+                                  context,
+                                  widget.page.elements![index],
+                                ),
                               ),
-                            ),
                           ],
                         ),
                       );
                     }
 
                     if (index < widget.page.elements!.length && index >= 0) {
+                      if (!ConditionWidget.isVisible(
+                          context, widget.page.elements![index])) {
+                        return const SizedBox.shrink();
+                      }
                       return AbsorbPointer(
                         absorbing: widget.readOnly,
                         child: Container(

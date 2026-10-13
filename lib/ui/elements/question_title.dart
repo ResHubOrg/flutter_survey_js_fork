@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_survey_js/model/survey.dart' as s;
 import 'package:flutter_survey_js/ui/survey_widget.dart';
 
+import 'conditionable_widget.dart';
+
 class QuestionTitle extends StatelessWidget {
   final s.Question q;
   final Widget? child;
@@ -57,7 +59,9 @@ class QuestionTitle extends StatelessWidget {
         return Container();
       }));
 
-      if (q.isRequired == true) {
+      final isRequired =
+          ConditionWidget.of(context)?.required ?? q.isRequired == true;
+      if (isRequired) {
         listTitle.add(Text(
           '* ',
           style: requiredTextStyle,

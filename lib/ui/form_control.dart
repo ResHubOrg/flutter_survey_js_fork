@@ -1,4 +1,5 @@
 import 'package:flutter_survey_js/model/survey.dart' as s;
+import 'package:flutter_survey_js/ui/elements/select_base_extras.dart';
 import 'package:flutter_survey_js/ui/elements/survey_element_factory.dart';
 import 'package:reactive_forms/reactive_forms.dart';
 
@@ -16,6 +17,12 @@ FormGroup elementsToFormGroup(List<s.ElementBase> elements,
       controls[element.name!] = obj;
       if (controlsMap != null) {
         controlsMap[element] = obj;
+      }
+      if (element is s.SelectBase && element.needsCommentControl) {
+        controls[commentControlName(element.name!)] = FormControl<String>();
+      }
+      if (element is s.SelectBase && element.storesOtherInValue) {
+        controls[otherControlName(element.name!)] = FormControl<String>();
       }
     }
   }
