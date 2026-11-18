@@ -1,6 +1,7 @@
 import 'dart:async';
 import 'dart:math';
 
+import 'package:flutter/material.dart' as material;
 import 'package:material_ui/material_ui.dart';
 import 'package:flutter_survey_js/model/survey.dart' as s;
 import 'package:flutter_survey_js/survey.dart';
@@ -99,7 +100,15 @@ class SurveyWidgetState extends State<SurveyWidget> {
     }
     final elementsState = ElementsState(status);
 
-    return Theme(
+    final hasFlutterMaterialL10n =
+        material.Localizations.of<material.MaterialLocalizations>(
+              context,
+              material.MaterialLocalizations,
+            ) !=
+            null;
+    Widget survey = material.Material(
+      type: material.MaterialType.transparency,
+      child: Theme(
         data: Theme.of(context).copyWith(
           focusColor: widget.focusColor,
           textButtonTheme:
@@ -130,7 +139,17 @@ class SurveyWidgetState extends State<SurveyWidget> {
               );
             },
           ),
-        ));
+        ),
+      ),
+    );
+    if (!hasFlutterMaterialL10n) {
+      survey = material.Localizations.override(
+        context: context,
+        delegates: const [material.DefaultMaterialLocalizations.delegate],
+        child: survey,
+      );
+    }
+    return survey;
   }
 
   void rebuildForm() {
