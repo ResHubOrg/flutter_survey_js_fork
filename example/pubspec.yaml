@@ -33,6 +33,8 @@ dependencies:
     path: ../
   json_editor: ^0.0.8
 
+  material_ui: any
+  logging: any
 dev_dependencies:
   flutter_test:
     sdk: flutter

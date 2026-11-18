@@ -2,9 +2,9 @@ import 'dart:convert';
 import 'dart:core';
 
 import 'package:device_preview/device_preview.dart';
-import 'package:flutter/material.dart';
+import 'package:material_ui/material_ui.dart';
 import 'package:flutter/services.dart';
-import 'package:flutter_localizations/flutter_localizations.dart';
+import 'package:flutter_localizations/flutter_localizations.dart' hide GlobalMaterialLocalizations;
 import 'package:flutter_survey_js/survey.dart' as s;
 import 'package:json_editor/json_editor.dart';
 
@@ -30,9 +30,7 @@ class MyApp extends StatelessWidget {
       builder: DevicePreview.appBuilder,
       // Add the builder here
       localizationsDelegates: [
-        GlobalMaterialLocalizations.delegate,
-        GlobalWidgetsLocalizations.delegate,
-        GlobalCupertinoLocalizations.delegate,
+        ...GlobalMaterialLocalizations.delegates
       ],
       title: 'Survey Demo',
       theme: ThemeData(

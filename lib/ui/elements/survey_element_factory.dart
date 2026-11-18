@@ -1,4 +1,5 @@
-import 'package:flutter/material.dart';
+import 'package:flutter/material.dart' as material;
+import 'package:material_ui/material_ui.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_survey_js/model/survey.dart' as s;
 import 'package:flutter_survey_js/ui/elements/matrix_dropdown.dart';
@@ -100,11 +101,11 @@ class SurveyElementFactory {
               child: ReactiveTextField(
                 formControlName: element.name!,
                 textInputAction: TextInputAction.next,
-                decoration: new InputDecoration(
-                  fillColor: Colors.white,
-                  border: OutlineInputBorder(
+                decoration: const material.InputDecoration(
+                  fillColor: material.Colors.white,
+                  border: material.OutlineInputBorder(
                       borderRadius: BorderRadius.all(Radius.circular(5.0)),
-                      borderSide: BorderSide(color: Colors.blue)),
+                      borderSide: material.BorderSide(color: material.Colors.blue)),
                   filled: true,
                   contentPadding:
                       EdgeInsets.only(bottom: 10.0, left: 10.0, right: 10.0),
@@ -147,7 +148,7 @@ class SurveyElementFactory {
       return ReactiveDropdownField(
         formControlName: element.name!,
         items: e.choices
-                ?.map((e) => DropdownMenuItem(
+                ?.map((e) => material.DropdownMenuItem(
                     value: e.value,
                     child: Text(e.text ?? e.value?.toString() ?? "")))
                 .toList(growable: false) ??

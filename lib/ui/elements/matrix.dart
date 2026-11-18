@@ -1,4 +1,4 @@
-import 'package:flutter/material.dart';
+import 'package:material_ui/material_ui.dart';
 import 'package:flutter_survey_js/survey.dart' as s;
 import 'package:flutter_survey_js/ui/reactive/reactive_nested_form.dart';
 import 'package:reactive_forms/reactive_forms.dart';

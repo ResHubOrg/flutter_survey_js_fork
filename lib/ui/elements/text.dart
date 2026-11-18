@@ -1,10 +1,11 @@
-import 'package:flutter/material.dart';
+import 'package:material_ui/material_ui.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_survey_js/model/survey.dart' as s;
 import 'package:flutter_survey_js/ui/reactive/reactive.dart';
 import 'package:flutter_survey_js/ui/reactive/reactive_color_picker.dart';
 import 'package:reactive_date_time_picker/reactive_date_time_picker.dart';
 import 'package:reactive_forms/reactive_forms.dart';
+import 'package:flutter/material.dart' as material;
 
 import 'question_title.dart';
 import 'survey_element_factory.dart';
@@ -30,7 +31,7 @@ final SurveyElementBuilder textBuilder =
       }
     },
     child: ReactiveTextField(
-      decoration: new InputDecoration(
+      decoration: material.InputDecoration(
         fillColor: Colors.white,
         filled: true,
         contentPadding: EdgeInsets.only(bottom: 10.0, left: 10.0, right: 10.0),
@@ -58,7 +59,7 @@ final SurveyElementBuilder textBuilder =
       keyboardType: TextInputType.text,
       formControlName: element.name!,
       textInputAction: TextInputAction.done,
-      decoration: new InputDecoration(
+      decoration: material.InputDecoration(
         fillColor: Colors.white,
         filled: true,
       ),
@@ -84,7 +85,7 @@ final SurveyElementBuilder textBuilder =
       obscureText: true,
       formControlName: element.name!,
       textInputAction: TextInputAction.done,
-      decoration: new InputDecoration(
+      decoration: material.InputDecoration(
         fillColor: Colors.white,
         filled: true,
       ),
@@ -96,7 +97,7 @@ final SurveyElementBuilder textBuilder =
       keyboardType: TextInputType.phone,
       textInputAction: TextInputAction.done,
       formControlName: element.name!,
-      decoration: new InputDecoration(
+      decoration: material.InputDecoration(
         fillColor: Colors.white,
         filled: true,
       ),
@@ -111,7 +112,7 @@ final SurveyElementBuilder textBuilder =
       textInputAction: TextInputAction.done,
       formControlName: element.name!,
       valueAccessor: NumStringValueAccessor(),
-      decoration: new InputDecoration(
+      decoration: material.InputDecoration(
         fillColor: Colors.white,
         filled: true,
       ),

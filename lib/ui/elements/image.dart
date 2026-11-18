@@ -1,4 +1,4 @@
-import 'package:flutter/material.dart';
+import 'package:material_ui/material_ui.dart';
 
 Widget urlToImage(String? link, {double width = 100, double height = 100}) {
   if (link == null) {
